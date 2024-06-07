@@ -1,0 +1,6 @@
+@YourQuoteBoard_HostAddress = http://localhost:5196
+
+GET {{YourQuoteBoard_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
