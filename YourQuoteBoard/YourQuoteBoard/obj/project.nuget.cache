@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TuC5Zc92X4Q0ybBAWtS3mK0XbuMXJa4PbwpA2odw0fL/0a1uUWa7PncS+NrtqyO4celbRdpYFkra+5dE01vv0Q==",
+  "dgSpecHash": "zl27R3pnmf+LYj0wwqytI1HOgeGN/RYC0wXxignoVgYPtSBUIAQVVXuLJYSUvIh4PH3sBVBg3KlkNNgnBwliXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\doman\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\8.0.6\\microsoft.aspnetcore.diagnostics.entityframeworkcore.8.0.6.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
