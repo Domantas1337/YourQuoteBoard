@@ -9,7 +9,7 @@ using YourQuoteBoard.Repositories;
 
 namespace YourQuoteBoard.Services
 {
-    public class QuoteService(QuoteRepository _quoteRepository, IMapper _mapper) : IQuoteService
+    public class QuoteService(IQuoteRepository _quoteRepository, IMapper _mapper) : IQuoteService
     {
         public async Task<QuoteAddDTO> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
         {
@@ -21,7 +21,7 @@ namespace YourQuoteBoard.Services
 
         public async Task<List<QuoteDisplayDTO>> GetAllQuotesAsync()
         {
-            var quotes = await _quoteRepository.GetQuotesAsync();
+            var quotes = await _quoteRepository.GetAllQuotesAsync();
             List<QuoteDisplayDTO> quotesForDisplay = _mapper.Map<List<QuoteDisplayDTO>>(quotes);
 
             return quotesForDisplay;

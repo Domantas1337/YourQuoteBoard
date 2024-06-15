@@ -1,4 +1,5 @@
-﻿using YourQuoteBoard.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using YourQuoteBoard.Data;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 

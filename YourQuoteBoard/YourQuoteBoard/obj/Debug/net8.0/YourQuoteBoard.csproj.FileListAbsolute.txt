@@ -131,3 +131,4 @@ C:\Users\doman\Desktop\YourQueteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\ne
 C:\Users\doman\Desktop\YourQueteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.pdb
 C:\Users\doman\Desktop\YourQueteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.genruntimeconfig.cache
 C:\Users\doman\Desktop\YourQueteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\ref\YourQuoteBoard.dll
+C:\Users\doman\Desktop\YourQueteBoard\YourQuoteBoard\YourQuoteBoard\bin\Debug\net8.0\AutoMapper.dll
