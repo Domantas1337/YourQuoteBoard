@@ -1,6 +1,8 @@
-import getAllQuotes from '../api/quote'
+import { getAllQuotes } from '../api/quote'
 import { useState, useEffect } from 'react';
 import { QuoteDisplayDTO } from '../models/QuoteDisplayDTO';
+import AddQuoteCard from './manageQuotes/AddQuoteCard';
+import QuoteCard from './manageQuotes/QuoteCard';
 
 function Card(){
     
@@ -26,23 +28,13 @@ function Card(){
             <div className='card-container'>
                 {
                     quotes.map( (quote, index) => (
-                        <div key={index} className='card'>
-                            <div className='card-body'>
-                                <h5 className='card-title'>{quote.title}</h5>
-                                <p className="card-text">Some text</p>
-                                <button className="btn btn-primary">Go to quote</button>
-                            </div>
-                        </div>
+                        <QuoteCard index={index} title={quote.title} shortDescription="desc" />
                     )
 
                     )
                 }
 
-                <div className="add-new-card">
-                    <a href="/open-modal" className="add-new-card-logo">
-                        <img src="/plus.png" alt="Add new" className="img-fluid" />
-                    </a>
-                </div>
+                <AddQuoteCard />
             </div>
         </div>
     );

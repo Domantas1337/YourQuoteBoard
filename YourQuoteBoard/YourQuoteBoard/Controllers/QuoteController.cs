@@ -10,7 +10,7 @@ namespace YourQuoteBoard.Controllers
     public class QuoteController(IQuoteService _quoteService) : Controller
     {
 
-        [HttpPost]
+        [HttpPost("add-quote")]
         public async Task<IActionResult> AddQuoteAsync([FromBody] QuoteAddDTO quoteAddDTO)
         {
             try
@@ -24,7 +24,7 @@ namespace YourQuoteBoard.Controllers
             }
         }
 
-        [HttpGet("allQuotes")]
+        [HttpGet("all-quotes")]
         public async Task<IActionResult> GetAllQuotes()
         {
             var quotes = await _quoteService.GetAllQuotesAsync();
