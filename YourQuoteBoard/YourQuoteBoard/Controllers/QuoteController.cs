@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using YourQuoteBoard.DTO;
+using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 
@@ -11,7 +11,7 @@ namespace YourQuoteBoard.Controllers
     {
 
         [HttpPost("add-quote")]
-        public async Task<IActionResult> AddQuoteAsync([FromBody] QuoteAddDTO quoteAddDTO)
+        public async Task<IActionResult> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
         {
             try
             {

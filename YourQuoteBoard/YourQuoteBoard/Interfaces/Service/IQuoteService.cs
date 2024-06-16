@@ -1,4 +1,5 @@
 ﻿using YourQuoteBoard.DTO;
+using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 
 namespace YourQuoteBoard.Interfaces.Repository

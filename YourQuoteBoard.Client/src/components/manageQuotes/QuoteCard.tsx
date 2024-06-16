@@ -1,12 +1,11 @@
 import React from 'react';
 
 interface QuoteCardProps {
-  index: number;
   title: string;
   shortDescription: string;
 }
 
-const QuoteCard: React.FC<QuoteCardProps> = ({ index, title, shortDescription }) => {
+const QuoteCard: React.FC<QuoteCardProps> = ({ title, shortDescription }) => {
   return (
     <div className="card">
       <div className="card-body">

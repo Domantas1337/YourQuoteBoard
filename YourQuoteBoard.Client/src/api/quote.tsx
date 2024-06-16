@@ -1,6 +1,6 @@
-import { QuoteDisplayDTO } from "../models/QuoteDisplayDTO";
+import { QuoteDisplayDTO } from "../models/quotes/QuoteDisplayDTO";
 import { apiClient } from "../apiClient";
-import { QuoteCreateDTO } from "../models/QuoteCreateDTO";
+import { QuoteCreateDTO } from "../models/quotes/QuoteCreateDTO";
 
 export async function getAllQuotes(): Promise<QuoteDisplayDTO[]>{
     const response = await apiClient.get<QuoteDisplayDTO[]>('api/Quote/all-quotes') 

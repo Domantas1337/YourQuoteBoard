@@ -10,5 +10,6 @@ namespace YourQuoteBoard.Data
         }
 
         public virtual DbSet<Quote>? Quotes { get; set; }
+        public virtual DbSet<Book>? Books { get; set; }
     }
 }

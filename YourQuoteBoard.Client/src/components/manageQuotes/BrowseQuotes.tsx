@@ -1,10 +1,10 @@
-import { getAllQuotes } from '../api/quote'
+import { getAllQuotes } from '../../api/quote'
 import { useState, useEffect } from 'react';
-import { QuoteDisplayDTO } from '../models/QuoteDisplayDTO';
-import AddQuoteCard from './manageQuotes/AddQuoteCard';
-import QuoteCard from './manageQuotes/QuoteCard';
+import { QuoteDisplayDTO } from '../../models/quotes/QuoteDisplayDTO'; 
+import AddQuoteCard from './AddQuoteCard';
+import QuoteCard from './QuoteCard';
 
-function Card(){
+function BrowseQuotes(){
     
     const [quotes, setQuotes] = useState<QuoteDisplayDTO[]>([])
 
@@ -18,7 +18,6 @@ function Card(){
                     console.log("error fetching quotes: ", error)
                 }
             };
-
             fetchQuotes();
         }, []
     );
@@ -28,16 +27,13 @@ function Card(){
             <div className='card-container'>
                 {
                     quotes.map( (quote, index) => (
-                        <QuoteCard index={index} title={quote.title} shortDescription="desc" />
-                    )
-
-                    )
+                        <QuoteCard key={index} title={quote.title} shortDescription="desc" />
+                    ))
                 }
-
                 <AddQuoteCard />
             </div>
         </div>
     );
 }
 
-export default Card;
+export default BrowseQuotes;

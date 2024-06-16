@@ -1,4 +1,4 @@
-﻿namespace YourQuoteBoard.DTO
+﻿namespace YourQuoteBoard.DTO.Quote
 {
     public class QuoteAddDTO
     {

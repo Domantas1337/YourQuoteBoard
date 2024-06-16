@@ -5,13 +5,13 @@ function Navbar(){
         <nav>
           <ul>
           <li>
-            <a href="/find-quote" className="menu-item">
+            <a href="/browse-quotes" className="menu-item">
                 <span>Browse quotes</span>
             </a>            
           </li>
           <li>
-            <a href="/" className="menu-item">
-                <span>Quotes</span>
+            <a href="/my-quotes" className="menu-item">
+                <span>My quotes</span>
             </a>            
           </li>
           </ul>

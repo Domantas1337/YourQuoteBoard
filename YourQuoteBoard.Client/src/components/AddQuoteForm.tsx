@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { QuoteCreateDTO } from "../models/QuoteCreateDTO";
+import { QuoteCreateDTO } from "../models/quotes/QuoteCreateDTO";
 import { createQuote } from '../api/quote';
 
 function AddQuoteForm(){
