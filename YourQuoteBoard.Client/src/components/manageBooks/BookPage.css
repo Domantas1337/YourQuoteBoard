@@ -1,0 +1,65 @@
+.book-container {
+    display: flex;
+    padding: 20px;
+    background-color: #f5f5f5; /* Light grey background for slight contrast */
+    color: rgb(0, 0, 0);
+    min-height: 100vh;
+}
+
+.featured-book-card {
+    flex: 2; /* Larger size for featured book */
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-right: 20px; /* Space between featured book and regular books */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.featured-book-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.regular-books {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for each book card */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.book-cover {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 15px;
+    background-color: #ffffff; /* Keeps the book info visually separate */
+    border-top: 1px solid #e0e0e0; /* Subtle line to visually separate info from image */
+}
+
+.book-info h2, .book-info p {
+    margin: 0;
+    color: rgb(0, 0, 0); /* Strong contrast for readability */
+}
+
+.book-info h2 {
+    font-weight: bold; /* More prominent title */
+}

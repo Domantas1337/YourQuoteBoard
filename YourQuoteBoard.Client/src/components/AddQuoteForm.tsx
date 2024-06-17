@@ -58,7 +58,7 @@ function AddQuoteForm(){
                     <label 
                         htmlFor="descriptionInput"
                         className="default-label"
-                        >Example textarea</label>
+                        >Quote description</label>
                     <textarea 
                         className="form-control" 
                         id="descriptionInput"

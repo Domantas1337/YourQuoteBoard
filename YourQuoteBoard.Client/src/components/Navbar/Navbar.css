@@ -2,26 +2,30 @@ ul {
     list-style-type: none;
     margin-top: 0px !important;
     padding-top: 0px !important;
-    margin: 0;
-    padding: 0;
-    padding-left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 0px !important;
     width: 128px !important;
-    background-color: #fafafa;
-    height: 100%; 
-    position: fixed; 
-    overflow: auto; 
-    border: 1px solid rgb(198, 198, 198);
-  }
-  
-li a {
-    display: block;
-    color: #000;
-    text-decoration: none;
+    background-color: #f0f0f0 !important;  /* Light grey background to differentiate from white website background */
+    height: 100% !important;
+    position: fixed !important;
+    overflow: auto !important;
+    border-right: 1px solid #ccc !important; /* Subtle right border to separate it from the content */
 }
-  
-li a:hover {
-    background-color: #8e8e8e;
-    color: white;
+
+li a {
+    display: block !important;
+    color: #333 !important; /* Darker text color for better readability */
+    text-decoration: none !important;
+    font-family: 'Arial', sans-serif !important; /* Cleaner, more modern font */
+    font-size: 14px !important; /* Slightly larger font size */
+    border-bottom: 1px solid #ccc !important; /* Borders between links */
+}
+
+li a:hover, li a:focus {
+    background-color: #555 !important; /* Darker background on hover/focus for better contrast */
+    color: white !important; /* White text on hover */
+    cursor: pointer !important; /* Cursor indication for clickable links */
 }
 
 .menu-item {
@@ -35,12 +39,14 @@ span{
     font-weight: 400;
     font-style: normal;
     font-size: 12px;
-    margin-left: 6px;
+    margin-left: 32px;
 }
 
 .menu-icon {
     position: absolute;
     top: 50%;
+    width: 32px;
+    height: 32px;
     margin-left: 20px; 
     transform: translate(-50%, -50%); /* Align center perfectly */
 }

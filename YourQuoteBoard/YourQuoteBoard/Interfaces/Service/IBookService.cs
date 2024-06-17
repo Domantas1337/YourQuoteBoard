@@ -4,7 +4,7 @@ namespace YourQuoteBoard.Interfaces.Service
 {
     public interface IBookService
     {
-        public Task<BookAddDTO> AddBook(BookAddDTO book);
-        public Task<List<BookDisplayDTo>> GetAllBooks();
+        public Task<BookAddDTO> AddBookAsync(BookAddDTO book);
+        public Task<List<BookDisplayDTO>> GetAllBooksAsync();
     }
 }

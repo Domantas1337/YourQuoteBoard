@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO;
+using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 
@@ -9,6 +10,8 @@ namespace YourQuoteBoard
     {
         public MappingProfile() 
         {
+            CreateMap<Book, BookDisplayDTO>().ReverseMap();
+            CreateMap<Book, BookAddDTO>().ReverseMap();
             CreateMap<Quote, QuoteAddDTO>().ReverseMap();
             CreateMap<Quote, QuoteDisplayDTO>().ReverseMap();
         }

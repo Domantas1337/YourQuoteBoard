@@ -1,6 +1,5 @@
-
 .main-content {
-  padding-left: 128px; /* Same as navbar height in viewport heights */
+  padding-left: 128px; /* Align with the overall padding of the page */
   margin: 0;
   box-sizing: border-box;
 }
@@ -12,49 +11,68 @@
   gap: 20px; 
 }
 
-.form-control{
+.form-control {
   max-width: 500px;
-  border: 1px solid black !important;
+  border: 1px solid black !important; /* Consistency in border */
+  padding: 8px;
+  border-radius: 8px; /* Rounded borders like book cards */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
 }
 
-.default-form{
+.default-form {
+  width: 80%;
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Consistent with featured book card */
+  padding: 20px;
   margin-left: 20px;
+  margin-top: 20px; /* Added margin top for spacing */
 }
 
-.default-label{
+.default-label {
+  display: block; /* Ensure labels are block level for alignment */
   font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0); /* Black color for better readability */
 }
 
-.submit-button{
+.submit-button {
   margin-top: 10px;
-  border: 2px solid black !important;
+  width: 80% !important;
+  padding: 10px !important;
+  background-color: black !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease !important;
 }
 
-.card{
+.submit-button:hover {
+  background-color: #333 !important; /* Darker on hover for interactive feedback */
+}
+
+/* Card styling for aesthetics */
+.card {
   margin-top: 10px;
-  margin-left: 10px;
   height: 220px !important;
   width: 220px !important;
-  border-radius: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow consistent with book cards */
   overflow: hidden;
 }
 
-.add-new-card{
-  margin-top: 10px;
-  margin-left: 10px;
+/* Additional styles for interactive elements */
+.add-new-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 220px;
   width: 220px;
-  display: flex;
-  justify-content: center;  /* Aligns items horizontally to the center */
-  align-items: center;      /* Aligns items vertically to the center */
+  border-radius: 8px; /* Consistency in rounding */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow like other cards */
 }
 
-.add-new-card-logo{
+.add-new-card-logo {
   height: 100px;
   width: 100px;
 }
-
-
-
