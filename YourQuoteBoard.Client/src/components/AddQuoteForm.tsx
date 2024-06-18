@@ -25,7 +25,10 @@ function AddQuoteForm(){
         }
     }
 
-    return <form className="default-form" onSubmit={handleSubmit}>
+    return(
+        <div className="default-form-container">
+            <form className="default-form" onSubmit={handleSubmit}>
+                <h1 className="default-header">Add a quote</h1>
                 <div className="form-group">
                     <label 
                         htmlFor="titleInput"
@@ -69,6 +72,8 @@ function AddQuoteForm(){
                 </div>
                 <button type="submit" className="btn btn-default submit-button">Submit quote</button>
             </form>
+        </div>
+        );
 }
 
 

@@ -25,7 +25,11 @@ export default function AddBookForm(){
         }
     }
 
-    return <form className="default-form" onSubmit={handleSubmit}>
+    return (
+        <div className="default-form-container">
+            <form className="default-form" onSubmit={handleSubmit}>
+                <h1 className="default-header">Add a book</h1>
+
                 <div className="form-group">
                     <label 
                         htmlFor="titleInput"
@@ -97,4 +101,6 @@ export default function AddBookForm(){
                 </div>
                 <button type="submit" className="btn btn-default submit-button">Submit book</button>
             </form>
+        </div>
+        );
 }

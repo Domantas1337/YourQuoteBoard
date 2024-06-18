@@ -27,6 +27,16 @@ function Navbar(){
                 <span>Add book</span>
             </a>            
           </li>
+          <li>
+            <a href="/register" className="menu-item">
+                <span>Register</span>
+            </a>            
+          </li>
+          <li>
+            <a href="/login" className="menu-item">
+                <span>Login</span>
+            </a>            
+          </li>
           </ul>
         </nav>
       );

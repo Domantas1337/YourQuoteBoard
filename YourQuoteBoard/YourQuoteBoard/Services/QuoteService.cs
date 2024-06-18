@@ -12,12 +12,24 @@ namespace YourQuoteBoard.Services
 {
     public class QuoteService(IQuoteRepository _quoteRepository, IMapper _mapper) : IQuoteService
     {
-        public async Task<QuoteAddDTO> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
+        public async Task<QuoteAddDTO> AddQuoteAsync(QuoteAddDTO quoteAddDTO, string userId)
         {
-            Quote quote =  _mapper.Map<Quote>(quoteAddDTO);
+            Quote quote =  _mapper.Map<Quote>(quoteAddDTO, opts =>
+            {
+                opts.Items["userId"] = userId;
+            });
+
             var addedQuote = await _quoteRepository.AddQuoteAsync(quote);
 
             return quoteAddDTO;
+        }
+
+        public async Task<List<QuoteDisplayDTO>> GetAllPersonalQuotesAsync(string userId)
+        {
+            var personalQuotes = await _quoteRepository.GetAllPersonalQuotesAsync(userId);
+            List<QuoteDisplayDTO> quotesForDisplay = _mapper.Map<List<QuoteDisplayDTO>>(personalQuotes);
+
+            return quotesForDisplay;
         }
 
         public async Task<List<QuoteDisplayDTO>> GetAllQuotesAsync()

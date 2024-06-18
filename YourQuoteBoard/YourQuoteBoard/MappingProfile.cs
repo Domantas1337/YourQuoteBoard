@@ -12,7 +12,15 @@ namespace YourQuoteBoard
         {
             CreateMap<Book, BookDisplayDTO>().ReverseMap();
             CreateMap<Book, BookAddDTO>().ReverseMap();
-            CreateMap<Quote, QuoteAddDTO>().ReverseMap();
+
+            CreateMap<QuoteAddDTO, Quote>()
+                .AfterMap((src, dest, context) =>
+                    {
+                        dest.ApplicationUserId = (string)context.Items["userId"];
+                    }
+                );
+            CreateMap<Quote, QuoteAddDTO>();
+
             CreateMap<Quote, QuoteDisplayDTO>().ReverseMap();
         }
     }

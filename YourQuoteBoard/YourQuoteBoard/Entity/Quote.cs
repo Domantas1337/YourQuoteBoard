@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using YourQuoteBoard.Data;
 
 namespace YourQuoteBoard.Entity
 {
@@ -9,5 +11,10 @@ namespace YourQuoteBoard.Entity
         public string Description { get; set; } = "No descroption";
         public required string Author { get; set; }
         public DateTime Created { get; set; }
+
+
+        [Required]
+        public required string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

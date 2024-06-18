@@ -14,5 +14,16 @@ namespace YourQuoteBoard.Data
 
         public virtual DbSet<Quote>? Quotes { get; set; }
         public virtual DbSet<Book>? Books { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Quote>()
+                .HasOne(q => q.ApplicationUser)
+                .WithMany(u => u.Quotes)
+                .HasForeignKey(q => q.ApplicationUserId)
+                .IsRequired();
+        }
     }
 }

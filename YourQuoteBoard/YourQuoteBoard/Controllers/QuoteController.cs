@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
@@ -10,18 +13,33 @@ namespace YourQuoteBoard.Controllers
     public class QuoteController(IQuoteService _quoteService) : Controller
     {
 
+        [Authorize]
         [HttpPost("add-quote")]
         public async Task<IActionResult> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+
             try
             {
-                QuoteAddDTO addedQuote = await _quoteService.AddQuoteAsync(quoteAddDTO);
+                QuoteAddDTO addedQuote = await _quoteService.AddQuoteAsync(quoteAddDTO, userId);
                 return Ok(addedQuote);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
+        }
+
+        [Authorize]
+        [HttpGet("all-personal-quotes")]
+        public async Task<IActionResult> GetAllPersonalQuotesAsync()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            List<QuoteDisplayDTO> quotes = await _quoteService.GetAllPersonalQuotesAsync(userId);
+
+            return Ok(quotes);
         }
 
         [HttpGet("all-quotes")]

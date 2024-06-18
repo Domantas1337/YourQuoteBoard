@@ -15,6 +15,14 @@ namespace YourQuoteBoard.Repositories
             return quote;
         }
 
+        public async Task<List<Quote>> GetAllPersonalQuotesAsync(string userId)
+        {
+            List<Quote> personalQuotes = await _applicationDbContext.Quotes
+                                                                    .Where(q => q.ApplicationUserId == userId)
+                                                                    .ToListAsync();
+            return personalQuotes;
+        }
+
         public async Task<List<Quote>> GetAllQuotesAsync()
         {
             if (_applicationDbContext.Quotes == null)
