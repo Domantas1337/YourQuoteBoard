@@ -9,6 +9,13 @@ export async function getAllQuotes(): Promise<QuoteDisplayDTO[]>{
     return quotes;
 }
 
+export async function getAllPersonalQuotes(): Promise<QuoteDisplayDTO[]>{
+    const response = await apiClient.get<QuoteDisplayDTO[]>('api/Quote/all-personal-quotes') 
+    const quotes = response.data;
+
+    return quotes;
+}
+
 export async function createQuote(newQuote: QuoteCreateDTO){
     const response = await apiClient.post('api/Quote/add-quote', newQuote)
 

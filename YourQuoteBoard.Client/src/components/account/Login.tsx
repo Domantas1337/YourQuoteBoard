@@ -18,6 +18,7 @@ function Login() {
             const response = await loginUser(user);
             console.log('User: ', response);
             setUser({email: '', password: ''}); 
+            window.location.href = "/";
         } catch (error) {
             console.error('Failed to login user:', error);
         }

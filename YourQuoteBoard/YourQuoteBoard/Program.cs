@@ -5,28 +5,41 @@ using YourQuoteBoard.Services;
 using YourQuoteBoard.Repositories;
 using YourQuoteBoard;
 using YourQuoteBoard.Interfaces.Service;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://localhost:5173") 
-                          .AllowAnyHeader()
-                          .AllowAnyMethod());
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.None;
 });
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.AllowAnyMethod()
+                .SetIsOriginAllowed(_ => true)
+                .AllowAnyHeader()
+                .AllowCredentials();
+        }));
+
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
+
+
+builder.Services.AddAuthorization()
+    ;
+builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -40,14 +53,15 @@ builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<IQuoteService, QuoteService>();
 builder.Services.AddTransient<IBookService, BookService>();
 
-builder.Services.AddAuthorization();
-
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseRouting();
 app.UseCors("AllowSpecificOrigin");
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -55,27 +69,31 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapIdentityApi<IdentityUser>();
+app.MapControllers();
+app.MapIdentityApi<ApplicationUser>();
 
-/*
-app.MapPost("/logout", async (SignInManager<IdentityUser> signInManager,
-    [FromBody] object empty) =>
+
+app.MapPost("/logout", async (SignInManager<ApplicationUser> signInManager) =>
 {
-    if (empty != null)
-    {
-        await signInManager.SignOutAsync();
-        return Results.Ok();
-    }
-    return Results.Unauthorized();
-})
-.WithOpenApi()
-.RequireAuthorization();
-*/
+
+    await signInManager.SignOutAsync();
+    return Results.Ok();
+
+}).RequireAuthorization();
+
+
+app.MapGet("/pingauth", (ClaimsPrincipal user) =>
+{
+    var email = user.FindFirstValue(ClaimTypes.Email); // get the user's email from the claim
+    return Results.Json(new { Email = email }); ; // return the email as a plain text response
+}).RequireCors("AllowSpecificOrigin")
+    .RequireAuthorization();
 
 app.UseHttpsRedirection();
 
+
+app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers();
 
 
 app.Run();

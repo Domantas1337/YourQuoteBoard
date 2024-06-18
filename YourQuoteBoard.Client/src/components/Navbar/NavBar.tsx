@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import './Navbar.css'
+import { UserContext } from '../account/AuthorizeView';
 
 function Navbar(){
+    const user = useContext(UserContext);
+  
+    console.log(user?.email);
+
     return (
         <nav>
           <ul>
@@ -18,9 +24,9 @@ function Navbar(){
           </li>
           <li>
             <a href="/my-quotes" className="menu-item">
-                <img src="MyQuotes.svg" className="menu-icon" alt="Browse Quotes Icon" />
+                <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
                 <span>My quotes</span>
-            </a>            
+            </a>
           </li>
           <li>
             <a href="/add-book" className="menu-item">
