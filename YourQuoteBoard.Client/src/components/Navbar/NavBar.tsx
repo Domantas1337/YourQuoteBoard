@@ -1,11 +1,20 @@
-import { useContext } from 'react';
 import './Navbar.css'
-import { UserContext } from '../account/AuthorizeView';
+import React from 'react';
+import { apiClient } from '../../apiClient';
 
 function Navbar(){
-    const user = useContext(UserContext);
-  
-    console.log(user?.email);
+    const user = sessionStorage.getItem('user');
+
+    const handleLogout = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      event.preventDefault();
+      try {
+          await apiClient.post('/logout');
+          sessionStorage.setItem('user', '');
+          window.location.href = "/";
+      } catch (error) {
+          console.log('Logout failed', error);
+      }
+    };
 
     return (
         <nav>
@@ -22,27 +31,50 @@ function Navbar(){
                 <span>Browse quotes</span>
             </a>          
           </li>
-          <li>
-            <a href="/my-quotes" className="menu-item">
-                <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
-                <span>My quotes</span>
-            </a>
-          </li>
-          <li>
-            <a href="/add-book" className="menu-item">
-                <span>Add book</span>
-            </a>            
-          </li>
-          <li>
-            <a href="/register" className="menu-item">
-                <span>Register</span>
-            </a>            
-          </li>
-          <li>
-            <a href="/login" className="menu-item">
-                <span>Login</span>
-            </a>            
-          </li>
+          
+          {user &&
+            <> 
+              <li>
+                <a href="/my-quotes" className="menu-item">
+                    <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
+                    <span>My quotes</span>
+                </a>
+              </li> 
+              
+              <li>
+                <a href="/add-book" className="menu-item">
+                    <span>Add book</span>
+                </a>            
+              </li>
+              
+              <li>
+                <a href="/logout" className="menu-item" onClick={handleLogout}>
+                    <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
+                    <span>Logout</span>
+                </a>
+              </li> 
+            </>
+          }
+          
+          
+          
+
+          {!user &&
+            <>
+              <li>
+                <a href="/register" className="menu-item">
+                    <span>Register</span>
+                </a>            
+              </li> 
+              
+              <li>
+                <a href="/login" className="menu-item">
+                    <span>Login</span>
+                </a>            
+              </li>
+            </>
+          }
+
           </ul>
         </nav>
       );

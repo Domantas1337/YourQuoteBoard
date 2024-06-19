@@ -17,6 +17,8 @@ function Login() {
         try {
             const response = await loginUser(user);
             console.log('User: ', response);
+            
+            sessionStorage.setItem('user', user.email);
             setUser({email: '', password: ''}); 
             window.location.href = "/";
         } catch (error) {
