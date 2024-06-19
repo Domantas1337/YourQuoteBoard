@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
 
@@ -14,6 +15,20 @@ namespace YourQuoteBoard.Services
             Book addedBook = await _bookRepository.AddBookAsync(bookToAdd);
 
             return book;
+        }
+
+        public async Task<BookDisplayDTO?> GetBookForDisplayByIdAsync(Guid id)
+        {
+            Book? book = await _bookRepository.GetBookForDisplayByIdAsync(id);
+            
+            if(book == null)
+            {
+                throw new EntityNotFoundException($"Entity with ID {id} was not found");
+            }
+            
+            BookDisplayDTO? bookDisplayDTO = _mapper.Map<BookDisplayDTO>(book);
+
+            return bookDisplayDTO;
         }
 
         public async Task<List<BookDisplayDTO>> GetAllBooksAsync()

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './BookPage.css';
 import BookDisplayDTO from '../../models/books/BookDisplayDTO';
 import { getAllBooks } from '../../api/book';
+import { useNavigate } from 'react-router-dom';
 
 
 function BrowseBooks() {
   
   const [books, setBooks] = useState<BookDisplayDTO[]>([]);
-  
+  const navigate = useNavigate();
+
   const handleBookClick = (id: string) => {
-    console.log(`Book with ID ${id} was clicked.`);
+    navigate(`/book/${id}`)
   };
 
   const featuredBook = {

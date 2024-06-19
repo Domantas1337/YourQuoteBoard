@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourQuoteBoard.DTO.Book;
+using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Controllers
@@ -19,6 +20,19 @@ namespace YourQuoteBoard.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+        [HttpGet("get-display/{id}")]
+        public async Task<IActionResult> GetBookForDisplayByIdAsync(Guid id)
+        {
+            try
+            {
+                BookDisplayDTO book = await _bookService.GetBookForDisplayByIdAsync(id);
+                return Ok(book);
+            }catch (EntityNotFoundException ex)
+            {
+                return NotFound(new {message = ex.Message});
             }
         }
 
