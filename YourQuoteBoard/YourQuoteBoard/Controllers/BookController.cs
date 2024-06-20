@@ -10,7 +10,7 @@ namespace YourQuoteBoard.Controllers
     public class BookController(IBookService _bookService) : Controller
     {
         [HttpPost("add-book")]
-        public async Task<IActionResult> AddBook(BookAddDTO bookAddDTO)
+        public async Task<IActionResult> AddBook([FromForm]BookAddDTO bookAddDTO)
         {
             try
             {

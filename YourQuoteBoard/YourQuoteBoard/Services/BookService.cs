@@ -11,7 +11,28 @@ namespace YourQuoteBoard.Services
     {
         public async Task<BookAddDTO> AddBookAsync(BookAddDTO book)
         {
+
+            string coverImagePath = null;
+
+            if (book.CoverImage != null)
+            {
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                var uniqueFileName = $"{Guid.NewGuid()}_{book.CoverImage.FileName}";
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await book.CoverImage.CopyToAsync(fileStream);
+                }
+                coverImagePath = $"/uploads/{uniqueFileName}";
+            }
+
             Book bookToAdd = _mapper.Map<Book>(book);
+            bookToAdd.CoverImagePath = coverImagePath;
+
             Book addedBook = await _bookRepository.AddBookAsync(bookToAdd);
 
             return book;

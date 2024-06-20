@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { BookCreateDTO } from "../../models/books/BookCreateDTO";
 import { createBook } from '../../api/book';
+import ImageUploadButton from "../ImageUpload";
 
 export default function AddBookForm(){
 
-    const [book, setBook] = useState<BookCreateDTO>({title: '', description: '', author: '', pages: 0, coverImage: ''});
+    const [book, setBook] = useState<BookCreateDTO>({
+        title: '', 
+        description: '', 
+        author: '', 
+        pages: 0, 
+        coverImage: null});
 
     function handleNewInput(e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         setBook(prevBook => ({
@@ -13,13 +19,20 @@ export default function AddBookForm(){
         }));
     }
 
+    function handleImageUpload(file: Blob){
+        setBook(prevBook => ({
+            ...prevBook,
+            coverImage: file
+        }))
+    }
+
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try{
             const response = createBook(book);
             
             console.log('Book submitted:', response);
-            setBook({title: '', description: '', author: '', pages: 0, coverImage: ''});
+            setBook({title: '', description: '', author: '', pages: 0, coverImage: null});
         } catch (error) {
             console.error('Failed to submit book:', error);
         }
@@ -85,19 +98,13 @@ export default function AddBookForm(){
                         onChange={handleNewInput}
                         ></textarea>
                 </div>
+                
                 <div className="form-group">
                     <label 
-                        htmlFor="coverImageInput"
+                        htmlFor="imageInput"
                         className="default-label"
                         >Cover image of the book</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="coverImageInput" 
-                        name="coverImage"
-                        value={book.coverImage}
-                        onChange={handleNewInput}
-                        />
+                    <ImageUploadButton onImageUpload={handleImageUpload} />
                 </div>
                 <button type="submit" className="btn btn-default submit-button">Submit book</button>
             </form>

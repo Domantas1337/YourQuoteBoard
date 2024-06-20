@@ -1,52 +1,48 @@
+import { ChangeEvent, useState } from "react";
+import pica from 'pica';
 
-/*
-import { useState } from "react";
-import { uploadImage } from "../api/file";
+interface ImageUploadButtonProps {
+    onImageUpload: (file: Blob) => void;
+}
 
-export default function ImageUpload(){
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [preview, setPreview] = useState(null);
-    const [status, setStatus] = useState('');
+export default function ImageUploadButton({onImageUpload} : ImageUploadButtonProps){
+    const [preview, setPreview] = useState<string | null>(null);
 
+    const resizeImage = async (file: File) : Promise<Blob | null> => {
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        await img.decode();
 
-    const handleFileChange = async (event) => {
-        const file = event.target.files[0];
+        const picaInstance = pica();
+        const canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 800;
+
+        await picaInstance.resize(img, canvas);
+        
+        return new Promise((resolve) => {
+            canvas.toBlob((blob) => resolve(blob), file.type);
+        });
+    };
+
+    const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         
         if(file){
             setPreview(URL.createObjectURL(file));
-            setSelectedFile(file);
+
+            const resizedBlob = await resizeImage(file);
+            if (resizedBlob) {
+                onImageUpload(resizedBlob);
+            }
         }
     }
 
-    const handleUpload = async () =>{
-        if (!selectedFile) return;
-
-        setStatus('Processing...');
-        
-        try{
-            const resizedBlob = await resizeImage(selectedFile);
-
-            const formData = new FormData();
-            formData.append('file', resizedBlob, selectedFile.name);
-
-            const processedImage = await uploadImage(formData);
-
-            setStatus('Upload successful!');
-            console.log(processedImage);
-        }catch(error){
-            setStatus('Upload failed!');
-            console.error(error);
-        }
-    }
 
     return (
         <div>
-            <h2>Upload image</h2>
             <input type="file" accept="image/*" onChange={handleFileChange} />
             {preview && <img src={preview} alt="Preview" style={{maxWidth: '100%', marginTop: '10px'}}/>}
-            <br />
-            <button onClick={handleUpload}>Upload</button>
-            <p>{status}</p>
         </div>
     )
-}*/
+}

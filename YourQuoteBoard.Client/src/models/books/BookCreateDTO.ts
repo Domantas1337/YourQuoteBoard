@@ -3,5 +3,5 @@ export interface BookCreateDTO{
     description: string;
     author: string;
     pages: number;
-    coverImage: string;
+    coverImage: Blob | null;
 }

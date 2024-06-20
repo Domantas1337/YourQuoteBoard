@@ -1,4 +1,5 @@
 import { apiClient } from "../apiClient";
+import { apiClientFile } from "../apiClient/client";
 import { BookCreateDTO } from "../models/books/BookCreateDTO";
 import BookDisplayDTO from "../models/books/BookDisplayDTO";
 
@@ -18,7 +19,7 @@ export async function getBookById(id: string){
 
 
 export async function createBook(newBook: BookCreateDTO){
-    const response = await apiClient.post('api/Book/add-book', newBook)
+    const response = await apiClientFile.post('api/Book/add-book', newBook)
 
     return response
 }
