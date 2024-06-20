@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { UserRegisterDTO } from '../../models/account/UserRegisterDTO';
 import { registerUser } from '../../api/user';
 import "./auth.css"
+import { useNavigate } from 'react-router-dom';
+
 
 function Register() {
     const [user, setUser] = useState<UserRegisterDTO>({email: '', password: ''});
     const [confirmationPassword, setConfirmationPassword] = useState("");
+    const navigate = useNavigate()
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.name === "confirmPassword") {
@@ -29,6 +32,7 @@ function Register() {
             console.log('User registered:', response);
             setUser({email: '', password: ''}); // Reset form
             setConfirmationPassword('');
+            navigate('/login');
         } catch (error) {
             console.error('Failed to register user:', error);
         }

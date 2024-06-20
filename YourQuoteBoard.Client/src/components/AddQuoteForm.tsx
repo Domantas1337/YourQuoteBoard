@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { QuoteCreateDTO } from "../models/quotes/QuoteCreateDTO";
 import { createQuote } from '../api/quote';
+import { useNavigate } from 'react-router-dom';
 
 function AddQuoteForm(){
 
     const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: ''});
+    const navigate = useNavigate()
 
     function handleNewInput(e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         setQuote(prevQuote => ({
@@ -20,6 +22,7 @@ function AddQuoteForm(){
             
             console.log('Quote submitted:', response);
             setQuote({ title: '', description: '', author: '' });
+            navigate('/my-quotes')
         } catch (error) {
             console.error('Failed to submit quote:', error);
         }
