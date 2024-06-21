@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DfQKwF6Uh4iQArxZaWY8ALJGmQNjG5SXPwzH268hVsjX4pVQQToOmdzfAqRavwGufvCYKw2i/2ctfywbZnJurA==",
+  "dgSpecHash": "H8cgoK5rHgcJfaZe43vN79JKZFD+nY+zKVx2PDaP1BKAwUEkNgKqWWtfJEx7FeE+bjn9jJfQ+IFlMa3hyPXEcQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
   "expectedPackageFiles": [
@@ -118,6 +118,7 @@
     "C:\\Users\\doman\\.nuget\\packages\\nuget.projectmodel\\6.9.1\\nuget.projectmodel.6.9.1.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\nuget.protocol\\6.9.1\\nuget.protocol.6.9.1.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\nuget.versioning\\6.9.1\\nuget.versioning.6.9.1.nupkg.sha512",
+    "C:\\Users\\doman\\.nuget\\packages\\sixlabors.imagesharp\\3.1.4\\sixlabors.imagesharp.3.1.4.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\doman\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",

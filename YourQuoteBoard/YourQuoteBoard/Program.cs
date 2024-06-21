@@ -72,6 +72,8 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 app.MapIdentityApi<ApplicationUser>();
 
+app.UseStaticFiles();
+
 
 app.MapPost("/logout", async (SignInManager<ApplicationUser> signInManager) =>
 {

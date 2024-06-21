@@ -15,8 +15,8 @@ export default function ImageUploadButton({onImageUpload} : ImageUploadButtonPro
 
         const picaInstance = pica();
         const canvas = document.createElement('canvas');
-        canvas.width = 600;
-        canvas.height = 800;
+        canvas.width = 140;
+        canvas.height = 186;
 
         await picaInstance.resize(img, canvas);
         

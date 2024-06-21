@@ -23,7 +23,7 @@ export default function AddBookForm(){
         setBook(prevBook => ({
             ...prevBook,
             coverImage: file
-        }))
+        }));
     }
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){

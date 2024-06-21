@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BookPage.css';
-import BookDisplayDTO from '../../models/books/BookDisplayDTO';
 import { getAllBooks } from '../../api/book';
 import { useNavigate } from 'react-router-dom';
+import BookDisplayDTO from '../../models/books/BookDisplayDTO';
 
 
 function BrowseBooks() {
   
   const [books, setBooks] = useState<BookDisplayDTO[]>([]);
+
   const navigate = useNavigate();
 
   const handleBookClick = (id: string) => {
@@ -18,7 +19,7 @@ function BrowseBooks() {
     id: "10000",
     title: "Featured Book Title",
     author: "Featured Author",
-    cover: "https://example.com/featured-book-cover.jpg" 
+    coverImageBase64: "none"
   };
 
   useEffect(
@@ -26,6 +27,7 @@ function BrowseBooks() {
       const fetchBooks = async () => {
         try {
           const fetchedBooks = await getAllBooks();
+          
           setBooks(fetchedBooks)
         }catch(error){
           console.log("error fetching books: ", error)
@@ -38,7 +40,7 @@ function BrowseBooks() {
   return (
     <div className="book-container">
       <div className="featured-book-card" onClick={() => handleBookClick(featuredBook.id)}>
-        <img src={featuredBook.cover} alt={`${featuredBook.title} cover`} className="book-cover" />
+        <img src="none" alt={`${featuredBook.title} cover`} className="book-cover" />
         <div className="book-info">
           <h2>{featuredBook.title}</h2>
           <p>{featuredBook.author}</p>
@@ -47,7 +49,7 @@ function BrowseBooks() {
       <div className="regular-books">
         {books.map((book) => (
           <div key={book.bookId} className="book-card" onClick={() => handleBookClick(book.bookId)}>
-            <img src={book.coverImage} alt={`${book.title} cover`} className="book-cover" />
+            <img src={book.coverImagePath} alt={`${book.title} cover`} className="book-cover" />
             <div className="book-info">
               <h2>{book.title}</h2>
               <p>{book.author}</p>

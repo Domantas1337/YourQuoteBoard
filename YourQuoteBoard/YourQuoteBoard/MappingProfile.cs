@@ -3,6 +3,7 @@ using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Utilities;
 
 namespace YourQuoteBoard
 {

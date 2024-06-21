@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png",
+      "PackagePath": "staticwebassets\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\48ec3783-02ab-4603-b49a-3770eed36ea3.png",
+      "PackagePath": "staticwebassets\\images\\48ec3783-02ab-4603-b49a-3770eed36ea3.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png",
+      "PackagePath": "staticwebassets\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\80e9a13d-30d2-49be-b88f-e57af2a505a8.png",
+      "PackagePath": "staticwebassets\\images\\80e9a13d-30d2-49be-b88f-e57af2a505a8.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\blob.png",
+      "PackagePath": "staticwebassets\\images\\blob.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\10fec201-982f-4153-8743-fbc86ec6d054_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\506958f3-ef89-4743-9d3c-ffd1ec3565b5_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\5245d38d-0294-450f-808a-eebedd7b524b_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9981cdb3-b998-46d6-8109-484892be71ff_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9c208342-16c6-46f3-8c32-a777201fa498_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\baf67508-a4ff-48ed-9734-43480ed86b4f_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\bb32f777-dbba-424b-8668-22e458db66b0_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\eca71a46-91ea-4f2b-b6c4-ba4d7360dbc0_blob",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.YourQuoteBoard.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.YourQuoteBoard.props",
+      "PackagePath": "build\\YourQuoteBoard.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.YourQuoteBoard.props",
+      "PackagePath": "buildMultiTargeting\\YourQuoteBoard.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.YourQuoteBoard.props",
+      "PackagePath": "buildTransitive\\YourQuoteBoard.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
