@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y4albzehO+nkeno/SBvY9sBb4TfZQ8Fb7SzF2qPEoCs=",
+  "Hash": "vmUBbeVhevy6VY+j5m3F+dsSfgWDlzXBXugd885hdOs=",
   "Source": "YourQuoteBoard",
   "BasePath": "_content/YourQuoteBoard",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\blob.png"
+    },
+    {
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\cf2681f1-2501-44ee-85fe-70241ca77cda.png",
+      "SourceId": "YourQuoteBoard",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "BasePath": "_content/YourQuoteBoard",
+      "RelativePath": "images/cf2681f1-2501-44ee-85fe-70241ca77cda.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cf2681f1-2501-44ee-85fe-70241ca77cda.png"
     },
     {
       "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob",

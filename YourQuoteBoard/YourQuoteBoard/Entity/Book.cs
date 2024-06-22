@@ -10,6 +10,7 @@ namespace YourQuoteBoard.Entity
         public string Author { get; set; }
         public int Pages { get; set; }
         public string CoverImagePath { get; set; }
+        public ICollection<Quote> Quotes { get; } = new List<Quote>();
 
         [NotMapped]
         public IFormFile CoverImage { get; set; }

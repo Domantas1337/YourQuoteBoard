@@ -18,8 +18,8 @@ namespace YourQuoteBoard.Repositories
         public async Task<List<Quote>> GetAllPersonalQuotesAsync(string userId)
         {
             List<Quote> personalQuotes = await _applicationDbContext.Quotes
-                                                                    .Where(q => q.ApplicationUserId == userId)
-                                                                    .ToListAsync();
+                                               .Where(q => q.ApplicationUserId == userId)
+                                               .ToListAsync();
             return personalQuotes;
         }
 
@@ -29,6 +29,15 @@ namespace YourQuoteBoard.Repositories
                 return new List<Quote>();
 
             var quotes = await _applicationDbContext.Quotes.ToListAsync();
+            return quotes;
+        }
+
+        public async Task<List<Quote>> GetQuotesByBookIdAsync(Guid bookId)
+        {
+            List<Quote> quotes = await _applicationDbContext.Quotes
+                                 .Where(q => q.BookId.Equals(bookId))
+                                 .ToListAsync();
+
             return quotes;
         }
     }

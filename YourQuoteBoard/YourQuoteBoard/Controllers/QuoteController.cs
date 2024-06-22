@@ -48,5 +48,12 @@ namespace YourQuoteBoard.Controllers
             var quotes = await _quoteService.GetAllQuotesAsync();
             return Ok(quotes);
         }
+
+        [HttpGet("quotes-by-book/{bookId}")]
+        public async Task<IActionResult> GetQuotesByBookId(Guid bookId)
+        {
+            List<QuoteDisplayDTO> quotes = await _quoteService.GetQuotesByBookIdAsync(bookId);
+            return Ok(quotes);
+        }
     }
 }

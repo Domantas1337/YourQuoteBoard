@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using YourQuoteBoard.Data;
 using YourQuoteBoard.DTO;
+using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
@@ -12,6 +13,13 @@ namespace YourQuoteBoard.Services
 {
     public class QuoteService(IQuoteRepository _quoteRepository, IMapper _mapper) : IQuoteService
     {
+        public async Task<List<QuoteDisplayDTO>> GetQuotesByBookIdAsync(Guid bookId)
+        {
+            List<Quote> quotes = await _quoteRepository.GetQuotesByBookIdAsync(bookId);
+            List<QuoteDisplayDTO> quoteDisplayDTOs = _mapper.Map<List<QuoteDisplayDTO>>(quotes);
+
+            return quoteDisplayDTOs;
+        }
         public async Task<QuoteAddDTO> AddQuoteAsync(QuoteAddDTO quoteAddDTO, string userId)
         {
             Quote quote =  _mapper.Map<Quote>(quoteAddDTO, opts =>

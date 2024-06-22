@@ -12,6 +12,8 @@ namespace YourQuoteBoard.Entity
         public required string Author { get; set; }
         public DateTime Created { get; set; }
 
+        public Guid? BookId {get; set;}
+        public Book? Book { get; set; }
 
         [Required]
         public required string ApplicationUserId { get; set; }

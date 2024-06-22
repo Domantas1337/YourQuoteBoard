@@ -24,6 +24,12 @@ namespace YourQuoteBoard.Data
                 .WithMany(u => u.Quotes)
                 .HasForeignKey(q => q.ApplicationUserId)
                 .IsRequired();
+
+            modelBuilder.Entity<Book>()
+                .HasMany(b => b.Quotes)
+                .WithOne(b => b.Book)
+                .HasForeignKey(b => b.BookId)
+                .IsRequired(false);
         }
     }
 }
