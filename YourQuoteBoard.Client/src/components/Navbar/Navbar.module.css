@@ -1,4 +1,4 @@
-ul {
+.NavBarContainer ul {
     list-style-type: none;
     margin-top: 0px !important;
     padding-top: 0px !important;
@@ -13,7 +13,7 @@ ul {
     border-right: 1px solid #ccc !important; /* Subtle right border to separate it from the content */
 }
 
-li a {
+.NavBarContainer li a {
     display: block !important;
     color: #333 !important; /* Darker text color for better readability */
     text-decoration: none !important;
@@ -22,19 +22,19 @@ li a {
     border-bottom: 1px solid #ccc !important; /* Borders between links */
 }
 
-li a:hover, li a:focus {
+.NavBarContainer li a:hover, li a:focus {
     background-color: #555 !important; /* Darker background on hover/focus for better contrast */
     color: white !important; /* White text on hover */
     cursor: pointer !important; /* Cursor indication for clickable links */
 }
 
-.menu-item {
+.NavBarContainer .menuItem {
     position: relative;
     height: 32px; /* Specify height */
     width: 128px; /* Specify width */
 }
 
-span{
+.NavBarContainer span{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -42,7 +42,7 @@ span{
     margin-left: 32px;
 }
 
-.menu-icon {
+.NavBarContainer .menuIcon {
     position: absolute;
     top: 50%;
     width: 32px;

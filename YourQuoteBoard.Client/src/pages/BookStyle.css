@@ -61,7 +61,7 @@
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 0.5em;
+    font-size: 0.85em;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -73,6 +73,25 @@
     color: black;
 }
 
+.disabled-rating-container{
+    display: flex;
+    align-items: center;  /* This aligns the items vertically centered */
+    gap: 10px;  /* Optional: adds space between the Rate component and the h5 */
+}
+
 .action-button:hover {
     background-color: #002b58;
+}
+
+.quote:hover{
+    background-color: rgb(255, 233, 106);
+}
+
+.book-rating-container{
+    margin-top: 20px;
+}
+
+
+.book-rating-span{
+    font-weight: 700;
 }

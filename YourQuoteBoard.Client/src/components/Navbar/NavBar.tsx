@@ -1,4 +1,4 @@
-import './Navbar.css'
+import styles from './Navbar.module.css'
 import React from 'react';
 import { apiClient } from '../../apiClient';
 
@@ -17,40 +17,41 @@ function Navbar(){
     };
 
     return (
+      <div className={styles.NavBarContainer}>
         <nav>
-          <ul>
-          <li>
-            <a href="/browse-books" className="menu-item">
-                <img src="books.svg" className="menu-icon" alt="Browse Books Icon" />
-                <span>Browse books</span>
+          <ul className={styles.ul}>
+          <li className={styles.li}>
+            <a href="/browse-books" className={styles.menuItem}>
+                <img src="books.svg" className={styles.menuIcon} alt="Browse Books Icon" />
+                <span className={styles.span}>Browse books</span>
             </a>          
           </li>
-          <li>
-            <a href="/browse-quotes" className="menu-item">
-                <img src="searchQuotes.svg" className="menu-icon" alt="Browse Quotes Icon" />
-                <span>Browse quotes</span>
+          <li className={styles.li}>
+            <a href="/browse-quotes" className={styles.menuItem}>
+                <img src="searchQuotes.svg" className={styles.menuIcon} alt="Browse Quotes Icon" />
+                <span className={styles.span}>Browse quotes</span>
             </a>          
           </li>
           
           {user &&
             <> 
-              <li>
-                <a href="/my-quotes" className="menu-item">
-                    <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
-                    <span>My quotes</span>
+              <li className={styles.li}>
+                <a href="/my-quotes" className={styles.menuItem}>
+                    <img src="MyQuotes.svg" className={styles.menuIcon} alt="My Quotes Icon" />
+                    <span className={styles.span}>My quotes</span>
                 </a>
               </li> 
               
-              <li>
-                <a href="/add-book" className="menu-item">
-                    <span>Add book</span>
+              <li className={styles.li}>
+                <a href="/add-book" className={styles.menuItem}>
+                    <span className={styles.span}>Add book</span>
                 </a>            
               </li>
               
-              <li>
-                <a href="/logout" className="menu-item" onClick={handleLogout}>
-                    <img src="MyQuotes.svg" className="menu-icon" alt="My Quotes Icon" />
-                    <span>Logout</span>
+              <li className={styles.li}>
+                <a href="/logout" className={styles.menuItem} onClick={handleLogout}>
+                    <img src="MyQuotes.svg" className={styles.menuIcon} alt="My Quotes Icon" />
+                    <span className={styles.span}>Logout</span>
                 </a>
               </li> 
             </>
@@ -77,6 +78,7 @@ function Navbar(){
 
           </ul>
         </nav>
+      </div>
       );
 }
 
