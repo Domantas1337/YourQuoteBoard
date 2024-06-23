@@ -8,7 +8,7 @@ namespace YourQuoteBoard.Services
 {
     public class RatingService(IRatingRepository _ratingRepository, IMapper _mapper) : IRatingService
     {
-        public async Task<BookRatingDTO> AddBookRating(BookRatingDTO rating, string userId)
+        public async Task<BookRatingDTO> AddBookRatingAsync(BookRatingDTO rating, string userId)
         {
             BookRating bookRating = _mapper.Map<BookRating>(rating, opts =>
             {
@@ -25,6 +25,20 @@ namespace YourQuoteBoard.Services
             List<BookRatingDTO> bookRatingDTOs = _mapper.Map<List<BookRatingDTO>>(bookRatings);
         
             return bookRatingDTOs;
+        }
+
+        public async Task<BookRatingDTO?> GetBookRatingByUserAsync(string userId, Guid bookId)
+        {
+            BookRating? bookRating = await _ratingRepository.GetBookRatingByUserAsync(userId, bookId);
+            
+            if (bookRating == null)
+            {
+                return null;
+            }
+            else
+            {
+                return _mapper.Map<BookRatingDTO>(bookRating);
+            }            
         }
 
         public async Task<List<BookRatingDTO>> GetRatingsForBookAsync(Guid bookId)

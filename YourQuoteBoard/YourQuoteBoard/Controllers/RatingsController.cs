@@ -19,11 +19,26 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingDTO addedRating = await _ratingService.AddBookRating(bookRating, userId);
+            BookRatingDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
             return Ok(addedRating);
         }
 
-        [HttpGet("book-ratings/{bookId}")]
+        [HttpGet("book-rating-by-user/{bookId}")]
+        public async Task<IActionResult> GetBookRatingByUser(Guid bookId)
+        {
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return BadRequest("User does not exist");
+            }
+
+            BookRatingDTO? bookRating = await _ratingService.GetBookRatingByUserAsync(userId, bookId);
+
+            return Ok(bookRating);
+        }
+
+    [HttpGet("book-ratings/{bookId}")]
         public async Task<IActionResult> GetBookRatingsAsync(Guid bookId)
         {
             List<BookRatingDTO> bookRatings = await _ratingService.GetRatingsForBookAsync(bookId);

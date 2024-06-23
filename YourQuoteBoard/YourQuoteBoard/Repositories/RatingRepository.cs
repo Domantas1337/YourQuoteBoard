@@ -21,6 +21,13 @@ namespace YourQuoteBoard.Repositories
             List<BookRating> bookRatings = await _applicationDbContext.BookRatings.ToListAsync();
             return bookRatings;
         }
+
+        public async Task<BookRating?> GetBookRatingByUserAsync(string userId, Guid bookId)
+        {
+            BookRating? bookRating = await _applicationDbContext.BookRatings.FirstOrDefaultAsync(br => br.BookId.Equals(bookId) && br.ApplicationUserId.Equals(userId));
+            return bookRating;
+        }
+
         public async Task<List<BookRating>> GetRatingsForBookAsync(Guid bookId)
         {
             List<BookRating> bookRatings = await _applicationDbContext.BookRatings

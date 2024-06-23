@@ -1,4 +1,5 @@
-﻿using YourQuoteBoard.Entity;
+﻿using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.Entity;
 
 namespace YourQuoteBoard.Interfaces.Repository
 {

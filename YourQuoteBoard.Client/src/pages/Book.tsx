@@ -29,6 +29,10 @@ export default function Book() {
         navigate(`bookQuotes/${id}`)
     };
 
+    const handleGivenRating = (value: number) => {
+        console.log(value);
+    }
+
     return (
         <>
         <div className="book-detail-container">
@@ -44,7 +48,7 @@ export default function Book() {
                     <h6>Readers of the book have given it this rating:</h6>
                     <h6>Readers of the book have given it this rating:</h6>
                     <div className="disabled-rating-container">
-                        <Rate disabled defaultValue={2} />
+                        <Rate disabled defaultValue={2}/>
                         <h5>2</h5>
                     </div>
                 </div>
@@ -56,7 +60,7 @@ export default function Book() {
                 <div className="book-rating-container">       
                     <span className="book-rating-span">Rate this book:</span>       
                     <br />
-                    <Rate allowHalf defaultValue={2.5} />
+                    <Rate allowHalf defaultValue={2.5} onChange={handleGivenRating} />
                 </div>  
             </div>
 
