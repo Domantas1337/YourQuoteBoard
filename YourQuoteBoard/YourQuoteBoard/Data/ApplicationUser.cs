@@ -7,6 +7,8 @@ namespace YourQuoteBoard.Data
     public class ApplicationUser : IdentityUser
     {
         public virtual ICollection<Quote>? Quotes { get; set; }
+        public virtual ICollection<BookRating>? BookRatings { get; set; }
+
     }
 
 }

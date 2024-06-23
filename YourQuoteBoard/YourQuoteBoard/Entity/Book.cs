@@ -11,6 +11,7 @@ namespace YourQuoteBoard.Entity
         public int Pages { get; set; }
         public string CoverImagePath { get; set; }
         public ICollection<Quote> Quotes { get; } = new List<Quote>();
+        public ICollection<BookRating> BookRatings { get; } = new List<BookRating>();
 
         [NotMapped]
         public IFormFile CoverImage { get; set; }
