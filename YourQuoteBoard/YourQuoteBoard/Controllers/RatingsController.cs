@@ -9,6 +9,13 @@ namespace YourQuoteBoard.Controllers
     [Route("api/[controller]")]
     public class RatingsController(IRatingService _ratingService) : Controller
     {
+        [HttpPut("update-book-rating")]
+        public async Task<IActionResult> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO)
+        {
+            BookRatingUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO);
+            return Ok(updatedBookRating);
+        }
+
         [HttpPost("book-rating")]
         public async Task<IActionResult> AddBookRating(BookRatingDTO bookRating)
         {
@@ -19,7 +26,7 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
+            BookRatingUpdateDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
             return Ok(addedRating);
         }
 
@@ -33,12 +40,12 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingDTO? bookRating = await _ratingService.GetBookRatingByUserAsync(userId, bookId);
+            BookRatingUpdateDTO? bookRating = await _ratingService.GetBookRatingByUserAsync(userId, bookId);
 
             return Ok(bookRating);
         }
 
-    [HttpGet("book-ratings/{bookId}")]
+        [HttpGet("book-ratings/{bookId}")]
         public async Task<IActionResult> GetBookRatingsAsync(Guid bookId)
         {
             List<BookRatingDTO> bookRatings = await _ratingService.GetRatingsForBookAsync(bookId);

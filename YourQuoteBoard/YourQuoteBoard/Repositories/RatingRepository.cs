@@ -8,6 +8,30 @@ namespace YourQuoteBoard.Repositories
 {
     public class RatingRepository(ApplicationDbContext _applicationDbContext) : IRatingRepository
     {
+        public async Task<BookRating?> UpdateBookRatingAsync(BookRating bookRating)
+        {
+            var bookRatingToUpdate = await _applicationDbContext.BookRatings
+                                       .FirstOrDefaultAsync(br => br.BookRatingId == bookRating.BookRatingId);
+
+            if (bookRatingToUpdate == null)
+            {
+                return null;
+            }
+
+            bookRatingToUpdate.Rating = bookRating.Rating;
+
+            try
+            {
+                await _applicationDbContext.SaveChangesAsync(); 
+                return bookRatingToUpdate;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
 
         public async Task<BookRating> AddBookRatingAsync(BookRating rating, string userId)
         {

@@ -8,7 +8,7 @@ namespace YourQuoteBoard.Services
 {
     public class RatingService(IRatingRepository _ratingRepository, IMapper _mapper) : IRatingService
     {
-        public async Task<BookRatingDTO> AddBookRatingAsync(BookRatingDTO rating, string userId)
+        public async Task<BookRatingUpdateDTO> AddBookRatingAsync(BookRatingDTO rating, string userId)
         {
             BookRating bookRating = _mapper.Map<BookRating>(rating, opts =>
             {
@@ -16,7 +16,7 @@ namespace YourQuoteBoard.Services
             });
             BookRating addedBookRating = await _ratingRepository.AddBookRatingAsync(bookRating, userId);
 
-            return rating;
+            return _mapper.Map<BookRatingUpdateDTO>(addedBookRating);
         }
 
         public async Task<List<BookRatingDTO>> GetAllBookRatingsAsync()
@@ -27,7 +27,7 @@ namespace YourQuoteBoard.Services
             return bookRatingDTOs;
         }
 
-        public async Task<BookRatingDTO?> GetBookRatingByUserAsync(string userId, Guid bookId)
+        public async Task<BookRatingUpdateDTO?> GetBookRatingByUserAsync(string userId, Guid bookId)
         {
             BookRating? bookRating = await _ratingRepository.GetBookRatingByUserAsync(userId, bookId);
             
@@ -37,7 +37,7 @@ namespace YourQuoteBoard.Services
             }
             else
             {
-                return _mapper.Map<BookRatingDTO>(bookRating);
+                return _mapper.Map<BookRatingUpdateDTO>(bookRating);
             }            
         }
 
@@ -47,6 +47,14 @@ namespace YourQuoteBoard.Services
             List<BookRatingDTO> bookRatingDTOs = _mapper.Map<List<BookRatingDTO>>(bookRatings);
 
             return bookRatingDTOs;
+        }
+
+        public async Task<BookRatingUpdateDTO> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO)
+        {
+            BookRating bookRatingToUpdate = _mapper.Map<BookRating>(bookRatingDTO);
+            BookRating? bookRating = await _ratingRepository.UpdateBookRatingAsync(bookRatingToUpdate);
+
+            return bookRatingDTO;
         }
     }
 }

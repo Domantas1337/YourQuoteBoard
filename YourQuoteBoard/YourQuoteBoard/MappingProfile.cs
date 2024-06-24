@@ -29,6 +29,9 @@ namespace YourQuoteBoard
                 dest.ApplicationUserId = (string)context.Items["userId"];
             });
             CreateMap<BookRating, BookRatingDTO>();
+
+            CreateMap<BookRating, BookRatingUpdateDTO>().ReverseMap();
+
         }
     }
 }
