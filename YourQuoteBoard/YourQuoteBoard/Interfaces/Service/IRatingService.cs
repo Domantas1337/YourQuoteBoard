@@ -4,10 +4,10 @@ namespace YourQuoteBoard.Interfaces.Service
 {
     public interface IRatingService
     {
-        public Task<BookRatingUpdateDTO> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO);
-        public Task<BookRatingUpdateDTO?> GetBookRatingByUserAsync(string userId, Guid bookId);
-        public Task<BookRatingUpdateDTO> AddBookRatingAsync(BookRatingDTO rating, string userId);
-        public Task<List<BookRatingDTO>> GetAllBookRatingsAsync();
-        public Task<List<BookRatingDTO>> GetRatingsForBookAsync(Guid bookId);
+        public Task<BookRatingForUpdateDTO> UpdateBookRatingAsync(BookRatingForUpdateDTO bookRatingDTO);
+        public Task<BookRatingForDirectUserInteractionDTO?> GetBookRatingByUserAsync(string userId, Guid bookId);
+        public Task<BookRatingForDirectUserInteractionDTO> AddBookRatingAsync(BookRatingForDirectUserInteractionDTO rating, string userId);
+        public Task<List<BookRatingDisplayDTO>> GetAllBookRatingsAsync();
+        public Task<List<BookRatingDisplayDTO>> GetRatingsForBookAsync(Guid bookId);
     }
 }

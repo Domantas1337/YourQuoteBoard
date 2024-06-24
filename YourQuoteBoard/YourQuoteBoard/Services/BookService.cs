@@ -16,6 +16,8 @@ namespace YourQuoteBoard.Services
             var pngPath = FileFormToPNGConverter.ConvertFileFormToPNG(book.CoverImage.FileName, book.CoverImage);
 
             Book bookToAdd = _mapper.Map<Book>(book);
+            bookToAdd.NumberOfRatings = 0;
+            bookToAdd.AverageRating = 0;
             bookToAdd.CoverImagePath = pngPath.Result;
 
             Book addedBook = await _bookRepository.AddBookAsync(bookToAdd);

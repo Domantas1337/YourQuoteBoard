@@ -13,6 +13,9 @@ namespace YourQuoteBoard.Entity
         public ICollection<Quote> Quotes { get; } = new List<Quote>();
         public ICollection<BookRating> BookRatings { get; } = new List<BookRating>();
 
+        public double? AverageRating { get; set; }
+        public int? NumberOfRatings { get; set; }
+
         [NotMapped]
         public IFormFile CoverImage { get; set; }
     }

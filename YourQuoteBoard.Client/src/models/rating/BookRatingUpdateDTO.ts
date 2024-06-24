@@ -1,5 +1,6 @@
 export default interface BookRatingUpdateDTO{
     bookRatingId: string;
     bookId: string;
-    rating: number;
+    previousRating: number;
+    newRating: number;
 }

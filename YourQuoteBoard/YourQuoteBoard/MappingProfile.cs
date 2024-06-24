@@ -24,14 +24,18 @@ namespace YourQuoteBoard
             CreateMap<Quote, QuoteAddDTO>();
             CreateMap<Quote, QuoteDisplayDTO>().ReverseMap();
 
-            CreateMap<BookRatingDTO, BookRating>().AfterMap((src, dest, context) =>
+            CreateMap<BookRatingForDirectUserInteractionDTO, BookRating>().AfterMap((src, dest, context) =>
             {
                 dest.ApplicationUserId = (string)context.Items["userId"];
             });
-            CreateMap<BookRating, BookRatingDTO>();
+            CreateMap<BookRating, BookRatingDisplayDTO>().ReverseMap();
 
-            CreateMap<BookRating, BookRatingUpdateDTO>().ReverseMap();
+            CreateMap<BookRating, BookRatingForDirectUserInteractionDTO>();
 
+            CreateMap<BookRatingForUpdateDTO, BookRating>().AfterMap((src, dest, context) =>
+            {
+                dest.Rating = (double)context.Items["newRating"];
+            });
         }
     }
 }

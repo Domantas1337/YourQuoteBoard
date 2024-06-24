@@ -31,8 +31,6 @@ namespace YourQuoteBoard.Repositories
             }
         }
 
-
-
         public async Task<BookRating> AddBookRatingAsync(BookRating rating, string userId)
         {
             await _applicationDbContext.BookRatings.AddAsync(rating);

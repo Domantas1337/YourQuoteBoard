@@ -1,23 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RatingsController(IRatingService _ratingService) : Controller
+    public class RatingsController(IRatingService _ratingService, IBookService _bookService) : Controller
     {
         [HttpPut("update-book-rating")]
-        public async Task<IActionResult> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO)
+        public async Task<IActionResult> UpdateBookRatingAsync(BookRatingForUpdateDTO bookRatingDTO)
         {
-            BookRatingUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO);
+            BookRatingForUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO);
+                        
             return Ok(updatedBookRating);
         }
 
         [HttpPost("book-rating")]
-        public async Task<IActionResult> AddBookRating(BookRatingDTO bookRating)
+        public async Task<IActionResult> AddBookRating(BookRatingForDirectUserInteractionDTO bookRating)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -26,7 +28,7 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingUpdateDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
+            BookRatingForDirectUserInteractionDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
             return Ok(addedRating);
         }
 
@@ -40,7 +42,7 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingUpdateDTO? bookRating = await _ratingService.GetBookRatingByUserAsync(userId, bookId);
+            BookRatingForDirectUserInteractionDTO? bookRating = await _ratingService.GetBookRatingByUserAsync(userId, bookId);
 
             return Ok(bookRating);
         }
@@ -48,14 +50,14 @@ namespace YourQuoteBoard.Controllers
         [HttpGet("book-ratings/{bookId}")]
         public async Task<IActionResult> GetBookRatingsAsync(Guid bookId)
         {
-            List<BookRatingDTO> bookRatings = await _ratingService.GetRatingsForBookAsync(bookId);
+            List<BookRatingDisplayDTO> bookRatings = await _ratingService.GetRatingsForBookAsync(bookId);
             return Ok(bookRatings);
         }
 
         [HttpGet("all-book-ratings")]
         public async Task<IActionResult> GetAllBookRatingsAsync()
         {
-            List<BookRatingDTO> bookRatings = await _ratingService.GetAllBookRatingsAsync();
+            List<BookRatingDisplayDTO> bookRatings = await _ratingService.GetAllBookRatingsAsync();
             return Ok(bookRatings);
         }
 
