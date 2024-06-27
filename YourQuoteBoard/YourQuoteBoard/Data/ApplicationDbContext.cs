@@ -15,16 +15,23 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<Quote>? Quotes { get; set; }
         public virtual DbSet<Book>? Books { get; set; }
         public virtual DbSet<BookRating> BookRatings { get; set; }
-
+        public virtual DbSet<Folder> Folders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Quote>()
-                .HasOne(q => q.ApplicationUser)
+            modelBuilder.Entity<Quote>( entity =>
+            {
+                entity.HasKey(e => e.QuoteId);
+
+                entity.HasOne(q => q.ApplicationUser)
                 .WithMany(u => u.Quotes)
                 .HasForeignKey(q => q.ApplicationUserId)
                 .IsRequired();
+
+
+            }
+            );
 
             modelBuilder.Entity<Book>()
                 .HasMany(b => b.Quotes)
@@ -45,6 +52,21 @@ namespace YourQuoteBoard.Data
                       .WithMany(u => u.BookRatings)
                       .HasForeignKey(br => br.ApplicationUserId)
                       .IsRequired();
+            });
+
+            modelBuilder.Entity<Folder>(entity =>
+            {
+                entity.HasKey(br => br.FolderId);
+
+                entity.HasOne<ApplicationUser>()
+                      .WithMany(e => e.Folders)
+                      .HasForeignKey(e => e.ApplicationUserId)
+                      .IsRequired();
+
+                entity.HasMany(e => e.Quotes)
+                      .WithMany(e => e.Folders)
+                      .UsingEntity("QuoteFolderJointTable");
+
             });
             
         }

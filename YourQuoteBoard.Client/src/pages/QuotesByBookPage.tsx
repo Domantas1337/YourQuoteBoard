@@ -23,11 +23,13 @@ export default function QuotesByBookPage(){
         }
     );
 
-    return 
+    return (
     <>
         <div className="BookTitleHeader">
             <h2>bookId</h2>
         </div>
         <QuoteDisplayComponent quotes={bookQuotes} />
+        
     </>
+    );
 }

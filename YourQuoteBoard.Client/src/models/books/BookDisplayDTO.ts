@@ -3,4 +3,6 @@ export default interface BookDisplayDTO{
     title: string;
     author: string;
     coverImagePath: string;
+    averageRating: number | null;
+    numberOfRatings: number | null;
 }

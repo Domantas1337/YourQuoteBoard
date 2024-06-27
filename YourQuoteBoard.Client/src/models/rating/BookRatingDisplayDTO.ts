@@ -1,4 +1,4 @@
-export default interface BookRatingDTO{
+export default interface BookRatingDisplayDTO{
     bookId: string;
     rating: number;
 }

@@ -19,7 +19,7 @@ namespace YourQuoteBoard.Controllers
         }
 
         [HttpPost("book-rating")]
-        public async Task<IActionResult> AddBookRating(BookRatingForDirectUserInteractionDTO bookRating)
+        public async Task<IActionResult> AddBookRating(BookRatingCreateDTO bookRating)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -28,7 +28,7 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            BookRatingForDirectUserInteractionDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
+            BookRatingCreateDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
             return Ok(addedRating);
         }
 

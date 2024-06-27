@@ -14,6 +14,7 @@ namespace YourQuoteBoard.Entity
 
         public Guid? BookId {get; set;}
         public Book? Book { get; set; }
+        public List<Folder> Folders { get; set; }
 
         [Required]
         public required string ApplicationUserId { get; set; }
