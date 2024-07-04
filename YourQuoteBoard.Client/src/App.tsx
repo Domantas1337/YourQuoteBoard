@@ -1,7 +1,6 @@
 import AddQuoteForm from "./components/AddQuoteForm";
 import Navbar from "./components/Navbar/NavBar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import BrowseQuotes from "./components/manageQuotes/BrowseQuotes";
 import BrowseBooks from "./components/manageBooks/BrowseBooks";
 import AddBookForm from "./components/manageBooks/AddBookForm";
 import Register from "./components/account/Register";
@@ -12,6 +11,7 @@ import UserProvider from "./components/UserProvider";
 import Book from "./pages/Book";
 import RecommendedQuotesPage from "./pages/RecommendedQuotesPage";
 import QuotesByBookPage from "./pages/QuotesByBookPage";
+import MyQuotes from "./pages/MyQuotes";
 
 function App() {
   return (
@@ -20,14 +20,14 @@ function App() {
         <Navbar />
         <div className="main-content">
           <Routes>
-            <Route path="my-quotes" element={
+            <Route path="my-created-quotes" element={
                           <AuthorizeView>
                               <PersonalQuotes />
                           </AuthorizeView>
                       } />          
             <Route path="browse-quotes" element={<RecommendedQuotesPage />} />
             <Route path="add-quote" element={<AddQuoteForm />} />
-            
+            <Route path="my-quotes" element={<MyQuotes />} />
             <Route path="browse-books" element={<BrowseBooks />} />
             <Route path="add-book" element={<AddBookForm />} />
             <Route path="book/:id" element={<Book />} />

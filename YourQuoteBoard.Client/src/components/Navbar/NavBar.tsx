@@ -36,12 +36,17 @@ function Navbar(){
           {user &&
             <> 
               <li className={styles.li}>
-                <a href="/my-quotes" className={styles.menuItem}>
+                <a href="/my-created-quotes" className={styles.menuItem}>
                     <img src="MyQuotes.svg" className={styles.menuIcon} alt="My Quotes Icon" />
-                    <span className={styles.span}>My quotes</span>
+                    <span className={styles.span}>My added quotes</span>
                 </a>
               </li> 
-              
+              <li className={styles.li}>
+                <a href="/my-quotes" className={styles.menuItem}>
+                    <img src="MyQuotes.svg" className={styles.menuIcon} alt="My Quotes Icon" />
+                    <span className={styles.span}>My saved quotes</span>
+                </a>
+              </li> 
               <li className={styles.li}>
                 <a href="/add-book" className={styles.menuItem}>
                     <span className={styles.span}>Add book</span>
