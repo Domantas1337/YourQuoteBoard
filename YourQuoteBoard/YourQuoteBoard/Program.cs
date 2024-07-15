@@ -50,11 +50,13 @@ builder.Services.AddAutoMapper(options => {
 builder.Services.AddTransient<IQuoteRepository, QuoteRepository>();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<IRatingRepository, RatingRepository>();
+builder.Services.AddTransient<IFolderRepository, FolderRepository>();
 
 
 builder.Services.AddTransient<IQuoteService, QuoteService>();
 builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<IRatingService, RatingService>();
+builder.Services.AddTransient<IFolderService, FolderService>();
 
 
 builder.Services.AddControllers();

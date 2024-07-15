@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Book;
+using YourQuoteBoard.DTO.Folder;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.Entity;
@@ -41,6 +42,16 @@ namespace YourQuoteBoard
             {
                 dest.Rating = (double)context.Items["newRating"];
             });
+
+            CreateMap<FolderCreateDTO, Folder>()
+                    .AfterMap((src, dest, context) =>
+                    {
+                        dest.ApplicationUserId = (string)context.Items["userId"];
+                    });
+            CreateMap<Folder, FolderCreateDTO>();
+            CreateMap<Folder, FolderContentDTO>().ReverseMap();
+            CreateMap<Folder, FolderDisplayDTO>().ReverseMap();
+            CreateMap<Folder, FolderUpdateDTO>().ReverseMap();
         }
     }
 }

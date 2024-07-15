@@ -2,6 +2,8 @@ import { FolderOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import '../quotes.css';
 import { useState } from 'react';
+import { createFolder } from '../../../api/folder';
+import { FolderType } from '../../../enums/FolderType';
 
 export default function QuoteFolder(){
     
@@ -12,10 +14,18 @@ export default function QuoteFolder(){
         setFolderName(e.target.value);
     }
 
-    const handleNameChangeSave = (e : React.KeyboardEvent<HTMLInputElement>) => {
+    const handleNameChangeSave = async (e : React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key == "Enter"){
             if (folderName != ""){
-                console.log(folderName);
+                
+                try{
+                    const response = await createFolder({name: folderName}, FolderType.QUOTE);
+
+                    console.log("Folder created: ", response);
+                }catch(error){
+                    console.error("Error while crating folder: ", error);
+                }
+
                 setFolderNameSet(true)
             }
         }
