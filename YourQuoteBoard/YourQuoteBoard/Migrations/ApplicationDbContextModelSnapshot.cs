@@ -312,6 +312,9 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("childQuotesCount")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("FolderId");
 
                     b.HasIndex("ApplicationUserId");

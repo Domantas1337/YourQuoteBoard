@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj": {}
+    "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj": {
+    "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
+        "projectUniqueName": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
         "projectName": "YourQuoteBoard",
-        "projectPath": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
+        "projectPath": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard.csproj",
         "packagesPath": "C:\\Users\\doman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\obj\\",
+        "outputPath": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,37 +51,37 @@
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Abstractions": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite.Core": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.3, )"
             },
             "SQLite": {
               "target": "Package",

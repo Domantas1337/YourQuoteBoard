@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("YourQuoteBoard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cafc7341d5508910078c2c0b2a1317beb9ad5bd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("YourQuoteBoard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("YourQuoteBoard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

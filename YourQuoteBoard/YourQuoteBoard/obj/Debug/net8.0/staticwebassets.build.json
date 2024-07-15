@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2dex6JmykOhHu0G8e9LWwnBfPRvTpLCMrw4H7coh2jE=",
+  "Hash": "+YOeS9lmbyyMTMMuxONKfkek1Ke2esNbTbAiOXJFfDg=",
   "Source": "YourQuoteBoard",
   "BasePath": "_content/YourQuoteBoard",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "YourQuoteBoard\\wwwroot",
       "Source": "YourQuoteBoard",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/09efb29e-46f1-42da-b881-0e5fa8052f93.png",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\27b315cb-3eda-4491-a58d-cdbf7048eaeb.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\27b315cb-3eda-4491-a58d-cdbf7048eaeb.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/27b315cb-3eda-4491-a58d-cdbf7048eaeb.png",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\images\\27b315cb-3eda-4491-a58d-cdbf7048eaeb.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\48ec3783-02ab-4603-b49a-3770eed36ea3.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\48ec3783-02ab-4603-b49a-3770eed36ea3.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/48ec3783-02ab-4603-b49a-3770eed36ea3.png",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\images\\48ec3783-02ab-4603-b49a-3770eed36ea3.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/7c8d217b-7d58-485e-9107-35780cf22068.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\80e9a13d-30d2-49be-b88f-e57af2a505a8.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\80e9a13d-30d2-49be-b88f-e57af2a505a8.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/80e9a13d-30d2-49be-b88f-e57af2a505a8.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\images\\80e9a13d-30d2-49be-b88f-e57af2a505a8.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\blob.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\blob.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/blob.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\images\\blob.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\cf2681f1-2501-44ee-85fe-70241ca77cda.png",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\cf2681f1-2501-44ee-85fe-70241ca77cda.png",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "images/cf2681f1-2501-44ee-85fe-70241ca77cda.png",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cf2681f1-2501-44ee-85fe-70241ca77cda.png"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\0c2119af-6bf5-4a05-a80f-1fd348a3b274_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\10fec201-982f-4153-8743-fbc86ec6d054_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\10fec201-982f-4153-8743-fbc86ec6d054_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/10fec201-982f-4153-8743-fbc86ec6d054_blob",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\10fec201-982f-4153-8743-fbc86ec6d054_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\506958f3-ef89-4743-9d3c-ffd1ec3565b5_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\506958f3-ef89-4743-9d3c-ffd1ec3565b5_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/506958f3-ef89-4743-9d3c-ffd1ec3565b5_blob",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\506958f3-ef89-4743-9d3c-ffd1ec3565b5_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\5245d38d-0294-450f-808a-eebedd7b524b_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\5245d38d-0294-450f-808a-eebedd7b524b_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/5245d38d-0294-450f-808a-eebedd7b524b_blob",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\5245d38d-0294-450f-808a-eebedd7b524b_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9981cdb3-b998-46d6-8109-484892be71ff_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9981cdb3-b998-46d6-8109-484892be71ff_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/9981cdb3-b998-46d6-8109-484892be71ff_blob",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9981cdb3-b998-46d6-8109-484892be71ff_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9c208342-16c6-46f3-8c32-a777201fa498_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\9c208342-16c6-46f3-8c32-a777201fa498_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/9c208342-16c6-46f3-8c32-a777201fa498_blob",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9c208342-16c6-46f3-8c32-a777201fa498_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\baf67508-a4ff-48ed-9734-43480ed86b4f_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\baf67508-a4ff-48ed-9734-43480ed86b4f_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/baf67508-a4ff-48ed-9734-43480ed86b4f_blob",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\baf67508-a4ff-48ed-9734-43480ed86b4f_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\bb32f777-dbba-424b-8668-22e458db66b0_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\bb32f777-dbba-424b-8668-22e458db66b0_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/bb32f777-dbba-424b-8668-22e458db66b0_blob",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\bb32f777-dbba-424b-8668-22e458db66b0_blob"
     },
     {
-      "Identity": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\eca71a46-91ea-4f2b-b6c4-ba4d7360dbc0_blob",
+      "Identity": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\uploads\\eca71a46-91ea-4f2b-b6c4-ba4d7360dbc0_blob",
       "SourceId": "YourQuoteBoard",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQueteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\",
       "BasePath": "_content/YourQuoteBoard",
       "RelativePath": "uploads/eca71a46-91ea-4f2b-b6c4-ba4d7360dbc0_blob",
       "AssetKind": "All",

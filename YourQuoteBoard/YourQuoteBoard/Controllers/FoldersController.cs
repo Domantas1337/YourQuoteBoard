@@ -28,7 +28,7 @@ namespace YourQuoteBoard.Controllers
             }
         }
         
-        [HttpGet("all-qupte-folders-display")]
+        [HttpGet("all-quote-folders-display")]
         public async Task<IActionResult> GetQuoteFoldersForDisplay()
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
