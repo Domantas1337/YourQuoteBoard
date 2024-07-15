@@ -33,9 +33,7 @@ export default function MyQuotes(){
                 ))
             }
 
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
-                <AddQuoteFolder />
-            </Col>
+            <AddQuoteFolder />
         </Row>
     );
 }
