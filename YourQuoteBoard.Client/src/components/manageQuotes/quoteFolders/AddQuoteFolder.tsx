@@ -16,9 +16,11 @@ export default function AddQuoteFolder(){
                  
                     !addFolder ? (
                         <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
-                            <PlusOutlined className="quote-folder" name='Name' />
-                            <button type="submit" className="folder-button" onClick={handleAddingFolder}>Add folder</button>
-                        </Col>                               
+                            <div className="folder-container">
+                                <PlusOutlined className="quote-folder" name='Name' />
+                                <button type="submit" className="folder-button" onClick={handleAddingFolder}>Add folder</button>
+                            </div>
+                        </Col>                                                     
                     ) : 
                     (
                         <>
@@ -26,9 +28,12 @@ export default function AddQuoteFolder(){
                                 <QuoteFolder name={null} />
                             </Col>
                             <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
-                                <PlusOutlined className="quote-folder" name='Name' />
-                                <button type="submit" className="folder-button" onClick={handleAddingFolder}>Add folder</button>
+                                <div className="folder-container">
+                                    <PlusOutlined className="quote-folder" name='Name' />
+                                    <button type="submit" className="folder-button" onClick={handleAddingFolder}>Add folder</button>
+                                </div>
                             </Col>
+
                         </>
                     )
                 } 
