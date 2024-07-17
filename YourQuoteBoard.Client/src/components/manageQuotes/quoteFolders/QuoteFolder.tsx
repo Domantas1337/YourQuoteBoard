@@ -7,7 +7,7 @@ import { FolderType } from '../../../enums/FolderType';
 
 interface QuoteFolderProps {
     name : string | null;
-    onClick : () => void;
+    onClick? : () => void;
 }
 
 export default function QuoteFolder({name, onClick} : QuoteFolderProps) {

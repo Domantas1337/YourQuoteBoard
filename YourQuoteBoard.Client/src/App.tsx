@@ -1,18 +1,18 @@
-import AddQuoteForm from "./components/AddQuoteForm";
+import AddQuoteForm from "./components/manageQuotes/manageQuotes/AddQuoteForm";
 import Navbar from "./components/Navbar/NavBar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BrowseBooks from "./components/manageBooks/BrowseBooks";
 import AddBookForm from "./components/manageBooks/AddBookForm";
 import Register from "./components/account/Register";
 import Login from "./components/account/Login";
-import PersonalQuotes from "./components/manageQuotes/PersonalQuotes";
 import AuthorizeView from "./components/account/AuthorizeView";
-import UserProvider from "./components/UserProvider";
-import Book from "./pages/Book";
-import RecommendedQuotesPage from "./pages/RecommendedQuotesPage";
-import QuotesByBookPage from "./pages/QuotesByBookPage";
-import MyQuotes from "./pages/MyQuotes";
-import QuoteFolder from "./pages/QuoteFolder";
+import Book from "./pages/bookPages/Book";
+import RecommendedQuotesPage from "./pages/quotePages/RecommendedQuotesPage";
+import QuotesByBookPage from "./pages/quotePages/QuotesByBookPage";
+import MyQuotes from "./pages/quotePages/MyQuotes";
+import QuoteFolder from "./pages/quotePages/QuoteFolderPage";
+import PersonalQuotes from "./components/manageQuotes/mainQuotes/PersonalQuotes";
+import UserProvider from "./components/account/UserProvider";
 
 function App() {
   return (

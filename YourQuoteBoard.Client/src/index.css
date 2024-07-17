@@ -105,3 +105,9 @@
   height: 100px;
   width: 100px;
 }
+
+.quote-book-select{
+  max-width: 500px;
+  width: 100% !important;
+  min-width: 100% !important;
+}

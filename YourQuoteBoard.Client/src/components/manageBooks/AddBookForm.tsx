@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BookCreateDTO } from "../../models/books/BookCreateDTO";
 import { createBook } from '../../api/book';
-import ImageUploadButton from "../ImageUpload";
+import ImageUploadButton from "../managers/ImageUpload";
 
 export default function AddBookForm(){
 
