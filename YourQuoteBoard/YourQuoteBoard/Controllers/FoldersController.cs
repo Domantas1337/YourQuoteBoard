@@ -45,7 +45,7 @@ namespace YourQuoteBoard.Controllers
         }
 
         [Authorize]
-        [HttpGet("quotes/{id}")]
+        [HttpGet("quote/{id}")]
         public async Task<IActionResult> GetQuoteFolderContent(Guid id)
         {
             var folderContent = await _folderService.GetQuoteFolderContentAsync(id);

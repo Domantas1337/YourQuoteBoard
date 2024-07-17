@@ -5,10 +5,12 @@ import { Row, Col } from 'antd';
 import { getQuoteFoldersByUserId } from "../api/folder";
 import { FolderType } from "../enums/FolderType";
 import { FoldersDisplayDTO } from "../models/folders/FolderDisplayDTO";
+import { useNavigate } from "react-router-dom";
 
 export default function MyQuotes(){
     
     const [folders, setFolders] = useState<FoldersDisplayDTO[] | null>([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const fetchFolders = async () => {
@@ -22,14 +24,21 @@ export default function MyQuotes(){
         fetchFolders();
     }, []);
     
+    const handleFolderClick = (id: string) => {
+        navigate(`/quote-folder/${id}`)
+    }
+
     return (
         <Row className='quote-folder-row' gutter={[40, 24]}>
             
             {
                 folders?.map( (folder, index) => (
-                    <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
-                        <QuoteFolder key={index} name={folder.name}/>
-                    </Col>
+                        <Col className="gutter-row" key={index} xs={24} sm={12} md={8} lg={6}>
+                            <QuoteFolder name={folder.name} onClick={() => {
+                                console.log(folder.folderId);
+                                console.log(folder.name);
+                                handleFolderClick(folder.folderId);}}/>
+                        </Col>
                 ))
             }
 

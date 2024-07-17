@@ -1,7 +1,7 @@
 import { QuoteDisplayDTO } from "../quotes/QuoteDisplayDTO";
 
 export interface FolderContentDisplayDTO {
-    id: string;
+    folderId: string;
     name: string;
     childFolderCount: number;
     quotes: QuoteDisplayDTO[];

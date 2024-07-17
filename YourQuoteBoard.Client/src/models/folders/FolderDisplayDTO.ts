@@ -1,5 +1,5 @@
 export interface FoldersDisplayDTO {
-    id: string;
+    folderId: string;
     name: string;
     childFolderCount: number;
 }

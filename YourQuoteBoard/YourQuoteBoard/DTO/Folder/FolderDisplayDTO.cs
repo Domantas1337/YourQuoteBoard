@@ -3,6 +3,6 @@
     public class FolderDisplayDTO
     {
         public Guid FolderId { get; set; }
-        public string name { get; set; }
+        public required string Name { get; set; }
     }
 }

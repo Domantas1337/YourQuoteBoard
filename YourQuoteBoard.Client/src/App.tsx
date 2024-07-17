@@ -12,6 +12,7 @@ import Book from "./pages/Book";
 import RecommendedQuotesPage from "./pages/RecommendedQuotesPage";
 import QuotesByBookPage from "./pages/QuotesByBookPage";
 import MyQuotes from "./pages/MyQuotes";
+import QuoteFolder from "./pages/QuoteFolder";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="add-book" element={<AddBookForm />} />
             <Route path="book/:id" element={<Book />} />
             <Route path="bookQuotes/:id" element={<QuotesByBookPage />} />
+            <Route path="quote-folder/:id" element={<QuoteFolder />} />
 
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />

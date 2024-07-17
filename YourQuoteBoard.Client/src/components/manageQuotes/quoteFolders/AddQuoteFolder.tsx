@@ -25,7 +25,7 @@ export default function AddQuoteFolder(){
                     (
                         <>
                             <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
-                                <QuoteFolder name={null} />
+                                <QuoteFolder name={null}/>
                             </Col>
                             <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
                                 <div className="folder-container">

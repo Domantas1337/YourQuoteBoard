@@ -6,10 +6,11 @@ import { createFolder } from '../../../api/folder';
 import { FolderType } from '../../../enums/FolderType';
 
 interface QuoteFolderProps {
-    name : string | null
+    name : string | null;
+    onClick : () => void;
 }
 
-export default function QuoteFolder({name} : QuoteFolderProps) {
+export default function QuoteFolder({name, onClick} : QuoteFolderProps) {
     
     const [folderName, setFolderName] = useState("");
     const [folderNameSet, setFolderNameSet] = useState(false);
@@ -43,7 +44,7 @@ export default function QuoteFolder({name} : QuoteFolderProps) {
     }
 
     return (
-        <div className="folder-container">
+        <div className="folder-container" onClick={onClick}>
             <FolderOutlined className="quote-folder" name='Name'  />
             { 
                 !folderNameSet ?

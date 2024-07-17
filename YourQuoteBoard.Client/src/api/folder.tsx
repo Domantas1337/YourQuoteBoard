@@ -24,6 +24,7 @@ export async function getQuoteFoldersByUserId(typeOfFolder: FolderType): Promise
 } 
 
 export async function getFolderContentById(id: string, typeOfFolder: FolderType): Promise<FolderContentDisplayDTO | null>{
+    console.log(`api/Folders/${typeOfFolder}/${id}`);
     const response = await apiClient.get<FolderContentDisplayDTO>(`api/Folders/${typeOfFolder}/${id}`);
     const folder = response.data;
     
