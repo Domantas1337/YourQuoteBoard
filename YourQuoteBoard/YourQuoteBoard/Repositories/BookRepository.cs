@@ -16,7 +16,7 @@ namespace YourQuoteBoard.Repositories
             return book;
         }
 
-        public async Task<Book?> GetBookForDisplayByIdAsync(Guid id)
+        public async Task<Book?> GetBookByIdAsync(Guid id)
         {
             if (_applicationDbContext.Books == null)
             {

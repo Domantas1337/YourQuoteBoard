@@ -7,10 +7,9 @@ import BookDisplayDTO from "../../../models/books/BookDisplayDTO";
  
 function AddQuoteForm(){
 
-    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: ''});
+    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: '', bookId: null});
     const [books, setBooks] = useState<BookDisplayDTO[]>([]);
     const navigate = useNavigate()
-    const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
     useEffect(   () => {
         
@@ -44,10 +43,12 @@ function AddQuoteForm(){
                 (option) => option.value === input
             );
             
-            if (selectedOption){
-                setSelectedBookId(selectedOption.getAttribute("data-value"));
-            }else{
-                setSelectedBookId(null);
+            
+            if (selectedOption){            
+                setQuote(prevQuote => ({
+                    ...prevQuote,
+                    bookId: selectedOption.getAttribute("data-value")
+                }));
             }
         }
     }
@@ -55,11 +56,14 @@ function AddQuoteForm(){
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try{
-            const response = createQuote(quote);
-            
-            console.log('Quote submitted:', response);
-            setQuote({ title: '', description: '', author: '' });
-            navigate('/my-quotes')
+            console.log(quote);
+            if (quote.bookId != null){
+                console.log(quote);
+                const response = createQuote(quote);
+                console.log('Quote submitted:', response);
+                setQuote({ title: '', description: '', author: '', bookId: null});
+                navigate('/browse-quotes')
+            } 
         } catch (error) {
             console.error('Failed to submit quote:', error);
         }

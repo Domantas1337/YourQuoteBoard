@@ -27,7 +27,7 @@ namespace YourQuoteBoard.Services
 
         public async Task<BookDisplayDTO?> GetBookForDisplayByIdAsync(Guid id)
         {
-            Book? book = await _bookRepository.GetBookForDisplayByIdAsync(id);
+            Book? book = await _bookRepository.GetBookByIdAsync(id);
             
             if(book == null)
             {

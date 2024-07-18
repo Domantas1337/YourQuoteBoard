@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using YourQuoteBoard.Data;
 using YourQuoteBoard.DTO;
-using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
-using YourQuoteBoard.Repositories;
 
 namespace YourQuoteBoard.Services
 {
