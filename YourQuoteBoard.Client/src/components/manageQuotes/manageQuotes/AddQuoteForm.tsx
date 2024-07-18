@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { QuoteCreateDTO } from "../../../models/quotes/QuoteCreateDTO";
 import { createQuote } from '../../../api/quote';
 import { useNavigate } from 'react-router-dom';
-import { Select } from "antd";
 import { getAllBooks } from "../../../api/book";
 import BookDisplayDTO from "../../../models/books/BookDisplayDTO";
  
@@ -11,13 +10,16 @@ function AddQuoteForm(){
     const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: ''});
     const [books, setBooks] = useState<BookDisplayDTO[]>([]);
     const navigate = useNavigate()
+    const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
     useEffect(   () => {
         
         const fetchBooks = async () => {
             try{
                 const fethedBooks = await getAllBooks();
+                console.log(fethedBooks);
                 setBooks(fethedBooks);
+                console.log(books.length);
             }catch(error){
                 console.log("Error while fetching books: ", error);
             }
@@ -31,6 +33,23 @@ function AddQuoteForm(){
             ...prevQuote,
             [e.target.name]: e.target.value
         }));
+    }
+
+    const handleDatalistInput = (e : React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        const datalist = document.getElementById("bookDatalist") as HTMLDataListElement;
+
+        if (datalist){
+            const selectedOption = Array.from(datalist.options).find(
+                (option) => option.value === input
+            );
+            
+            if (selectedOption){
+                setSelectedBookId(selectedOption.getAttribute("data-value"));
+            }else{
+                setSelectedBookId(null);
+            }
+        }
     }
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
@@ -95,21 +114,16 @@ function AddQuoteForm(){
                         htmlFor="titleInput"
                         className="default-label"
                         >Book</label>
-                <Select showSearch 
-                        options={books.map((book) => ({
-                            value: book.title,
-                            label: book.title,
-                        }))}
-                        
-                        className="quote-book-select"
-                        
-                    > 
-                    {
-                        books.map( (book, index) => (
-                            <Select.Option key={index} value={book.bookId}>{book.title}</Select.Option>
-                        ) )
-                    }
-                </Select>
+                
+                <input list="bookDatalist"  className="form-control" onChange={handleDatalistInput}/>
+                <datalist id="bookDatalist" >
+                {
+                    books.map( (book, index) => (
+                        <option key={index} data-value={book.bookId}>{book.title}</option>
+                    ) )
+                    
+                }
+                </datalist>  
                 <button type="submit" className="btn btn-default submit-button">Submit quote</button>
             </form>
         </div>
