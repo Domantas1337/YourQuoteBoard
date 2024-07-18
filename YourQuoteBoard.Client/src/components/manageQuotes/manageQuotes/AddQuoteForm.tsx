@@ -16,9 +16,7 @@ function AddQuoteForm(){
         const fetchBooks = async () => {
             try{
                 const fethedBooks = await getAllBooks();
-                console.log(fethedBooks);
                 setBooks(fethedBooks);
-                console.log(books.length);
             }catch(error){
                 console.log("Error while fetching books: ", error);
             }
@@ -42,8 +40,7 @@ function AddQuoteForm(){
             const selectedOption = Array.from(datalist.options).find(
                 (option) => option.value === input
             );
-            
-            
+                   
             if (selectedOption){            
                 setQuote(prevQuote => ({
                     ...prevQuote,
@@ -58,9 +55,9 @@ function AddQuoteForm(){
         try{
             console.log(quote);
             if (quote.bookId != null){
-                console.log(quote);
                 const response = createQuote(quote);
                 console.log('Quote submitted:', response);
+                
                 setQuote({ title: '', description: '', author: '', bookId: null});
                 navigate('/browse-quotes')
             } 
