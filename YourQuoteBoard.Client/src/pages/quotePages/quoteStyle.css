@@ -1,6 +1,42 @@
+html, body{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.quote-detail-container{
+    margin: auto;
+    padding: 20px;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-left: 0 !important;
+    padding-left:  0 !important;
+    margin-right: 0 !important;
+    padding-right:  0 !important; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr auto; /* This creates two columns: one flexible, one for the book container */
+    grid-template-areas: 
+        "quote", 
+        "description book";
+    gap: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+
 .quote-wrapper {
+    grid-area: "quote";
+    margin: 0 auto;
     display: flex;
+    background-color: #fbf5e9; /* Very light grey background */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Make it take up the full width */
+    max-width: 100%; /* Make it take up the full width */
+    box-sizing: border-box;
     align-items: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 .single-quote-symbol-container {
@@ -10,11 +46,64 @@
 }
 
 .quote-symbol {
-    font-size: calc(1em + 2vw); /* Adjust the size based on viewport width */
-    line-height: 1; /* Ensure the quote height matches the text height */
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', serif;
+    font-size: 200px;
+    font-weight: bold;
+    line-height: 1;
 }
 
 .quote-container p {
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', serif;
     margin: 0;
-    font-size: 1.5em; /* Adjust the text size as needed */
+    font-size: 42px;
+    max-width: 800px;
+}
+
+
+.quote-book-container{
+    grid-area: "book";
+    align-self: start; /* Aligns to the top of its grid area */
+    justify-self: end; /* Aligns to the right of its grid area */
+    flex-direction: column;
+    align-items: center; /* Center the items horizontally */
+    justify-content: center;
+    padding: 10px;
+    background-color: #f8f8f8; 
+    border-radius: 5px;
+}
+
+.book-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #8B4513; /* Dark brown color for border */
+    background-color: #f5deb3; /* Light brown color for background */
+    color: #8B4513; /* Dark brown color for text */
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', serif;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: #DEB887; /* Darker brown for hover effect */
+    box-shadow: 1px 1px 5px rgba(70, 70, 70, 0.5);
+}
+
+.book-button:active {
+    background-color: #CDAA7D; /* Even darker brown for active effect */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.book-title {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: #4B0082; /* Indigo color for title */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quote-description{
+    grid-area: "description";
 }

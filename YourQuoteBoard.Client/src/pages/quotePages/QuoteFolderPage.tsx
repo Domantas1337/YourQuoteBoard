@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FolderContentDisplayDTO } from "../../models/folders/FolderContentDisplayDTO";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getFolderContentById } from "../../api/folder";
 import { FolderType } from "../../enums/FolderType";
 import QuoteCard from "../../components/manageQuotes/quotesCard/QuoteCard";
@@ -8,7 +8,8 @@ import QuoteCard from "../../components/manageQuotes/quotesCard/QuoteCard";
 export default function QuoteFolderPage(){
     const [folder, setFolder] = useState<FolderContentDisplayDTO | null>(null);
     const { id } = useParams();
-    
+    const navigate = useNavigate();
+
     useEffect( () => {
         const fetchFolder = async () => {
             try { 
@@ -25,11 +26,15 @@ export default function QuoteFolderPage(){
         fetchFolder();
     }, [id]);
 
+    const handleQuoteClick = (quoteId: string) => {
+        navigate(`/quote/${quoteId}`)
+    }
+
     return (
         <>
             {
                 folder?.quotes.map((quote, index) => (
-                    <QuoteCard key={index} title={quote.title} shortDescription={"shortDescription"} />
+                    <QuoteCard key={index} title={quote.title} shortDescription={"shortDescription"} onClick={() => handleQuoteClick(quote.quoteId)} />
                 ))
             }
         </>
