@@ -7,13 +7,13 @@ import Register from "./components/account/Register";
 import Login from "./components/account/Login";
 import AuthorizeView from "./components/account/AuthorizeView";
 import Book from "./pages/bookPages/Book";
-import RecommendedQuotesPage from "./pages/quotePages/RecommendedQuotesPage";
 import QuotesByBookPage from "./pages/quotePages/QuotesByBookPage";
 import MyQuotes from "./pages/quotePages/MyQuotes";
 import QuoteFolder from "./pages/quotePages/QuoteFolderPage";
 import PersonalQuotes from "./components/manageQuotes/mainQuotes/PersonalQuotes";
 import UserProvider from "./components/account/UserProvider";
 import Quote from "./pages/quotePages/Quote";
+import BrowseQuotes from "./components/manageQuotes/mainQuotes/BrowseQuotes";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
                               <PersonalQuotes />
                           </AuthorizeView>
                       } />          
-            <Route path="browse-quotes" element={<RecommendedQuotesPage />} />
+            <Route path="browse-quotes" element={<BrowseQuotes />} />
             <Route path="add-quote" element={<AddQuoteForm />} />
             <Route path="my-quotes" element={<MyQuotes />} />
             <Route path="browse-books" element={<BrowseBooks />} />

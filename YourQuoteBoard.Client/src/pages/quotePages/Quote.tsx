@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import { QuoteFullDisplayDTO } from "../../models/quotes/QuoteFullDisplayDTO"
 import { useEffect, useState } from "react";
 import { getQuoteForDesignatedPage } from "../../api/quote";
-import './quote.css';
+import './quoteStyle.css';
 
 export default function Quote(){
     const [quote, setQuote] = useState<QuoteFullDisplayDTO | null>(null);
     const {id} = useParams();
    
+    console.log(quote?.title);
+
     useEffect(() => {
         const fetchQuote = async () => {
             try {

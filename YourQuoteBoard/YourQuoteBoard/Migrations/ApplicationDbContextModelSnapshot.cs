@@ -468,7 +468,9 @@ namespace YourQuoteBoard.Migrations
 
                     b.HasOne("YourQuoteBoard.Entity.Book", "Book")
                         .WithMany("Quotes")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ApplicationUser");
 

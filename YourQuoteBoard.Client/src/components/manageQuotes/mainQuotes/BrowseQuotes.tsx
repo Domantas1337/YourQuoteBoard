@@ -28,14 +28,20 @@ function BrowseQuotes(){
 
     const handleCardClick = (quoteId: string) => {
         console.log(`Navigating to quote/${quoteId}`); 
-        navigate(`quote/${quoteId}`);
+        navigate(`/quote/${quoteId}`);
     }
 
     return (
         <div className='card-container'>
             {
                 quotes.map( (quote, index) => (
-                    <QuoteCard key={index} title={quote.title} shortDescription="desc" onClick={() => handleCardClick(quote.quoteId)}/>
+                    <div className="test-classname" key={index}>
+                        <QuoteCard title={quote.title} shortDescription="desc" 
+                            onClick={
+                                () => handleCardClick(quote.quoteId)
+                            }
+                            />
+                    </div>
                 ))
             }
             <AddQuoteCard />

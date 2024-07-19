@@ -43,7 +43,7 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<Quote?> GetQuoteByIdAsync(Guid quoteId)
         {
-            Quote? quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId == quoteId);
+            Quote? quote = await _applicationDbContext.Quotes.Include(q => q.Book).FirstOrDefaultAsync(q => q.QuoteId == quoteId);
             return quote;
         }
     }

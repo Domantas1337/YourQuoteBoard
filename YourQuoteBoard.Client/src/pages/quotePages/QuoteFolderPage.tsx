@@ -23,7 +23,7 @@ export default function QuoteFolderPage(){
             }
         }
         fetchFolder();
-    })
+    }, [id]);
 
     return (
         <>

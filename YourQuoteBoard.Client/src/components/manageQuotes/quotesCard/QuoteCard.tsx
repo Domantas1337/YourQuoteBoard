@@ -1,11 +1,13 @@
 
 interface QuoteCardProps {
-  title: string;
-  shortDescription: string;
-  onClick?: () => void;
+  title : string;
+  shortDescription : string;
+  onClick : () => void;
 }
 
-const QuoteCard = ({ title, shortDescription, onClick } : QuoteCardProps) => {
+export default function QuoteCard ({ title, shortDescription, onClick } : QuoteCardProps) {
+  console.log('QuoteCard onClick:', onClick);
+  
   return (
     <div className="card" onClick={onClick}>
       <div className="card-body">
@@ -13,7 +15,6 @@ const QuoteCard = ({ title, shortDescription, onClick } : QuoteCardProps) => {
         <p className="card-text">{shortDescription}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuoteCard;

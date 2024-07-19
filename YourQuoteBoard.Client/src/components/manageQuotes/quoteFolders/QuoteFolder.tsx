@@ -15,6 +15,8 @@ export default function QuoteFolder({name, onClick} : QuoteFolderProps) {
     const [folderName, setFolderName] = useState("");
     const [folderNameSet, setFolderNameSet] = useState(false);
 
+    console.log(onClick);
+
     useEffect(() => {
         if (name){
             setFolderName(name);

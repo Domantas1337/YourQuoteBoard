@@ -91,7 +91,8 @@ export default function Book() {
                 <button className="action-button" onClick={handleQuoteViewing}>Browse all quotes from this book</button>
                 <button className="action-button quote">I found a quote in this book!</button>
                 
-                {bookToDisplay?.bookRating?.rating ? (
+                {
+                bookToDisplay?.bookRating?.rating ? (
                     <div className="book-rating-container">       
                         <span className="book-rating-span">Your rating: {bookToDisplay?.bookRating.rating}</span>       
                         <br />

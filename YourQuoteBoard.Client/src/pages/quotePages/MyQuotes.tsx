@@ -25,6 +25,7 @@ export default function MyQuotes(){
     }, []);
     
     const handleFolderClick = (id: string) => {
+        console.log("why");
         navigate(`/quote-folder/${id}`)
     }
 

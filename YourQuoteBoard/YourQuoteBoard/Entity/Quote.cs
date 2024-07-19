@@ -12,7 +12,7 @@ namespace YourQuoteBoard.Entity
         public required string Author { get; set; }
         public DateTime Created { get; set; }
         public required Guid BookId {get; set;}
-        public Book? Book { get; set; }
+        public required Book Book { get; set; }
         public List<Folder> Folders { get; set; } = new List<Folder> { };
 
         [Required]

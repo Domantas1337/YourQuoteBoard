@@ -11,7 +11,7 @@ export async function getAllQuotes(): Promise<QuoteDisplayDTO[] | null>{
 }
 
 export async function getQuoteForDesignatedPage(quoteId: string): Promise<QuoteFullDisplayDTO>{
-    const response = await apiClient.get<QuoteFullDisplayDTO>(`api/Quote/${quoteId}`) 
+    const response = await apiClient.get<QuoteFullDisplayDTO>(`api/Quote/quote/${quoteId}`) 
     const quote = response.data;
 
     return quote;
