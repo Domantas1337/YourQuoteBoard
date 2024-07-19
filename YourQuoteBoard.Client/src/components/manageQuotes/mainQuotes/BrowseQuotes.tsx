@@ -3,17 +3,18 @@ import { QuoteDisplayDTO } from "../../../models/quotes/QuoteDisplayDTO";
 import { getAllQuotes } from "../../../api/quote";
 import QuoteCard from "../quotesCard/QuoteCard";
 import AddQuoteCard from "../quotesCard/AddQuoteCard";
+import { useNavigate } from "react-router-dom";
 
 function BrowseQuotes(){
     
     const [quotes, setQuotes] = useState<QuoteDisplayDTO[]>([])
+    const navigate = useNavigate();
 
     useEffect(
         () => {
             const fetchQuotes = async () => {
                 try{
                     const fetchedQuotes = await getAllQuotes();
-                    
                     if (fetchedQuotes){
                         setQuotes(fetchedQuotes)
                     }
@@ -25,16 +26,19 @@ function BrowseQuotes(){
         }, []
     );
 
+    const handleCardClick = (quoteId: string) => {
+        console.log(`Navigating to quote/${quoteId}`); 
+        navigate(`quote/${quoteId}`);
+    }
+
     return (
-        <div> 
-            <div className='card-container'>
-                {
-                    quotes.map( (quote, index) => (
-                        <QuoteCard key={index} title={quote.title} shortDescription="desc" />
-                    ))
-                }
-                <AddQuoteCard />
-            </div>
+        <div className='card-container'>
+            {
+                quotes.map( (quote, index) => (
+                    <QuoteCard key={index} title={quote.title} shortDescription="desc" onClick={() => handleCardClick(quote.quoteId)}/>
+                ))
+            }
+            <AddQuoteCard />
         </div>
     );
 }

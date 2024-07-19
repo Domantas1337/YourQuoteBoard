@@ -20,7 +20,6 @@ namespace YourQuoteBoard.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-
             try
             {
                 QuoteAddDTO addedQuote = await _quoteService.AddQuoteAsync(quoteAddDTO, userId);
@@ -54,6 +53,19 @@ namespace YourQuoteBoard.Controllers
         {
             List<QuoteDisplayDTO> quotes = await _quoteService.GetQuotesByBookIdAsync(bookId);
             return Ok(quotes);
+        }
+
+        [HttpGet("quote/{quoteId}")]
+        public async Task<IActionResult> GetQuoteForDesignatedPage(Guid quoteId)
+        {
+            QuoteFullDisplayDTO? quote = await _quoteService.GetQuoteForQuoteDedicatedPageAsync(quoteId);
+            
+            if (quote == null)
+            {
+                return BadRequest("No such quote was found");
+            }
+            
+            return Ok(quote);
         }
     }
 }

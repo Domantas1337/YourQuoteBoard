@@ -42,5 +42,31 @@ namespace YourQuoteBoard.Services
 
             return quotesForDisplay;
         }
+
+        public async Task<QuoteFullDisplayDTO?> GetQuoteForQuoteDedicatedPageAsync(Guid quoteId)
+        {
+            var quote = await _quoteRepository.GetQuoteByIdAsync(quoteId);
+
+            if (quote == null)
+            {
+                return null;
+            }
+
+            return ConvertToFullDisplayDTO(quote);
+        }
+
+        public QuoteFullDisplayDTO ConvertToFullDisplayDTO(Quote quote)
+        {
+            return new QuoteFullDisplayDTO
+            {
+
+                Title = quote.Title,
+                Description = quote.Description,
+                Author = quote.Author,
+                Created = quote.Created,
+                BookId = quote.BookId,
+                BookTitle = quote.Book.Title
+            };
+        }
     }
 }

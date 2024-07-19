@@ -40,5 +40,11 @@ namespace YourQuoteBoard.Repositories
 
             return quotes;
         }
+
+        public async Task<Quote?> GetQuoteByIdAsync(Guid quoteId)
+        {
+            Quote? quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId == quoteId);
+            return quote;
+        }
     }
 }

@@ -1,12 +1,20 @@
 import { QuoteDisplayDTO } from "../models/quotes/QuoteDisplayDTO";
 import { apiClient } from "../apiClient";
 import { QuoteCreateDTO } from "../models/quotes/QuoteCreateDTO";
+import { QuoteFullDisplayDTO } from "../models/quotes/QuoteFullDisplayDTO";
 
 export async function getAllQuotes(): Promise<QuoteDisplayDTO[] | null>{
     const response = await apiClient.get<QuoteDisplayDTO[]>('api/Quote/all-quotes') 
     const quotes = response.data;
 
     return quotes;
+}
+
+export async function getQuoteForDesignatedPage(quoteId: string): Promise<QuoteFullDisplayDTO>{
+    const response = await apiClient.get<QuoteFullDisplayDTO>(`api/Quote/${quoteId}`) 
+    const quote = response.data;
+
+    return quote;
 }
 
 export async function getAllPersonalQuotes(): Promise<QuoteDisplayDTO[]>{

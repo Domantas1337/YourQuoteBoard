@@ -11,5 +11,6 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<QuoteAddDTO> AddQuoteAsync(QuoteAddDTO quoteAddDTO, string userId);
         public Task<List<QuoteDisplayDTO>> GetAllPersonalQuotesAsync(string userId);
         public Task<List<QuoteDisplayDTO>> GetAllQuotesAsync();
+        public Task<QuoteFullDisplayDTO?> GetQuoteForQuoteDedicatedPageAsync(Guid quoteId);
     }
 }

@@ -13,6 +13,7 @@ import MyQuotes from "./pages/quotePages/MyQuotes";
 import QuoteFolder from "./pages/quotePages/QuoteFolderPage";
 import PersonalQuotes from "./components/manageQuotes/mainQuotes/PersonalQuotes";
 import UserProvider from "./components/account/UserProvider";
+import Quote from "./pages/quotePages/Quote";
 
 function App() {
   return (
@@ -32,9 +33,9 @@ function App() {
             <Route path="browse-books" element={<BrowseBooks />} />
             <Route path="add-book" element={<AddBookForm />} />
             <Route path="book/:id" element={<Book />} />
+            <Route path="quote/:id" element={<Quote />} />
             <Route path="bookQuotes/:id" element={<QuotesByBookPage />} />
             <Route path="quote-folder/:id" element={<QuoteFolder />} />
-
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
           </Routes>

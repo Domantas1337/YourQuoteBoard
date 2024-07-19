@@ -17,6 +17,15 @@
   gap: 20px; 
 }
 
+.card {
+  margin-top: 10px;
+  height: 220px !important;
+  width: 220px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow consistent with book cards */
+  overflow: hidden;
+}
+
 .card:hover{
   transform: scale(1.05);
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
@@ -83,15 +92,6 @@
 
 .submit-button:hover {
   background-color: #333 !important; /* Darker on hover for interactive feedback */
-}
-
-.card {
-  margin-top: 10px;
-  height: 220px !important;
-  width: 220px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow consistent with book cards */
-  overflow: hidden;
 }
 
 .new-card {

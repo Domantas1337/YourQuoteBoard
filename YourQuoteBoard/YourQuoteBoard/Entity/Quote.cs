@@ -11,10 +11,9 @@ namespace YourQuoteBoard.Entity
         public string Description { get; set; } = "No descroption";
         public required string Author { get; set; }
         public DateTime Created { get; set; }
-
-        public Guid? BookId {get; set;}
+        public required Guid BookId {get; set;}
         public Book? Book { get; set; }
-        public List<Folder> Folders { get; set; }
+        public List<Folder> Folders { get; set; } = new List<Folder> { };
 
         [Required]
         public required string ApplicationUserId { get; set; }
