@@ -275,6 +275,9 @@ namespace YourQuoteBoard.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<double?>("AccuracyRating")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -282,7 +285,19 @@ namespace YourQuoteBoard.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Rating")
+                    b.Property<double?>("CharacterDevelopmentRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("OverallRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("PlotRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("WorldBuildingRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("WritingStyleRating")
                         .HasColumnType("REAL");
 
                     b.HasKey("BookRatingId");
@@ -336,6 +351,9 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<double?>("AverageRating")
+                        .HasColumnType("REAL");
+
                     b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
@@ -345,6 +363,9 @@ namespace YourQuoteBoard.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("NumberOfRatings")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -357,6 +378,40 @@ namespace YourQuoteBoard.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("Quotes");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteRating", b =>
+                {
+                    b.Property<Guid>("QuoteRatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("InspirationalValueRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("OriginalityRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("OverallRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<Guid>("QuoteId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("RelevanceToTheTopicRating")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("QuoteRatingId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("QuoteId");
+
+                    b.ToTable("QuoteRatings");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Data.ApplicationUser", b =>
@@ -477,6 +532,23 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Book");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteRating", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Data.ApplicationUser", null)
+                        .WithMany("QuoteRatings")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YourQuoteBoard.Entity.Quote", "Quote")
+                        .WithMany("QuoteRatings")
+                        .HasForeignKey("QuoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quote");
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
                 {
                     b.Navigation("BookRatings");
@@ -484,11 +556,18 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Quotes");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
+                {
+                    b.Navigation("QuoteRatings");
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Data.ApplicationUser", b =>
                 {
                     b.Navigation("BookRatings");
 
                     b.Navigation("Folders");
+
+                    b.Navigation("QuoteRatings");
 
                     b.Navigation("Quotes");
                 });

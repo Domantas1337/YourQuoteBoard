@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using YourQuoteBoard.DTO.Quote;
-using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.DTO.Rating.Book;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
@@ -19,7 +18,7 @@ namespace YourQuoteBoard.Services
             });
             BookRating addedBookRating = await _ratingRepository.AddBookRatingAsync(bookRating, userId);
 
-            Book book = await _bookRepository.UpdateBookRatingWhenARatingHasBeenAdded(rating.BookId, rating.Rating);
+            Book book = await _bookRepository.UpdateBookRatingWhenARatingHasBeenAdded(rating.BookId, rating.OverallRating);
 
             return _mapper.Map<BookRatingCreateDTO>(addedBookRating);
         }

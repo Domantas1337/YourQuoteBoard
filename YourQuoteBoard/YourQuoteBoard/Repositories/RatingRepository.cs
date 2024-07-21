@@ -18,7 +18,7 @@ namespace YourQuoteBoard.Repositories
                 return null;
             }
 
-            bookRatingToUpdate.Rating = bookRating.Rating;
+            bookRatingToUpdate.OverallRating = bookRating.OverallRating;
 
             try
             {

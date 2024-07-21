@@ -1,10 +1,8 @@
-﻿using YourQuoteBoard.DTO.Rating.Interfaces;
-
-namespace YourQuoteBoard.DTO.Rating.Book
+﻿namespace YourQuoteBoard.DTO.Rating.Book
 {
-    public class BookRatingCreateDTO : IRatingCreateDTO
+    public class BookRatingCreateDTO
     {
-        public double Rating { get; set; }
-        public Guid ItemId { get; set; }
+        public double OverallRating { get; set; }
+        public Guid BookId { get; set; }
     }
 }

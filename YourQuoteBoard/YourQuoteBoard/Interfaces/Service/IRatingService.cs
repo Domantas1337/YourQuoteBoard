@@ -1,5 +1,4 @@
-﻿using YourQuoteBoard.DTO.Rating;
-using YourQuoteBoard.DTO.Rating.Book;
+﻿using YourQuoteBoard.DTO.Rating.Book;
 
 namespace YourQuoteBoard.Interfaces.Service
 {

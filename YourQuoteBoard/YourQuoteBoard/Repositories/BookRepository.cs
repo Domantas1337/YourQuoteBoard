@@ -50,7 +50,6 @@ namespace YourQuoteBoard.Repositories
 
             UpdateBookRating(book, newSumOfRatings, newNumberOfRatings);
 
-
             await _applicationDbContext.SaveChangesAsync();
             return book;
         }

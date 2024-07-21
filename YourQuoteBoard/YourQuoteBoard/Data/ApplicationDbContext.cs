@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Entity;
 
 namespace YourQuoteBoard.Data
@@ -15,6 +14,7 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<Quote>? Quotes { get; set; }
         public virtual DbSet<Book>? Books { get; set; }
         public virtual DbSet<BookRating> BookRatings { get; set; }
+        public virtual DbSet<QuoteRating> QuoteRatings { get; set; }
         public virtual DbSet<Folder> Folders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,21 @@ namespace YourQuoteBoard.Data
                 entity.HasOne<ApplicationUser>()
                       .WithMany(u => u.BookRatings)
                       .HasForeignKey(br => br.ApplicationUserId)
+                      .IsRequired();
+            });
+
+            modelBuilder.Entity<QuoteRating>(entity =>
+            {
+                entity.HasKey(qr => qr.QuoteRatingId);
+
+                entity.HasOne(qr => qr.Quote)
+                      .WithMany(q => q.QuoteRatings)
+                      .HasForeignKey(q => q.QuoteId)
+                      .IsRequired();
+
+                entity.HasOne<ApplicationUser>()
+                      .WithMany(u => u.QuoteRatings)
+                      .HasForeignKey(qr => qr.ApplicationUserId)
                       .IsRequired();
             });
 

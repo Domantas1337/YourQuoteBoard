@@ -26,23 +26,7 @@ namespace YourQuoteBoard
             CreateMap<Quote, QuoteAddDTO>();
             CreateMap<Quote, QuoteDisplayDTO>().ReverseMap();
 
-            CreateMap<BookRatingForDirectUserInteractionDTO, BookRating>().AfterMap((src, dest, context) =>
-            {
-                dest.ApplicationUserId = (string)context.Items["userId"];
-            });
-            CreateMap<BookRating, BookRatingForDirectUserInteractionDTO>();
-
-            CreateMap<BookRatingCreateDTO, BookRating>().AfterMap((src, dest, context) =>
-            {
-                dest.ApplicationUserId = (string)context.Items["userId"];
-            });
-            CreateMap<BookRating, BookRatingCreateDTO>();
-
-            CreateMap<BookRating, BookRatingDisplayDTO>().ReverseMap();
-            CreateMap<BookRatingForUpdateDTO, BookRating>().AfterMap((src, dest, context) =>
-            {
-                dest.Rating = (double)context.Items["newRating"];
-            });
+            
 
             CreateMap<FolderCreateDTO, Folder>()
                     .AfterMap((src, dest, context) =>

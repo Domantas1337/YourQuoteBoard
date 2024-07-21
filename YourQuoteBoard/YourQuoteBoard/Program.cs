@@ -58,6 +58,7 @@ builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<IRatingService, RatingService>();
 builder.Services.AddTransient<IFolderService, FolderService>();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

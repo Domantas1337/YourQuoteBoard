@@ -46,5 +46,57 @@ namespace YourQuoteBoard.Repositories
             Quote? quote = await _applicationDbContext.Quotes.Include(q => q.Book).FirstOrDefaultAsync(q => q.QuoteId == quoteId);
             return quote;
         }
+
+        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenAdded(Guid quoteId, double rating)
+        {
+            Quote quote = await FetchAndInitializeQuote(quoteId);
+
+            double sumOfRatings = (double)(quote.AverageRating != null ? quote.AverageRating * quote.NumberOfRatings : 0);
+            double newSumOfRatings = sumOfRatings + rating;
+            int newNumberOfRatings = (int)quote.NumberOfRatings + 1;
+
+            UpdateQuoteRating(quote, newSumOfRatings, newNumberOfRatings);
+
+            await _applicationDbContext.SaveChangesAsync();
+            return quote;
+        }
+
+        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, double previousRating, double newRating)
+        {
+            Quote quote = await FetchAndInitializeQuote(quoteId);
+
+            double sumOfRatings = (double)(quote.AverageRating != null ? quote.AverageRating * quote.NumberOfRatings : 0);
+            double newSumOfRatings = sumOfRatings + newRating;
+
+            if (previousRating != 0)
+            {
+                newSumOfRatings -= previousRating;
+            }
+
+            UpdateQuoteRating(quote, newSumOfRatings, (int)quote.NumberOfRatings);
+
+            await _applicationDbContext.SaveChangesAsync();
+
+            return quote;
+        }
+
+        private async Task<Quote> FetchAndInitializeQuote(Guid quoteId)
+        {
+            Quote quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId.Equals(quoteId));
+
+            if (quote.AverageRating == null)
+            {
+                quote.AverageRating = 0;
+                quote.NumberOfRatings = 0;
+            }
+
+            return quote;
+        }
+
+        private void UpdateQuoteRating(Quote quote, double newSumOfRatings, int newNumberOfRatings)
+        {
+            quote.AverageRating = newSumOfRatings / newNumberOfRatings;
+            quote.NumberOfRatings = newNumberOfRatings;
+        }
     }
 }

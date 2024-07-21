@@ -14,6 +14,9 @@ namespace YourQuoteBoard.Entity
         public required Guid BookId {get; set;}
         public required Book Book { get; set; }
         public List<Folder> Folders { get; set; } = new List<Folder> { };
+        public ICollection<QuoteRating> QuoteRatings { get; } = new List<QuoteRating>();
+        public double? AverageRating { get; set; }
+        public int? NumberOfRatings { get; set; }
 
         [Required]
         public required string ApplicationUserId { get; set; }
