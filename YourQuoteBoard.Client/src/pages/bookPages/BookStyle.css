@@ -1,97 +1,124 @@
 .book-detail-container {
-    max-width: 1200px; /* Adjust container width for a wider view */
-    margin: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 10px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #faf6f2;
+    border-radius: 16px;
     display: grid;
-    grid-template-columns: 3fr 1fr; /* Allocate 1/4 of the space to the actions */
-    grid-template-rows: auto;
-    gap: 20px;
-    font-family: 'Arial', sans-serif;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    font-family: 'Merriweather', 'Georgia', serif;
 }
 
 .book-header {
-    grid-column: 1 / -1; /* Span across all columns */
+    grid-column: 1 / -1;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .book-header h2 {
-    font-size: 2em;
-    color: #333;
+    font-size: 36px;
+    color: #4a3628;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.book-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #8b6b4f;
 }
 
 .book-main {
     display: flex;
     align-items: start;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .book-cover-container {
     flex: 1;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 10px;
-    margin-right: 20px; /* Ensure some space between cover and info */
+    margin-right: 30px;
 }
 
 .book-cover-image {
-    width: 100%; /* Ensure image uses all available space */
+    width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .book-info-container {
     flex: 3;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    color: #4a3628;
 }
 
 .book-actions-container {
     grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    background-color: #f0e6da;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .action-button {
-    background-color: #000000;
+    background-color: #8b6b4f;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 0.85em;
-    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     text-align: center;
-}
-
-.quote{
-    background-color: gold;
-    color: black;
-}
-
-.disabled-rating-container{
-    display: flex;
-    align-items: center;  /* This aligns the items vertically centered */
-    gap: 10px;  /* Optional: adds space between the Rate component and the h5 */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
 .action-button:hover {
-    background-color: #002b58;
+    background-color: #6d5440;
+    transform: translateY(-2px);
 }
 
-.quote:hover{
-    background-color: rgb(255, 233, 106);
+.quote {
+    background-color: #ffd700;
+    color: #4a3628;
 }
 
-.book-rating-container{
+.quote:hover {
+    background-color: #ffea00;
+}
+
+.disabled-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.book-rating-container {
     margin-top: 20px;
 }
 
-
-.book-rating-span{
+.book-rating-span {
     font-weight: 700;
+    color: #8b6b4f;
 }

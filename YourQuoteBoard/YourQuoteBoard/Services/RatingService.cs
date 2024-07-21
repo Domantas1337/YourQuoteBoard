@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.DTO.Rating.Book;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;

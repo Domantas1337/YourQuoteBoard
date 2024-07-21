@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.DTO.Rating.Book;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Service;
 

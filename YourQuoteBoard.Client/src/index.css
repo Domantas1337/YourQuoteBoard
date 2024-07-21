@@ -1,113 +1,150 @@
 .main-content {
-  padding-left: 128px; /* Align with the overall padding of the page */
+  padding-left: 240px; /* Adjusted for wider navbar */
   margin: 0;
   box-sizing: border-box;
+  background-color: #f7f9fc;
+  min-height: 100vh;
 }
 
 .default-form-container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-container {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 20px; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 30px;
 }
 
 .card {
-  margin-top: 10px;
-  height: 220px !important;
-  width: 220px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow consistent with book cards */
+  height: 250px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.card:hover{
-  transform: scale(1.05);
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .auth-container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .auth-header {
-  font-size: 2.5em;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 700;
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
 .form-control {
-  max-width: 500px;
-  border: 1px solid black !important; /* Consistency in border */
-  padding: 8px;
-  border-radius: 8px; /* Rounded borders like book cards */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  width: 100%;
+  border: 2px solid #e0e6ed;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  outline: none;
 }
 
 .default-form {
-  width: 80%;
-  background-color: #ffffff; /* White background for contrast */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Consistent with featured book card */
-  padding: 20px;
-  margin-left: 20px;
-  margin-top: 20px; /* Added margin top for spacing */
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-top: 30px;
 }
 
 .default-label {
-  display: block; /* Ensure labels are block level for alignment */
-  font-weight: bold;
+  display: block;
+  font-weight: 600;
   margin-bottom: 10px;
-  color: rgb(0, 0, 0); /* Black color for better readability */
+  color: #2c3e50;
 }
 
 .default-header {
-  font-size: 2.5em;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
 .submit-button {
-  margin-top: 10px;
-  width: 100% !important;
-  padding: 10px !important;
-  background-color: black !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 8px !important;
-  transition: background-color 0.3s ease !important;
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .submit-button:hover {
-  background-color: #333 !important; /* Darker on hover for interactive feedback */
+  background-color: #2980b9;
 }
 
 .new-card {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #e0e6ed;
+  border-radius: 12px;
+  height: 250px;
+  transition: all 0.3s ease;
+}
+
+.new-card:hover {
+  background-color: #d0d8e2;
 }
 
 .add-new-card-logo {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
+  opacity: 0.6;
 }
 
-.quote-book-select{
-  max-width: 500px;
-  width: 100% !important;
-  min-width: 100% !important;
+.quote-book-select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e6ed;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.quote-book-select:focus {
+  border-color: #3498db;
+  outline: none;
 }

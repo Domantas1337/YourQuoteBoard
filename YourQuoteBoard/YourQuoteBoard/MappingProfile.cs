@@ -4,6 +4,7 @@ using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Folder;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.DTO.Rating.Book;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Utilities;
 
