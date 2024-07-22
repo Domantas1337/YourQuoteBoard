@@ -9,7 +9,6 @@ namespace YourQuoteBoard.Data
         public virtual ICollection<Quote>? Quotes { get; set; }
         public virtual ICollection<BookRating>? BookRatings { get; set; }
         public virtual ICollection<QuoteRating>? QuoteRatings { get; set; }
-
         public virtual ICollection<Folder>? Folders { get; set; }
     }
 

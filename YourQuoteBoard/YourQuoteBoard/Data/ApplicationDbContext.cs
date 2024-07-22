@@ -17,8 +17,7 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<BookRating> BookRatings { get; set; }
         public virtual DbSet<QuoteRating> QuoteRatings { get; set; }
         public virtual DbSet<Folder> Folders { get; set; }
-        public virtual DbSet<QuoteTag> QuoteTags { get ; set; }
-        public virtual DbSet<BookTag> BookTags { get; set; }
+        public virtual DbSet<Tag> Tags { get ; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -40,14 +39,15 @@ namespace YourQuoteBoard.Data
 
             var defaultQuoteTags = Enum.GetValues(typeof(DefaultQuoteTags))
                 .Cast<DefaultQuoteTags>()
-                .Select(t => new QuoteTag
+                .Select(t => new Tag
                 {
-                    QuoteTagId = Guid.NewGuid(),
-                    Tag = t.ToString(),
-                    IsDefault = true
+                    TagId = Guid.NewGuid(),
+                    Name = t.ToString(),
+                    IsDefault = true,
+                    Discriminator = TagType.Quote
                 });
 
-            modelBuilder.Entity<QuoteTag>().HasData(defaultQuoteTags);
+            modelBuilder.Entity<Tag>().HasData(defaultQuoteTags);
 
             modelBuilder.Entity<Book>(entity =>
             {
@@ -63,14 +63,15 @@ namespace YourQuoteBoard.Data
 
             var defaultBookTags = Enum.GetValues(typeof(DefaultBookTags))
                 .Cast<DefaultBookTags>()
-                .Select(t => new BookTag
+                .Select(t => new Tag
                 {
-                    BookTagId = Guid.NewGuid(),
-                    Tag = t.ToString(),
-                    IsDefault = true
+                    TagId = Guid.NewGuid(),
+                    Name = t.ToString(),
+                    IsDefault = true,
+                    Discriminator = TagType.Book
                 });
 
-            modelBuilder.Entity<BookTag>().HasData(defaultBookTags);
+            modelBuilder.Entity<Tag>().HasData(defaultBookTags);
 
             modelBuilder.Entity<BookRating>(entity =>
             {
