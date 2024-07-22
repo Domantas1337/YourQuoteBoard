@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Enums;
 
 namespace YourQuoteBoard.Data
 {
@@ -16,6 +17,8 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<BookRating> BookRatings { get; set; }
         public virtual DbSet<QuoteRating> QuoteRatings { get; set; }
         public virtual DbSet<Folder> Folders { get; set; }
+        public virtual DbSet<QuoteTag> QuoteTags { get ; set; }
+        public virtual DbSet<BookTag> BookTags { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -28,14 +31,46 @@ namespace YourQuoteBoard.Data
                 .WithMany(u => u.Quotes)
                 .HasForeignKey(q => q.ApplicationUserId)
                 .IsRequired();
+
+                entity.HasMany(q => q.QuoteTags)
+                .WithOne()
+                .IsRequired(false);
             }
             );
 
-            modelBuilder.Entity<Book>()
-                .HasMany(b => b.Quotes)
+            var defaultQuoteTags = Enum.GetValues(typeof(DefaultQuoteTags))
+                .Cast<DefaultQuoteTags>()
+                .Select(t => new QuoteTag
+                {
+                    QuoteTagId = Guid.NewGuid(),
+                    Tag = t.ToString(),
+                    IsDefault = true
+                });
+
+            modelBuilder.Entity<QuoteTag>().HasData(defaultQuoteTags);
+
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.HasMany(b => b.Quotes)
                 .WithOne(b => b.Book)
                 .HasForeignKey(b => b.BookId)
                 .IsRequired();
+
+                entity.HasMany(b => b.BookTags)
+                .WithOne()
+                .IsRequired(false);
+            });
+
+            var defaultBookTags = Enum.GetValues(typeof(DefaultBookTags))
+                .Cast<DefaultBookTags>()
+                .Select(t => new BookTag
+                {
+                    BookTagId = Guid.NewGuid(),
+                    Tag = t.ToString(),
+                    IsDefault = true
+                });
+
+            modelBuilder.Entity<BookTag>().HasData(defaultBookTags);
 
             modelBuilder.Entity<BookRating>(entity =>
             {

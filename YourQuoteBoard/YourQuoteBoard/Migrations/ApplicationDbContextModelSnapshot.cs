@@ -309,6 +309,73 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("BookRatings");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.BookTag", b =>
+                {
+                    b.Property<Guid>("BookTagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("BookId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Tag")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BookTagId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookTags");
+
+                    b.HasData(
+                        new
+                        {
+                            BookTagId = new Guid("765e4444-62b1-486f-8aa0-dead824d4fa0"),
+                            IsDefault = true,
+                            Tag = "Biography"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("47d799f4-f5ef-404e-ba71-63f26244b3ac"),
+                            IsDefault = true,
+                            Tag = "Fiction"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("ce997cea-c3d7-4c3b-a1bc-17fd56a8f14a"),
+                            IsDefault = true,
+                            Tag = "Autobiography"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("120b2f01-33e3-4548-bbc2-4ae2d1badd31"),
+                            IsDefault = true,
+                            Tag = "Novel"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("7b23bbab-2adb-4ed7-bd03-243f36239684"),
+                            IsDefault = true,
+                            Tag = "Romantic"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("bbc58bcd-0340-40de-a17e-f882e27b7472"),
+                            IsDefault = true,
+                            Tag = "Non_Fiction"
+                        },
+                        new
+                        {
+                            BookTagId = new Guid("f2275b14-386b-4092-b15e-0426596f5b4e"),
+                            IsDefault = true,
+                            Tag = "Comedy"
+                        });
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.Folder", b =>
                 {
                     b.Property<Guid>("FolderId")
@@ -414,6 +481,73 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("QuoteRatings");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteTag", b =>
+                {
+                    b.Property<Guid>("QuoteTagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("QuoteId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tag")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QuoteTagId");
+
+                    b.HasIndex("QuoteId");
+
+                    b.ToTable("QuoteTags");
+
+                    b.HasData(
+                        new
+                        {
+                            QuoteTagId = new Guid("1da732f2-ebc6-4fad-be08-f3fb5b95649e"),
+                            IsDefault = true,
+                            Tag = "Inspirational"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("594986f8-ca34-477f-b478-8844581543f1"),
+                            IsDefault = true,
+                            Tag = "Funny"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("efc9c9d5-9f96-4ce2-9e1c-734f1106abd0"),
+                            IsDefault = true,
+                            Tag = "Philosophical"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("c1b51404-567a-415e-9126-e9f7d396f8ce"),
+                            IsDefault = true,
+                            Tag = "Literary"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("59a96010-bbb5-49ca-bc54-479937178c46"),
+                            IsDefault = true,
+                            Tag = "Sad"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("428ef8fc-cb20-4eb5-b936-bfc41040b909"),
+                            IsDefault = true,
+                            Tag = "Emotional"
+                        },
+                        new
+                        {
+                            QuoteTagId = new Guid("2388b233-1bf5-4c69-817a-83eca10cfbff"),
+                            IsDefault = true,
+                            Tag = "Informative"
+                        });
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Data.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -504,6 +638,13 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Book");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.BookTag", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Book", null)
+                        .WithMany("BookTags")
+                        .HasForeignKey("BookId");
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.Folder", b =>
                 {
                     b.HasOne("YourQuoteBoard.Data.ApplicationUser", null)
@@ -549,9 +690,18 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Quote");
                 });
 
+            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteTag", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
+                        .WithMany("QuoteTags")
+                        .HasForeignKey("QuoteId");
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
                 {
                     b.Navigation("BookRatings");
+
+                    b.Navigation("BookTags");
 
                     b.Navigation("Quotes");
                 });
@@ -559,6 +709,8 @@ namespace YourQuoteBoard.Migrations
             modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
                 {
                     b.Navigation("QuoteRatings");
+
+                    b.Navigation("QuoteTags");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Data.ApplicationUser", b =>

@@ -12,6 +12,7 @@ namespace YourQuoteBoard.Entity
         public string CoverImagePath { get; set; }
         public ICollection<Quote> Quotes { get; } = new List<Quote>();
         public ICollection<BookRating> BookRatings { get; } = new List<BookRating>();
+        public ICollection<BookTag> BookTags { get; } = new List<BookTag>();
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
 
