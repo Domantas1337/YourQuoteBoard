@@ -59,12 +59,8 @@ namespace YourQuoteBoard.Repositories
             Book book = await FetchAndInitializeBook(bookId);
 
             double sumOfRatings = (double)(book.AverageRating != null ? book.AverageRating * book.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + newRating;
-            
-            if (previousRating != 0)
-            {
-                newSumOfRatings -= previousRating;
-            }
+            double newSumOfRatings = sumOfRatings + newRating - previousRating;
+
 
             UpdateBookRating(book, newSumOfRatings, (int) book.NumberOfRatings);
 

@@ -8,5 +8,7 @@
         public DateTime Created { get; set; }
         public string BookTitle { get; set; }
         public Guid BookId { get; set; }
+        public double? AverageRating { get; set; }
+        public int? NumberOfRatings { get; set; }
     }
 }

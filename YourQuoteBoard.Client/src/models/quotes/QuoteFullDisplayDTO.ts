@@ -5,4 +5,6 @@ export interface QuoteFullDisplayDTO{
     created: Date;
     bookTitle: string;
     bookId: string;
+    averageRating: number | null;
+    numberOfRatings: number | null; 
 }

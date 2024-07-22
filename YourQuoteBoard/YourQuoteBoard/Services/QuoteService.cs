@@ -65,7 +65,9 @@ namespace YourQuoteBoard.Services
                 Author = quote.Author,
                 Created = quote.Created,
                 BookId = quote.BookId,
-                BookTitle = quote.Book.Title
+                BookTitle = quote.Book.Title,
+                AverageRating = quote.AverageRating,
+                NumberOfRatings = quote.NumberOfRatings
             };
         }
     }

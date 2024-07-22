@@ -44,11 +44,14 @@ export default function Book() {
             const { bookRatingId } = bookToDisplay.bookRating;
             
             if (bookRatingId) {
-                await updateBookRating({bookRatingId, bookId: id, previousRating: bookToDisplay.bookRating.rating, newRating: value});
-                setBookToDisplay({currentBook: bookToDisplay?.currentBook, bookRating: {bookRatingId, bookId: id, rating: value}});
+                console.log("Previous: ",  bookToDisplay.bookRating.overallRating)
+                console.log("Now: ", value)
+                
+                await updateBookRating({bookRatingId, bookId: id, previousRating: bookToDisplay.bookRating.overallRating, newRating: value});
+                setBookToDisplay({currentBook: bookToDisplay?.currentBook, bookRating: {bookRatingId, bookId: id, overallRating: value}});
                 console.log("Updated existing book rating.");
             } else {
-                const response = await addBookRating({bookId: id, rating: value});
+                const response = await addBookRating({bookId: id, overallRating: value});
                 const bookRatingdto = response.data;
 
                 setBookToDisplay({currentBook: bookToDisplay?.currentBook, bookRating: bookRatingdto})
@@ -56,7 +59,7 @@ export default function Book() {
             }
         } else {
             if (id && bookToDisplay) {
-                const response = await addBookRating({bookId: id, rating: value});
+                const response = await addBookRating({bookId: id, overallRating: value});
                 const bookRatingdto = response.data;
 
                 setBookToDisplay({currentBook: bookToDisplay?.currentBook, bookRating: bookRatingdto})
@@ -81,10 +84,19 @@ export default function Book() {
                 <div className="book-info-container">
                     <p className="book-author">By {bookToDisplay?.currentBook.author}</p>
                     <h6>Readers of the book have given it this rating:</h6>
-                    <div className="disabled-rating-container">
-                        <Rate disabled defaultValue={2}/>
-                        <h5>2</h5>
-                    </div>
+                    {
+                        bookToDisplay?.currentBook.averageRating ? (
+                            <div className="disabled-rating-container">
+                                <Rate disabled value={bookToDisplay!.currentBook!.averageRating}/>
+                                <h5>{bookToDisplay!.currentBook!.averageRating}</h5>
+                            </div>
+                        ) : (
+                            <div className="disabled-rating-container">
+                                <Rate disabled value={0}/>
+                                <h5>No rating</h5>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
             <div className="book-actions-container">
@@ -92,19 +104,20 @@ export default function Book() {
                 <button className="action-button quote">I found a quote in this book!</button>
                 
                 {
-                bookToDisplay?.bookRating?.rating ? (
+                bookToDisplay?.bookRating?.overallRating ? (
                     <div className="book-rating-container">       
-                        <span className="book-rating-span">Your rating: {bookToDisplay?.bookRating.rating}</span>       
+                        <span className="book-rating-span">Your rating: {bookToDisplay?.bookRating.overallRating}</span>       
                         <br />
-                        <Rate allowHalf defaultValue={bookToDisplay?.bookRating.rating} onChange={handleGivenRating} />
+                        <Rate allowHalf value={bookToDisplay?.bookRating.overallRating} onChange={handleGivenRating} />
                     </div>  
                 ) : (
                     <div className="book-rating-container">       
                         <span className="book-rating-span">Rate this book:</span>       
                         <br />
-                        <Rate allowHalf defaultValue={2} onChange={handleGivenRating} />
+                        <Rate allowHalf value={2} onChange={handleGivenRating} />
                     </div> 
-                )}
+                )
+                }
 
             </div>
 
