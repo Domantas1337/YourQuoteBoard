@@ -18,5 +18,14 @@ namespace YourQuoteBoard.Entity
 
         [NotMapped]
         public IFormFile CoverImage { get; set; }
+
+
+        public void AddTags(ICollection<Tag> tags)
+        {
+            foreach (var tag in tags)
+            {
+                BookTags.Add(tag);
+            }
+        }
     }
 }

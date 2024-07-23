@@ -8,5 +8,6 @@ namespace YourQuoteBoard.Entity
         public required string Name { get; set; }
         public required bool IsDefault { get; set; }
         public required TagType Discriminator { get; set; }
+
     }
 }

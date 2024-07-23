@@ -20,14 +20,13 @@ export default function Quote(){
 
     console.log(quote?.currentQuote.title);
 
+
     useEffect(() => {
         const fetchQuote = async () => {
             try {
                 if (id){
                     const fetchedQuote = await getQuoteForDesignatedPage(id);
                     const rating = await getUserQuoteRating(id);
-                    console.log("Is it");
-                    console.log(fetchedQuote?.averageRating);
 
                     setQuote({currentQuote: fetchedQuote, quoteRating: rating});
                 }

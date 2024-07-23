@@ -9,7 +9,7 @@ using YourQuoteBoard.Utilities;
 
 namespace YourQuoteBoard.Services
 {
-    public class BookService(IBookRepository _bookRepository, IMapper _mapper) : IBookService
+    public class BookService(IBookRepository _bookRepository, ITagRepository _tagRepository, IMapper _mapper) : IBookService
     {
         public async Task<BookAddDTO> AddBookAsync(BookAddDTO book)
         {
@@ -19,6 +19,9 @@ namespace YourQuoteBoard.Services
             bookToAdd.NumberOfRatings = 0;
             bookToAdd.AverageRating = 0;
             bookToAdd.CoverImagePath = pngPath.Result;
+
+            ICollection<Tag> tags = await _tagRepository.GetTagsByTagIdAsync(book.TagIds);
+            bookToAdd.AddTags(tags);
 
             Book addedBook = await _bookRepository.AddBookAsync(bookToAdd);
 

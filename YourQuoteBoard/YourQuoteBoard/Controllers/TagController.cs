@@ -27,8 +27,13 @@ namespace YourQuoteBoard.Controllers
             return Ok(tags);
         }
 
+        [HttpGet("default-tags")]
+        public async Task<IActionResult> GetAllDefaultTags(TagType tagType)
+        {
+            var tags = await _tagService.GetAllDefaultTagsAsync(tagType);
 
-
+            return Ok(tags);
+        }
 
     }
 }

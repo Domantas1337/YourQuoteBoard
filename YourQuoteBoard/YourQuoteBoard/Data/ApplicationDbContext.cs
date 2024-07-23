@@ -52,9 +52,10 @@ namespace YourQuoteBoard.Data
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.HasMany(b => b.Quotes)
-                .WithOne(b => b.Book)
-                .HasForeignKey(b => b.BookId)
-                .IsRequired();
+                    .WithOne(q => q.Book)
+                    .HasForeignKey(q => q.BookId)
+                    .IsRequired();
+
 
                 entity.HasMany(b => b.BookTags)
                 .WithOne()

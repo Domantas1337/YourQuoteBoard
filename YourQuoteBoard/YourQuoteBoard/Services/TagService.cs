@@ -33,6 +33,21 @@ namespace YourQuoteBoard.Services
             };
         }
 
+        public async Task<TagDisplayDTO[]> GetAllDefaultTagsAsync(TagType tagType)
+        {
+            var tags = await GetAllDefaultTagsByTypeAsync(tagType);
+            return _mapper.Map<TagDisplayDTO[]>(tags);
+        }
+
+        private async Task<Tag[]> GetAllDefaultTagsByTypeAsync(TagType tagType)
+        {
+            return tagType switch
+            {
+                TagType.Book => await _tagRepository.GetAllDefaultBookTagsAsync(),
+                TagType.Quote => await _tagRepository.GetAllDefaultQuoteTagsAsync(),
+                _ => throw new ArgumentException($"Unsupported tag type: {tagType}", nameof(tagType))
+            };
+        }
 
     }
 }

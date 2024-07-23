@@ -7,6 +7,7 @@ namespace YourQuoteBoard.Interfaces.Service
     {    
         public Task<TagCreateDTO> AddTagAsync(TagCreateDTO tagCreateDTO);
         public Task<TagDisplayDTO[]> GetAllTagsAsync(TagType tagType);
+        public Task<TagDisplayDTO[]> GetAllDefaultTagsAsync(TagType tagType);
     }
 
 }

@@ -10,6 +10,7 @@ namespace YourQuoteBoard.Repositories
     {
         public async Task<Book> AddBookAsync(Book book)
         {
+
             await _applicationDbContext.AddAsync(book);
             await _applicationDbContext.SaveChangesAsync();
 

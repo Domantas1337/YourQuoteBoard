@@ -5,6 +5,7 @@ using YourQuoteBoard.DTO.Folder;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.DTO.Rating.Book;
+using YourQuoteBoard.DTO.Tag;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Utilities;
 
@@ -14,8 +15,11 @@ namespace YourQuoteBoard
     {
         public MappingProfile() 
         {
+
+            CreateMap<TagDisplayDTO, Tag>();
+
             CreateMap<Book, BookDisplayDTO>().ReverseMap();
-            CreateMap<Book, BookAddDTO>().ReverseMap();
+            CreateMap<BookAddDTO, Book>().ReverseMap();
 
             CreateMap<QuoteAddDTO, Quote>()
                 .AfterMap((src, dest, context) =>

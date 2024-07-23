@@ -3,6 +3,6 @@
     public class TagDisplayDTO
     {
         public Guid TagId { get; set; }
-        public string Tag { get; set; }
+        public string Name { get; set; }
     }
 }
