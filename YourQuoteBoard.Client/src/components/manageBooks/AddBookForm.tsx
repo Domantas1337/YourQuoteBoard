@@ -6,6 +6,8 @@ import { TagDisplayDTO } from "../../models/tag/TagDisplayDTO";
 import { getDefaultTags } from "../../api/tag";
 import { TagType } from "../../enums/TagType";
 import "./BookForm.css";
+import TagSelect from "../tags/TagSelect";
+import TagListAfterSelect from "../tags/TagListAfterSelect";
 
 export default function AddBookForm(){
 
@@ -26,7 +28,6 @@ export default function AddBookForm(){
             try{
                 const fetchedTags = await getDefaultTags(TagType.Book);
                 
-                console.log(fetchedTags);
                 setTags(fetchedTags);
             }catch(error){
                 console.log("Failed to fetch tags: ", error);
@@ -41,16 +42,9 @@ export default function AddBookForm(){
     }
 
     function handleTagAddition(){
-        console.log("kaaaaa");
-        if (selectedTag == null){
+        if (selectedTag == null || book.tagIds.length > 4){
             return;
         }
-        console.log("kaaaaa");
-
-        if (book.tagIds.length > 4){
-            return;
-        }
-        console.log("kaaaaa");
 
         if(!book.tagIds.includes(selectedTag.tagId)){
             setBook(prevBook => ({
@@ -96,6 +90,7 @@ export default function AddBookForm(){
         }
     }
 
+    
     return (
         <div className="default-form-container">
             <form className="default-form" onSubmit={handleSubmit}>
@@ -157,30 +152,9 @@ export default function AddBookForm(){
                         ></textarea>
                 </div>
 
-                <div className="form-group tag-section">
-                    <label htmlFor="tagInput" className="default-label">Tags:</label>
-                    <div className="tag-input-container">
-                        <select id="tagInput" className="tag-select"  onChange={(e) => handleTagSelection(tags[parseInt(e.target.value)])}>
-                            <option value="">Select a tag</option>
-                            {tags && tags.map((tag, index) => (
-                            <option key={tag.tagId} value={index}>{tag.name}</option>
-                            ))}
-                        </select>
-                        <button type="button" className="add-tag-btn" onClick={handleTagAddition}>Add Tag</button>
-                    </div>
-                </div>
+                <TagSelect onSelectedFromList={handleTagSelection} onTagAddition={handleTagAddition} tagType={TagType.Book}></TagSelect> 
+                <TagListAfterSelect tags={tags} selectedTagIds={book.tagIds}  onRemoveTag={removeTag} />
 
-                <div className="selected-tags">
-                    {book.tagIds.map((tag, index) => (
-                        <span key={index} className="tag">
-                            {tags.find(t => t.tagId === tag)!.name}
-                            <button type="button" className="remove-tag-btn" onClick={() => removeTag(tag)}>
-                                ×
-                            </button>
-                        </span>
-                    ))}
-                </div>
-                
                 <div className="form-group">
                     <label 
                         htmlFor="imageInput"
