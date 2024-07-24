@@ -19,7 +19,7 @@ namespace YourQuoteBoard.Repositories
         {
             var tags = await _context.Tags
                                      .Where(t => t.IsDefault == true)
-                                     .Where(t => t.Discriminator == Enums.TagType.Quote)
+                                     .Where(t => t.Discriminator == Enums.TagType.Book)
                                      .ToArrayAsync();
             return tags;
         }

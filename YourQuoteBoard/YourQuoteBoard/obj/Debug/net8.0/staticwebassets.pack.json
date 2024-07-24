@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\05f7c48f-1ec1-4d5f-a8b5-c8de94fbf908.png",
+      "PackagePath": "staticwebassets\\images\\05f7c48f-1ec1-4d5f-a8b5-c8de94fbf908.png"
+    },
+    {
       "Id": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png",
       "PackagePath": "staticwebassets\\images\\09efb29e-46f1-42da-b881-0e5fa8052f93.png"
     },
@@ -31,6 +35,10 @@
     {
       "Id": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\67eadf61-46a1-47b3-b625-869f951bb3d4.png",
       "PackagePath": "staticwebassets\\images\\67eadf61-46a1-47b3-b625-869f951bb3d4.png"
+    },
+    {
+      "Id": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\7adfe9dd-e514-43d9-8690-9de241f2773b.png",
+      "PackagePath": "staticwebassets\\images\\7adfe9dd-e514-43d9-8690-9de241f2773b.png"
     },
     {
       "Id": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\wwwroot\\images\\7c8d217b-7d58-485e-9107-35780cf22068.png",

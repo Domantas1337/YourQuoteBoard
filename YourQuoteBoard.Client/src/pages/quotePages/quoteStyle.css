@@ -233,3 +233,35 @@ html, body{
     background-color: #e9ecef;
     transform: translateY(-2px);
 }
+
+.quote-tag-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: calc(100% - 200px); /* Ensure it doesn't overlap with the rating */
+}
+
+.quote-tag {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.quote-tag:hover {
+    background-color: #bae6fd;
+    transform: translateY(-2px);
+}
+
+.quote-tag span {
+    margin-left: 5px;
+}

@@ -27,7 +27,9 @@ export default function Quote(){
                 if (id){
                     const fetchedQuote = await getQuoteForDesignatedPage(id);
                     const rating = await getUserQuoteRating(id);
+                    console.log("ne");
 
+                    console.log(fetchedQuote.tags);
                     setQuote({currentQuote: fetchedQuote, quoteRating: rating});
                 }
             }catch(excepiton){
@@ -85,6 +87,17 @@ export default function Quote(){
                 <div className="single-quote-symbol-container">
                     <span className="quote-symbol">"</span>
                 </div>
+            </div>
+
+
+            <div className="quote-tag-container">
+                {
+                    quote?.currentQuote.tags.map((tag, index) => (
+                        <div key={index} className="quote-tag">
+                            <span>{tag.name}</span>
+                        </div>
+                    ))
+                }
             </div>
             <div className="quote-rating-container">
                 <h6> Average quote rating:</h6>

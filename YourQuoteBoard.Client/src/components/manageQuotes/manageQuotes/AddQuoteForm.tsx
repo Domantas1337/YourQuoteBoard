@@ -4,10 +4,22 @@ import { createQuote } from '../../../api/quote';
 import { useNavigate } from 'react-router-dom';
 import { getAllBooks } from "../../../api/book";
 import BookDisplayDTO from "../../../models/books/BookDisplayDTO";
+import TagSelect from "../../tags/TagSelect";
+import TagListAfterSelect from "../../tags/TagListAfterSelect";
+import { TagType } from "../../../enums/TagType";
+import useTagManagement from "../../tags/useTagManagement";
  
 function AddQuoteForm(){
 
-    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: '', bookId: null});
+    const { 
+        tags, 
+        selectedTagIds,
+        handleTagSelection, 
+        handleTagAddition,
+        removeTag
+      } = useTagManagement(TagType.Quote);
+
+    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: '', bookId: null, tagIds: selectedTagIds});
     const [books, setBooks] = useState<BookDisplayDTO[]>([]);
     const navigate = useNavigate()
 
@@ -50,6 +62,14 @@ function AddQuoteForm(){
         }
     }
 
+    useEffect(() => {
+        setQuote(prevQuote => ({
+                ...prevQuote,
+                tagIds: selectedTagIds 
+            })
+        )
+    }, [selectedTagIds]);
+
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try{
@@ -58,7 +78,7 @@ function AddQuoteForm(){
                 const response = createQuote(quote);
                 console.log('Quote submitted:', response);
                 
-                setQuote({ title: '', description: '', author: '', bookId: null});
+                setQuote({ title: '', description: '', author: '', bookId: null, tagIds: []});
                 navigate('/browse-quotes')
             } 
         } catch (error) {
@@ -125,6 +145,10 @@ function AddQuoteForm(){
                     
                 }
                 </datalist>  
+
+                <TagSelect onSelectedFromList={handleTagSelection} onTagAddition={handleTagAddition} tagType={TagType.Quote}></TagSelect> 
+                <TagListAfterSelect tags={tags} selectedTagIds={quote.tagIds}  onRemoveTag={removeTag} />
+                
                 <button type="submit" className="btn btn-default submit-button">Submit quote</button>
             </form>
         </div>

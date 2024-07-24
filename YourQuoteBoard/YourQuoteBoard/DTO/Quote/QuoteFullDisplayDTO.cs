@@ -1,4 +1,6 @@
-﻿namespace YourQuoteBoard.DTO.Quote
+﻿using YourQuoteBoard.DTO.Tag;
+
+namespace YourQuoteBoard.DTO.Quote
 {
     public class QuoteFullDisplayDTO
     {
@@ -10,5 +12,6 @@
         public Guid BookId { get; set; }
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
+        public ICollection<TagDisplayDTO> Tags { get; set; }
     }
 }

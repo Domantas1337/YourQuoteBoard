@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Quote;
+using YourQuoteBoard.DTO.Tag;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 
 namespace YourQuoteBoard.Services
 {
-    public class QuoteService(IQuoteRepository _quoteRepository, IMapper _mapper) : IQuoteService
+    public class QuoteService(IQuoteRepository _quoteRepository, ITagRepository _tagRepository, IMapper _mapper) : IQuoteService
     {
         public async Task<List<QuoteDisplayDTO>> GetQuotesByBookIdAsync(Guid bookId)
         {
@@ -22,6 +23,9 @@ namespace YourQuoteBoard.Services
                 opts.Items["userId"] = userId;
             });
 
+            var tagsForQuote = await _tagRepository.GetTagsByTagIdAsync(quoteAddDTO.TagIds);
+            quote.AddTags(tagsForQuote);  
+            
             var addedQuote = await _quoteRepository.AddQuoteAsync(quote);
 
             return quoteAddDTO;
@@ -67,7 +71,8 @@ namespace YourQuoteBoard.Services
                 BookId = quote.BookId,
                 BookTitle = quote.Book.Title,
                 AverageRating = quote.AverageRating,
-                NumberOfRatings = quote.NumberOfRatings
+                NumberOfRatings = quote.NumberOfRatings,
+                Tags = _mapper.Map<ICollection<TagDisplayDTO>>(quote.Tags)       
             };
         }
     }

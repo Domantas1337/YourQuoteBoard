@@ -3,4 +3,5 @@ export interface QuoteCreateDTO{
     description: string;
     author: string;
     bookId: string | null;
+    tagIds: string[];
 }

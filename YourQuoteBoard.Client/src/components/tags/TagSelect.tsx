@@ -17,7 +17,7 @@ export default function TagSelect({onSelectedFromList, onTagAddition, tagType} :
         const fetchTags = async () => {
             try{
                 const fetchedTags = await getDefaultTags(tagType);
-                
+                console.log(tagType);
                 setTags(fetchedTags);
             }catch(error){
                 console.log("Failed to fetch tags: ", error);
@@ -25,7 +25,7 @@ export default function TagSelect({onSelectedFromList, onTagAddition, tagType} :
         }
 
         fetchTags();
-    }, [TagType]);
+    }, [tagType]);
 
     return <div className="form-group tag-section">
                 <label htmlFor="tagInput" className="default-label">Tags:</label>

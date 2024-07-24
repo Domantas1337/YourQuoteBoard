@@ -1,4 +1,4 @@
 export enum TagType {
-    Qupte = 0,
+    Quote = 0,
     Book = 1
 }

@@ -1,3 +1,5 @@
+import { TagDisplayDTO } from "../tag/TagDisplayDTO";
+
 export interface QuoteFullDisplayDTO{
     title: string;
     description: string;
@@ -6,5 +8,6 @@ export interface QuoteFullDisplayDTO{
     bookTitle: string;
     bookId: string;
     averageRating: number | null;
-    numberOfRatings: number | null; 
+    numberOfRatings: number | null;
+    tags: TagDisplayDTO[]; 
 }

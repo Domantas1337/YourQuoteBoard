@@ -17,10 +17,18 @@ namespace YourQuoteBoard.Entity
         public ICollection<QuoteRating> QuoteRatings { get; } = new List<QuoteRating>();
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
-        public ICollection<Tag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; } = new List<Tag>();
 
         [Required]
         public required string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        public void AddTags(ICollection<Tag> tags)
+        {
+            foreach (var tag in tags)
+            {
+                Tags.Add(tag);
+            }
+        }
     }
 }

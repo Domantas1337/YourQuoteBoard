@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 import { BookCreateDTO } from "../../models/books/BookCreateDTO";
 import { createBook } from '../../api/book';
 import ImageUploadButton from "../managers/ImageUpload";
-import { TagDisplayDTO } from "../../models/tag/TagDisplayDTO";
-import { getDefaultTags } from "../../api/tag";
 import { TagType } from "../../enums/TagType";
 import "./BookForm.css";
 import TagSelect from "../tags/TagSelect";
 import TagListAfterSelect from "../tags/TagListAfterSelect";
+import useTagManagement from "../tags/useTagManagement";
 
 export default function AddBookForm(){
+
+    const { 
+        tags, 
+        selectedTagIds,
+        handleTagSelection, 
+        handleTagAddition,
+        removeTag
+      } = useTagManagement(TagType.Book);
 
     const [book, setBook] = useState<BookCreateDTO>({
         title: '', 
@@ -17,45 +24,9 @@ export default function AddBookForm(){
         author: '', 
         pages: 0, 
         coverImage: null,
-        tagIds: []
+        tagIds: selectedTagIds
     });
 
-    const [tags, setTags] = useState<TagDisplayDTO[]>([]);
-    const [selectedTag, setSelectedTag] = useState<TagDisplayDTO | null>(null);
-
-    useEffect(() => {
-        const fetchTags = async () => {
-            try{
-                const fetchedTags = await getDefaultTags(TagType.Book);
-                
-                setTags(fetchedTags);
-            }catch(error){
-                console.log("Failed to fetch tags: ", error);
-            }
-        }
-
-        fetchTags();
-    }, []);
-
-    function handleTagSelection(tag: TagDisplayDTO){
-        setSelectedTag(tag)
-    }
-
-    function handleTagAddition(){
-        if (selectedTag == null || book.tagIds.length > 4){
-            return;
-        }
-
-        if(!book.tagIds.includes(selectedTag.tagId)){
-            setBook(prevBook => ({
-                ...prevBook,
-                tagIds: [...prevBook.tagIds, selectedTag.tagId]
-            }));
-
-        }else{
-            console.log(selectedTag);
-        }
-    }
 
     function handleNewInput(e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         setBook(prevBook => ({
@@ -71,13 +42,6 @@ export default function AddBookForm(){
         }));
     }
 
-    function removeTag(tagToRemove: string) {
-        setBook(prevBook => ({
-            ...prevBook,
-            tags: prevBook.tagIds.filter(tagId => tagId !== tagToRemove)
-        }));
-    }
-
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try{
@@ -90,6 +54,12 @@ export default function AddBookForm(){
         }
     }
 
+    useEffect(() => {
+        setBook(prevBook => ({
+          ...prevBook,
+          tagIds: selectedTagIds
+        }));
+      }, [selectedTagIds]);
     
     return (
         <div className="default-form-container">
