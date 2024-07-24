@@ -18,8 +18,13 @@ namespace YourQuoteBoard
 
             CreateMap<TagDisplayDTO, Tag>();
 
-            CreateMap<Book, BookDisplayDTO>().ReverseMap();
             CreateMap<BookAddDTO, Book>().ReverseMap();
+
+            CreateMap<BookDisplayDTO, Book>();
+            CreateMap<Book, BookDisplayDTO>()
+                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags));
+
+            CreateMap<Tag, TagDisplayDTO>();
 
             CreateMap<QuoteAddDTO, Quote>()
                 .AfterMap((src, dest, context) =>

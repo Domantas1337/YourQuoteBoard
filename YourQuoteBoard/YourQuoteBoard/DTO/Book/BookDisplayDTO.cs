@@ -1,4 +1,6 @@
-﻿namespace YourQuoteBoard.DTO.Book
+﻿using YourQuoteBoard.DTO.Tag;
+
+namespace YourQuoteBoard.DTO.Book
 {
     public class BookDisplayDTO
     {
@@ -8,5 +10,6 @@
         public string CoverImagePath { get; set; }
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
+        public ICollection<TagDisplayDTO> Tags { get; set; } = [];
     }
 }

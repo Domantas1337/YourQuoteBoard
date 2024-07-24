@@ -17,6 +17,21 @@ namespace YourQuoteBoard.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
 
+            modelBuilder.Entity("BookTag", b =>
+                {
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TagsTagId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BookId", "TagsTagId");
+
+                    b.HasIndex("TagsTagId");
+
+                    b.ToTable("BookTag");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -233,6 +248,21 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("QuoteFolderJointTable");
                 });
 
+            modelBuilder.Entity("QuoteTag", b =>
+                {
+                    b.Property<Guid>("QuoteId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TagsTagId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QuoteId", "TagsTagId");
+
+                    b.HasIndex("TagsTagId");
+
+                    b.ToTable("QuoteTag");
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
                 {
                     b.Property<Guid>("BookId")
@@ -420,9 +450,6 @@ namespace YourQuoteBoard.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("BookId")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Discriminator")
                         .HasColumnType("INTEGER");
 
@@ -433,112 +460,105 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuoteId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("TagId");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("QuoteId");
 
                     b.ToTable("Tags");
 
                     b.HasData(
                         new
                         {
-                            TagId = new Guid("39859e0e-da9e-45f2-b28e-da3b1f0effb3"),
+                            TagId = new Guid("965064d8-8439-4e4e-b529-b96fb8c2f887"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Inspirational"
                         },
                         new
                         {
-                            TagId = new Guid("e6d09777-7e3f-48ec-b488-fb78cf7e2041"),
+                            TagId = new Guid("fcbf6907-12b7-4d19-a2d3-691090557a40"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Funny"
                         },
                         new
                         {
-                            TagId = new Guid("e8fd41bf-4190-478e-8b62-c93880305eac"),
+                            TagId = new Guid("1882e152-822b-4fc0-8a3e-9b8d9150f9d1"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Philosophical"
                         },
                         new
                         {
-                            TagId = new Guid("2a95af04-827c-4909-b8bb-a6f45ceaebd8"),
+                            TagId = new Guid("35799033-15c4-4990-a909-6304fbc2683c"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Literary"
                         },
                         new
                         {
-                            TagId = new Guid("43b48783-e221-4bf3-a73b-6017f2d04f36"),
+                            TagId = new Guid("2e23f13f-d9f5-4938-a1e6-dcfa07bed2ee"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Sad"
                         },
                         new
                         {
-                            TagId = new Guid("89e8dfb2-33b4-44aa-b030-25f3737d368b"),
+                            TagId = new Guid("083429ba-3101-41af-8fc4-001492bde4a8"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Emotional"
                         },
                         new
                         {
-                            TagId = new Guid("ce86fb41-6b32-41c8-8ab4-8e0cacc4d366"),
+                            TagId = new Guid("1ecd8b4b-7248-41aa-8f40-5e776168a13c"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Informative"
                         },
                         new
                         {
-                            TagId = new Guid("ed8bc374-79e5-426c-88bf-1f4ea5404289"),
+                            TagId = new Guid("541be059-3c00-46f4-9c59-0cda28c7ffeb"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Biography"
                         },
                         new
                         {
-                            TagId = new Guid("fdb9164f-57c5-4fc4-b4d2-b09d56052490"),
+                            TagId = new Guid("e75db146-c87b-42ba-a1d0-8280aa7907af"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("6dcec3e1-49c8-4b37-8ad8-ea0cd0a6b860"),
+                            TagId = new Guid("453d001e-bc93-4508-8844-d6d3698f008d"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Autobiography"
                         },
                         new
                         {
-                            TagId = new Guid("06d64c8e-b9eb-43af-b4c7-dc785aebd552"),
+                            TagId = new Guid("ff273830-5bae-4a1d-ad8c-ee89af053a70"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Novel"
                         },
                         new
                         {
-                            TagId = new Guid("51fc6b5a-038f-49ff-9ba5-e21cc4783803"),
+                            TagId = new Guid("d05094a2-9ac0-41f6-bd85-d162d2b52dcc"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Romantic"
                         },
                         new
                         {
-                            TagId = new Guid("9498c845-946c-44c2-9a94-aaf3e49c6ba4"),
+                            TagId = new Guid("01943c18-3355-4ac1-86d1-a4e89b3a44ad"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Non_Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("5de8522b-b7ce-418b-959f-6bb1c04ef14c"),
+                            TagId = new Guid("bb6d8f8c-d53d-4db5-b288-2163578517e2"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Comedy"
@@ -550,6 +570,21 @@ namespace YourQuoteBoard.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("BookTag", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Book", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YourQuoteBoard.Entity.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -618,6 +653,21 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QuoteTag", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
+                        .WithMany()
+                        .HasForeignKey("QuoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YourQuoteBoard.Entity.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsTagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("YourQuoteBoard.Entity.BookRating", b =>
                 {
                     b.HasOne("YourQuoteBoard.Data.ApplicationUser", null)
@@ -680,22 +730,9 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Quote");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Tag", b =>
-                {
-                    b.HasOne("YourQuoteBoard.Entity.Book", null)
-                        .WithMany("BookTags")
-                        .HasForeignKey("BookId");
-
-                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
-                        .WithMany("QuoteTags")
-                        .HasForeignKey("QuoteId");
-                });
-
             modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
                 {
                     b.Navigation("BookRatings");
-
-                    b.Navigation("BookTags");
 
                     b.Navigation("Quotes");
                 });
@@ -703,8 +740,6 @@ namespace YourQuoteBoard.Migrations
             modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
                 {
                     b.Navigation("QuoteRatings");
-
-                    b.Navigation("QuoteTags");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Data.ApplicationUser", b =>

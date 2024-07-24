@@ -31,9 +31,8 @@ namespace YourQuoteBoard.Data
                 .HasForeignKey(q => q.ApplicationUserId)
                 .IsRequired();
 
-                entity.HasMany(q => q.QuoteTags)
-                .WithOne()
-                .IsRequired(false);
+                entity.HasMany(b => b.Tags)
+                      .WithMany();
             }
             );
 
@@ -57,9 +56,8 @@ namespace YourQuoteBoard.Data
                     .IsRequired();
 
 
-                entity.HasMany(b => b.BookTags)
-                .WithOne()
-                .IsRequired(false);
+                entity.HasMany(b => b.Tags)
+                      .WithMany();
             });
 
             var defaultBookTags = Enum.GetValues(typeof(DefaultBookTags))

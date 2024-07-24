@@ -29,6 +29,13 @@ namespace YourQuoteBoard.Controllers
             try
             {
                 BookDisplayDTO book = await _bookService.GetBookForDisplayByIdAsync(id);
+
+                Console.WriteLine("Hundreds");
+                foreach (var tag in book.Tags) 
+                {
+                    Console.WriteLine(tag.Name);
+                }
+                
                 return Ok(book);
             }catch (EntityNotFoundException ex)
             {

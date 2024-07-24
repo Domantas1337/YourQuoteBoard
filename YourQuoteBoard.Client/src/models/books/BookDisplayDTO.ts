@@ -1,3 +1,5 @@
+import { TagDisplayDTO } from "../tag/TagDisplayDTO";
+
 export default interface BookDisplayDTO{
     bookId: string;
     title: string;
@@ -5,4 +7,5 @@ export default interface BookDisplayDTO{
     coverImagePath: string;
     averageRating: number | null;
     numberOfRatings: number | null;
+    tags: TagDisplayDTO[];
 }

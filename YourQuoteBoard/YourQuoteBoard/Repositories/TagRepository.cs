@@ -26,9 +26,17 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<ICollection<Tag>> GetTagsByTagIdAsync(ICollection<Guid> ids)
         {
-            return await _context.Tags
+            var tags =  await _context.Tags
                                  .Where(t => ids.Contains(t.TagId))
                                  .ToArrayAsync();
+
+            Console.WriteLine("prasideda");
+            foreach (var tag in tags)
+            {
+                Console.WriteLine(tag.Name);
+            }
+
+            return tags;
         }
 
 

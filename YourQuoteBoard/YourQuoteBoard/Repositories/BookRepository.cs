@@ -24,7 +24,7 @@ namespace YourQuoteBoard.Repositories
                 return null;
             }
 
-            Book? book = await _applicationDbContext.Books.FirstOrDefaultAsync(b => b.BookId == id);
+            Book? book = await _applicationDbContext.Books.Include(b => b.Tags).FirstOrDefaultAsync(b => b.BookId == id);
 
             return book;
         }

@@ -17,7 +17,7 @@ namespace YourQuoteBoard.Entity
         public ICollection<QuoteRating> QuoteRatings { get; } = new List<QuoteRating>();
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
-        public ICollection<Tag> QuoteTags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
 
         [Required]
         public required string ApplicationUserId { get; set; }
