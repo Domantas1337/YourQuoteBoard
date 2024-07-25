@@ -24,9 +24,14 @@ export async function getQuoteFoldersByUserId(typeOfFolder: FolderType): Promise
 } 
 
 export async function getFolderContentById(id: string, typeOfFolder: FolderType): Promise<FolderContentDisplayDTO | null>{
-    console.log(`api/Folders/${typeOfFolder}/${id}`);
     const response = await apiClient.get<FolderContentDisplayDTO>(`api/Folders/${typeOfFolder}/${id}`);
     const folder = response.data;
     
     return folder;
+}
+
+export async function addQuoteToFolder(folderId:string, quoteId: string) {
+    const response = await apiClient.post(`api/Folders/add-quote/${folderId}`, quoteId);
+
+    return response;
 }

@@ -17,8 +17,7 @@ export default function Quote(){
     const [quote, setQuote] = useState<QuoteInfo | null>(null);
     const {id} = useParams();
     const navigate = useNavigate();
-
-    console.log(quote?.currentQuote.title);
+    
 
 
     useEffect(() => {
@@ -27,9 +26,7 @@ export default function Quote(){
                 if (id){
                     const fetchedQuote = await getQuoteForDesignatedPage(id);
                     const rating = await getUserQuoteRating(id);
-                    console.log("ne");
 
-                    console.log(fetchedQuote.tags);
                     setQuote({currentQuote: fetchedQuote, quoteRating: rating});
                 }
             }catch(excepiton){
@@ -41,6 +38,10 @@ export default function Quote(){
     
     const handleBookVisit = (bookId: string) => {
         navigate(`/book/${bookId}`)
+    }
+
+    function handleQuoteSave(){
+        navigate(`/my-quotes?quoteId=${id}`);
     }
 
     const handleGivenRating = async (value: number) => {
@@ -119,7 +120,7 @@ export default function Quote(){
             </div>
         </div>
 
-        <div className="user-rating-container">
+        <div className="user-action-container">
             {
                 quote?.quoteRating?.overallRating ? (
                     <div className="rating-container">       
@@ -134,7 +135,11 @@ export default function Quote(){
                         <Rate allowHalf value={2} onChange={handleGivenRating} />
                     </div> 
                 )
-                }
+            }
+
+            <div className="save-to-folder">
+                <button className="save-button" onClick={handleQuoteSave}>Save quote</button>
+            </div>
         </div>
 
         <div className="section-icon section-author">

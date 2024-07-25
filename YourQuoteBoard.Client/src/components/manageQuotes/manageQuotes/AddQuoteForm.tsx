@@ -73,7 +73,6 @@ function AddQuoteForm(){
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try{
-            console.log(quote);
             if (quote.bookId != null){
                 const response = createQuote(quote);
                 console.log('Quote submitted:', response);

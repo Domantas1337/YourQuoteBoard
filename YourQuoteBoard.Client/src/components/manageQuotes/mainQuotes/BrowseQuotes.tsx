@@ -27,7 +27,6 @@ function BrowseQuotes(){
     );
 
     const handleCardClick = (quoteId: string) => {
-        console.log(`Navigating to quote/${quoteId}`); 
         navigate(`/quote/${quoteId}`);
     }
 

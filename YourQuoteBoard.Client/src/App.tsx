@@ -29,7 +29,7 @@ function App() {
                       } />          
             <Route path="browse-quotes" element={<BrowseQuotes />} />
             <Route path="add-quote" element={<AddQuoteForm />} />
-            <Route path="my-quotes" element={<MyQuotes />} />
+            <Route path="my-quotes" element={<MyQuotes/>} />
             <Route path="browse-books" element={<BrowseBooks />} />
             <Route path="add-book" element={<AddBookForm />} />
             <Route path="book/:id" element={<Book />} />

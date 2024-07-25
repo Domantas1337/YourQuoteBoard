@@ -41,11 +41,12 @@ html, body{
     margin-bottom: 120px;
 }
 
-.user-rating-container {
+.user-action-container {
     grid-column: 1 / -1; /* Span all columns */
     grid-row: 2; /* Place it in the second row */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;  /* Change to row */
+    justify-content: space-between; 
     align-items: center;
     background-color: #f0f4f8; /* Slightly darker background */
     padding: 20px;
@@ -264,4 +265,38 @@ html, body{
 
 .quote-tag span {
     margin-left: 5px;
+}
+
+.save-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    background-color: #4CAF50;  /* A fresh green color */
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 20px;  /* Add some space above the button */
+}
+
+.save-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(76, 175, 80, 0.4);
+}
+
+.save-button:active {
+    background-color: #3d8b40;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.4);
+}
+
+.save-button::before {
+    content: '💾';  /* Save icon */
+    margin-right: 8px;
 }
