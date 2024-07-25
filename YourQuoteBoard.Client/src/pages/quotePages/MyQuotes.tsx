@@ -51,7 +51,9 @@ export default function MyQuotes(){
                             <QuoteFolder name={folder.name} 
                             onClick={() => 
                                 handleFolderClick(folder.folderId)
-                                }/>
+                                
+                                }
+                            addQuoteMode={quoteId != null}/>
                         </Col>
                 ))
             }

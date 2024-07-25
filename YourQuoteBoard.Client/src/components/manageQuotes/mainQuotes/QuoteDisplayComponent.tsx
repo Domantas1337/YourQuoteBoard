@@ -7,12 +7,13 @@ interface QuoteDisplayComponentProps{
 }
 
 export default function QuoteDisplayComponent({quotes} : QuoteDisplayComponentProps){
+    
     return (
         <div> 
             <div className='card-container'>
                 {quotes &&
                     quotes.map( (quote, index) => (
-                        <QuoteCard key={index} title={quote.title} shortDescription="desc" />
+                        <QuoteCard key={index} quoteId={quote.quoteId} title={quote.title} shortDescription="desc" />
                     ))
                 }
                 <AddQuoteCard />

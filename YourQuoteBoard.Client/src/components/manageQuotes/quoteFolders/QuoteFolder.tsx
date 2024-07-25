@@ -8,14 +8,15 @@ import { FolderType } from '../../../enums/FolderType';
 interface QuoteFolderProps {
     name : string | null;
     onClick? : () => void;
+    addQuoteMode: boolean;
 }
 
-export default function QuoteFolder({name, onClick} : QuoteFolderProps) {
+export default function QuoteFolder({name, onClick, addQuoteMode} : QuoteFolderProps) {
     
     const [folderName, setFolderName] = useState("");
     const [folderNameSet, setFolderNameSet] = useState(false);
 
-    console.log(onClick);
+    console.log(addQuoteMode);
 
     useEffect(() => {
         if (name){
@@ -46,7 +47,7 @@ export default function QuoteFolder({name, onClick} : QuoteFolderProps) {
     }
 
     return (
-        <div className="folder-container" onClick={onClick}>
+        <div className={`folder-container ${addQuoteMode ? 'add-quote' : 'regular-folder'}`} onClick={onClick}>
             <FolderOutlined className="quote-folder" name='Name'  />
             { 
                 !folderNameSet ?

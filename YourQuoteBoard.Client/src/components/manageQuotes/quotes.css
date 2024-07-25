@@ -71,3 +71,7 @@
 .folder-button.delete-button:hover {
     background-color: #c0392b;
 }
+
+.add-quote{
+    background-color:#7ec0ec;
+}
