@@ -8,5 +8,7 @@ namespace YourQuoteBoard.Interfaces.Service
         public Task<FolderContentDTO> GetQuoteFolderContentAsync(Guid folderId);
         public Task<FolderCreateDTO> AddQuoteFolderAsync(FolderCreateDTO folder, string userId);
         public Task<List<FolderDisplayDTO>> GetQuoteFoldersForDisplayAsync(string userId);
+        public Task AddQuoteToFolderAsync(Guid folderId, Guid quoteId);
+
     }
 }

@@ -45,6 +45,21 @@ namespace YourQuoteBoard.Controllers
         }
 
         [Authorize]
+        [HttpPost("add-quote/{folderId}")]
+        public async Task<IActionResult> AddQuoteToFolderAsync(Guid folderId, [FromBody] Guid quoteId)
+        {
+            try
+            {
+                await _folderService.AddQuoteToFolderAsync(folderId, quoteId);
+            }catch(Exception e){
+                Console.WriteLine(e.ToString());
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
+        [Authorize]
         [HttpGet("quote/{id}")]
         public async Task<IActionResult> GetQuoteFolderContent(Guid id)
         {

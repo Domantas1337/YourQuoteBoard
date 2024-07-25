@@ -45,11 +45,6 @@ namespace YourQuoteBoard.Repositories
         {
             Quote? quote = await _applicationDbContext.Quotes.Include(q => q.Book).Include(q => q.Tags).FirstOrDefaultAsync(q => q.QuoteId == quoteId);
 
-            Console.WriteLine("Tags");
-            foreach(var tag in quote.Tags)
-            {
-                Console.WriteLine($"{tag.Name}");
-            }
             return quote;
         }
 

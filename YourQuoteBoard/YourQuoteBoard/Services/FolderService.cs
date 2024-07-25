@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO.Folder;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Services
 {
-    public class FolderService(IFolderRepository _folderRepository, IMapper _mapper) : IFolderService
+    public class FolderService(IFolderRepository _folderRepository, IQuoteRepository _quoteRepository, IMapper _mapper) : IFolderService
     {
         public async Task<FolderCreateDTO> AddQuoteFolderAsync(FolderCreateDTO folder, string userId)
         {
@@ -21,7 +22,7 @@ namespace YourQuoteBoard.Services
 
         public async Task<FolderContentDTO> GetQuoteFolderContentAsync(Guid folderId)
         {
-            var folder = await _folderRepository.GetQuoteFolderContentAsync(folderId);
+            var folder = await _folderRepository.GetQuoteFolderByIdAsync(folderId);
             var folderContent = _mapper.Map<FolderContentDTO>(folder);
 
             return folderContent;
@@ -33,6 +34,26 @@ namespace YourQuoteBoard.Services
             var foldersForDislplay = _mapper.Map<List<FolderDisplayDTO>>(folders);
             
             return foldersForDislplay;
+        }
+
+        public async Task AddQuoteToFolderAsync(Guid folderId, Guid quoteId)
+        {
+            var folder = await _folderRepository.GetQuoteFolderByIdAsync(folderId);
+            var quote = await _quoteRepository.GetQuoteByIdAsync(quoteId);
+
+            if (folder == null)
+            {
+                throw new EntityNotFoundException("Folder not found.");
+            }
+
+            if (quote == null)
+            {
+                throw new EntityNotFoundException("Quote not found.");
+            }
+
+            folder.AddQuote(quote);
+
+            await _folderRepository.Save();
         }
     }
 }

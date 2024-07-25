@@ -15,7 +15,7 @@ namespace YourQuoteBoard.Repositories
             return folder;
         }
 
-        public async Task<Folder> GetQuoteFolderContentAsync(Guid folderId)
+        public async Task<Folder> GetQuoteFolderByIdAsync(Guid folderId)
         {
             var folder = await _applicationDbContext.Folders
                                 .FirstOrDefaultAsync(f => f.FolderId.Equals(folderId));
@@ -35,5 +35,11 @@ namespace YourQuoteBoard.Repositories
                                 .ToListAsync();
             return folders;
         }
+
+        public async Task Save()
+        {
+            await _applicationDbContext.SaveChangesAsync();
+        }
+
     }
 }
