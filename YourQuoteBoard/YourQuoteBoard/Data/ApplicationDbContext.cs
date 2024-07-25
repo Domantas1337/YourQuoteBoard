@@ -18,6 +18,7 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<QuoteRating> QuoteRatings { get; set; }
         public virtual DbSet<Folder> Folders { get; set; }
         public virtual DbSet<Tag> Tags { get ; set; }
+        public virtual DbSet<Favorite> Favorites { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -115,6 +116,15 @@ namespace YourQuoteBoard.Data
                       .WithMany(e => e.Folders)
                       .UsingEntity("QuoteFolderJointTable");
 
+            });
+
+            modelBuilder.Entity<Favorite>(entity =>
+            {
+                entity.HasOne<Quote>()
+                      .WithMany();
+
+                entity.HasOne<ApplicationUser>()
+                      .WithMany(u => u.Favorites);
             });
             
         }

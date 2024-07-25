@@ -28,7 +28,7 @@ export default function QuotesByBookPage(){
         <div className="BookTitleHeader">
             <h2>bookId</h2>
         </div>
-        <QuoteDisplayComponent quotes={bookQuotes} />
+        <QuoteDisplayComponent quotes={bookQuotes} allowToAddQuotes={false}/>
         
     </>
     );

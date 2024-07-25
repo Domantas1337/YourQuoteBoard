@@ -18,6 +18,7 @@ namespace YourQuoteBoard.Repositories
         public async Task<Folder> GetQuoteFolderByIdAsync(Guid folderId)
         {
             var folder = await _applicationDbContext.Folders
+                                .Include(x => x.Quotes)
                                 .FirstOrDefaultAsync(f => f.FolderId.Equals(folderId));
             
             if (folder == null)

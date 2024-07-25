@@ -5,9 +5,8 @@ function BrowseQuotes(){
     
     const {quotes} = useQuotesGetter();
 
-
     return (
-        <QuoteDisplayComponent quotes={quotes} />
+        <QuoteDisplayComponent quotes={quotes} allowToAddQuotes={false}/>
     );
 }
 

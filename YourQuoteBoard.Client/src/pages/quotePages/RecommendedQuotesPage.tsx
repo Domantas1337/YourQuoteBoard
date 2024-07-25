@@ -18,5 +18,5 @@ export default function RecommendedQuotesPage(){
         getRecommendedQuotes();
     }, []);
 
-    return <><QuoteDisplayComponent quotes={recommendedQuotes} /></>
+    return <><QuoteDisplayComponent quotes={recommendedQuotes} allowToAddQuotes={false}/></>
 }

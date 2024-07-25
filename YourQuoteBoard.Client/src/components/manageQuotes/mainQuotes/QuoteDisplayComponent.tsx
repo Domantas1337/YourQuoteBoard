@@ -3,20 +3,24 @@ import AddQuoteCard from "../quotesCard/AddQuoteCard";
 import QuoteCard from "../quotesCard/QuoteCard";
 
 interface QuoteDisplayComponentProps{
-    quotes: QuoteDisplayDTO[] | null
+    quotes: QuoteDisplayDTO[] | null;
+    allowToAddQuotes: boolean;
 }
 
-export default function QuoteDisplayComponent({quotes} : QuoteDisplayComponentProps){
+export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes} : QuoteDisplayComponentProps){
     
     return (
         <div> 
             <div className='card-container'>
-                {quotes &&
+                {quotes && 
                     quotes.map( (quote, index) => (
                         <QuoteCard key={index} quoteId={quote.quoteId} title={quote.title} shortDescription="desc" />
                     ))
                 }
-                <AddQuoteCard />
+                { allowToAddQuotes === true ? 
+                    <AddQuoteCard /> : <></>
+                }
+                
             </div>
         </div>
     );
