@@ -53,6 +53,7 @@ builder.Services.AddTransient<IBookRatingRepository, BookRatingRepository>();
 builder.Services.AddTransient<IFolderRepository, FolderRepository>();
 builder.Services.AddTransient<IQuoteRatingRepository, QuoteRatingRepository>();
 builder.Services.AddTransient<ITagRepository, TagRepository>();
+builder.Services.AddTransient<IFavoriteRepository, FavoriteRepository>();
 
 
 builder.Services.AddTransient<IQuoteService, QuoteService>();
@@ -61,6 +62,7 @@ builder.Services.AddTransient<IBookRatingService, BookRatingService>();
 builder.Services.AddTransient<IQuoteRatingService, QuoteRatingService>();
 builder.Services.AddTransient<IFolderService, FolderService>();
 builder.Services.AddTransient<ITagService, TagService>();
+builder.Services.AddTransient<IFavoriteService, FavoriteService>();
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
