@@ -14,6 +14,18 @@ namespace YourQuoteBoard.Controllers
     {
 
         [Authorize]
+        [HttpGet("favorite-quotes")]
+        public async Task<IActionResult> GetFavoriteQuotesAsync()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var favoriteQuotes = await _quoteService.GetAllPersonalQuotesAsync(userId);
+
+
+            return Ok(favoriteQuotes);
+        }
+
+
+        [Authorize]
         [HttpPost("add-quote")]
         public async Task<IActionResult> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
         {

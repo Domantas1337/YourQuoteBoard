@@ -6,6 +6,8 @@ import './quoteStyle.css';
 import { Rate } from "antd";
 import { QuoteRatingForDirectUserInteractionDTO } from "../../models/rating/quote/QuoteRatingForDirectUserInteractionDTO";
 import { addQuoteRating, getUserQuoteRating, updateQuoteRating } from "../../api/quoteRating";
+import { ItemType } from "../../enums/ItemType";
+import Favorite from "../../components/favorites/Favorite";
 
 interface QuoteInfo{
     currentQuote: QuoteFullDisplayDTO;
@@ -16,6 +18,7 @@ export default function Quote(){
     
     const [quote, setQuote] = useState<QuoteInfo | null>(null);
     const {id} = useParams();
+
     const navigate = useNavigate();
     
 
@@ -50,16 +53,14 @@ export default function Quote(){
             const { quoteRatingId } = quote.quoteRating;
             
             if (quoteRatingId) {
-                console.log()
                 await updateQuoteRating({quoteRatingId, quoteId: id, previousRating: quote.quoteRating.overallRating, newRating: value});
+                
                 setQuote({currentQuote: quote?.currentQuote, quoteRating: {quoteRatingId: quoteRatingId, quoteId: id, overallRating: value}});
-                console.log("Updated existing quote rating.");
             } else {
                 const response = await addQuoteRating({quoteId: id, overallRating: value});
                 const quoteRating = response.data;
 
                 setQuote({currentQuote: quote?.currentQuote, quoteRating: quoteRating})
-                console.log("Added new quote rating.");
             }
         } else {
             if (id && quote) {
@@ -67,7 +68,6 @@ export default function Quote(){
                 const quoteRating = response.data;
 
                 setQuote({currentQuote: quote?.currentQuote, quoteRating: quoteRating})
-                console.log("Added new quote rating as no existing rating was found.");
             } else {
                 console.log("Failed to process rating: No quote ID found.");
             }
@@ -78,7 +78,15 @@ export default function Quote(){
     <div className="quote-page-container">
         <div className="quote-wrapper">
             
-            <div className="main-quote-container">
+            <div className="favorite-container">
+                {   id ? 
+                        <Favorite itemId={id} itemType={ItemType.Quote} /> 
+                       : 
+                        <></>
+                }
+            </div> 
+
+            <div className="main-quote-container">      
                 <div className="single-quote-symbol-container">
                     <span className="quote-symbol">"</span>
                 </div>
@@ -89,7 +97,6 @@ export default function Quote(){
                     <span className="quote-symbol">"</span>
                 </div>
             </div>
-
 
             <div className="quote-tag-container">
                 {

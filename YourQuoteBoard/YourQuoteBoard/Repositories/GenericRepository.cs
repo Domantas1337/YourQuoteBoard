@@ -23,9 +23,8 @@ namespace YourQuoteBoard.Repositories
             await dbSet.AddAsync(entity);
         }
 
-        public virtual async Task Delete(Guid id)
+        public virtual async Task Delete(TEntity entityToDelete)
         {
-            TEntity entityToDelete = await dbSet.FindAsync(id);
 
             if (context.Entry(entityToDelete).State == EntityState.Detached)
             {

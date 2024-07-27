@@ -297,6 +297,17 @@ html, body{
 }
 
 .save-button::before {
-    content: '💾';  /* Save icon */
+    content: '💾';
     margin-right: 8px;
+}
+
+.favorite-container {
+    align-self: flex-end;  
+    margin-bottom: 20px;  
+}
+
+.favorite-icon {
+    color: rgb(0, 95, 0);
+    font-size: 50px;
+    cursor: pointer; 
 }

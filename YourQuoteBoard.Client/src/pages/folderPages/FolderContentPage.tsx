@@ -7,6 +7,7 @@ import QuoteCard from "../../components/manageQuotes/quotesCard/QuoteCard";
 import "./folderStyle.css"
 import Title from "../../components/basic/Title";
 import NumberOfItems from "../../components/basic/NumberOfItems";
+import FolderContent from "../../components/manageQuotes/quoteFolders/FolderContent";
 
 export default function FolderContentPage(){
     const [folder, setFolder] = useState<FolderContentDisplayDTO | null>(null);
@@ -14,13 +15,10 @@ export default function FolderContentPage(){
 
     useEffect( () => {
         const fetchFolder = async () => {
-            console.log("kaaaaab");
 
             try { 
                 if (id) {
                     const folder = await getFolderContentById(id, FolderType.QUOTE);
-                    console.log("kaaaaac");
-                    console.log(folder?.name);
                     setFolder(folder);
                 }else{
                     throw new Error("Folder id is not provided or does not exist");
@@ -35,26 +33,14 @@ export default function FolderContentPage(){
 
     return (
         <div className="folder-content-container">
-            { 
-                folder?.name ? (
-                <>
-                    <Title title={folder?.name}/>   
-                    <NumberOfItems itemName="quote" listLength={folder!.quotes.length} />
-                </>
-                ):(
-                <>
-                    <Title title="Content not found"/>   
-                </>
+            {   
+                folder ? (
+                    <FolderContent title={folder?.name} numberOfItems={folder.quotes.length} quotes={folder.quotes} />
+                ) :
+                (
+                    <h3>No contnet</h3>
                 )
-            } 
-
-            <div className="cards-container">
-                {
-                    folder?.quotes.map((quote, index) => (
-                        <QuoteCard key={index} title={quote.title} shortDescription={"shortDescription"} quoteId={quote.quoteId} />
-                    ))
-                }
-            </div>
+            }
         </div>
-    );  
+     );  
 }

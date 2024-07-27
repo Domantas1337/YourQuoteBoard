@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function FolderDisplayPage(){
     
     const [folders, setFolders] = useState<FoldersDisplayDTO[] | null>([]);
+    
     const navigate = useNavigate();
 
     const quoteId = new URLSearchParams(location.search).get('quoteId');
@@ -48,12 +49,13 @@ export default function FolderDisplayPage(){
             {
                 folders?.map( (folder, index) => (
                         <Col className="gutter-row" key={index} xs={24} sm={12} md={8} lg={6}>
-                            <QuoteFolder name={folder.name} 
-                            onClick={() => 
-                                handleFolderClick(folder.folderId)
-                                
+                            <QuoteFolder 
+                                name={folder.name} 
+                                onClick={() => 
+                                    handleFolderClick(folder.folderId)
                                 }
-                            addQuoteMode={quoteId != null}/>
+                                addQuoteMode={quoteId != null}
+                            />
                         </Col>
                 ))
             }
