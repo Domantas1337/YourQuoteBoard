@@ -35,7 +35,10 @@ export default function Book() {
     }, [id]);
 
     const handleQuoteViewing = () => {
-        navigate(`bookQuotes/${id}`)
+        console.log(bookToDisplay?.currentBook);
+        navigate(`/book-quotes/${id}`, { 
+            state: { book: bookToDisplay?.currentBook }
+        });
     };
 
     const handleGivenRating = async (value: number) => {
@@ -72,38 +75,38 @@ export default function Book() {
                 <h2 className="book-title">{bookToDisplay?.currentBook.title}</h2>
             </div>
             <div className="book-main">
-    <div className="book-info-wrapper">
-        <div className="book-cover-container">
-            <img src={bookToDisplay?.currentBook.coverImagePath} alt={bookToDisplay?.currentBook.title} className="book-cover-image" />
-        </div>
-        <div className="book-info-container">
-            <p className="book-author">By {bookToDisplay?.currentBook.author}</p>
-            <h6>Readers of the book have given it this rating:</h6>
-            {
-                bookToDisplay?.currentBook.averageRating ? (
-                    <div className="disabled-rating-container">
-                        <Rate disabled value={bookToDisplay!.currentBook!.averageRating}/>
-                        <h5>{bookToDisplay!.currentBook!.averageRating}</h5>
+                <div className="book-info-wrapper">
+                    <div className="book-cover-container">
+                        <img src={bookToDisplay?.currentBook.coverImagePath} alt={bookToDisplay?.currentBook.title} className="book-cover-image" />
                     </div>
-                ) : (
-                    <div className="disabled-rating-container">
-                        <Rate disabled value={0}/>
-                        <h5>No rating</h5>
+                    <div className="book-info-container">
+                        <p className="book-author">By {bookToDisplay?.currentBook.author}</p>
+                        <h6>Readers of the book have given it this rating:</h6>
+                        {
+                            bookToDisplay?.currentBook.averageRating ? (
+                                <div className="disabled-rating-container">
+                                    <Rate disabled value={bookToDisplay!.currentBook!.averageRating}/>
+                                    <h5>{bookToDisplay!.currentBook!.averageRating}</h5>
+                                </div>
+                            ) : (
+                                <div className="disabled-rating-container">
+                                    <Rate disabled value={0}/>
+                                    <h5>No rating</h5>
+                                </div>
+                            )
+                        }
                     </div>
-                )
-            }
-        </div>
-    </div>
-    <div className="book-tag-container">
-        {
-            bookToDisplay?.currentBook.tags.map((tag, index) => (
-                <div key={index} className="book-tag">
-                    <span>{tag.name}</span>
                 </div>
-            ))
-        }
-    </div>
-</div>
+                <div className="book-tag-container">
+                {
+                    bookToDisplay?.currentBook.tags.map((tag, index) => (
+                        <div key={index} className="book-tag">
+                            <span>{tag.name}</span>
+                        </div>
+                    ))
+                }
+                </div>
+            </div>
             <div className="book-actions-container">
                 <button className="action-button" onClick={handleQuoteViewing}>Browse all quotes from this book</button>
                 <button className="action-button quote">I found a quote in this book!</button>

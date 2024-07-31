@@ -1,0 +1,60 @@
+.book-quotes-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 2rem;
+}
+
+.quotes-section {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.book-info-section {
+    flex: 0 0 250px;
+}
+
+.book-cover-and-title {
+    position: sticky;
+    top: 2rem;
+}
+
+.book-cover-image-container {
+    margin-bottom: 1rem;
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-title-header {
+    margin-bottom: 1rem;
+}
+
+.book-title-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.book-info-container {
+    background-color: #f0f0f0;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.quote-count {
+    display: block;
+}

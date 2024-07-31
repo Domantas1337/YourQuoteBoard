@@ -14,6 +14,7 @@ export default function QuoteCard ({ title, shortDescription, quoteId } : QuoteC
     navigate(`/quote/${quoteId}`);
   }
 
+  console.log(title);
   return (
     <div className="card" onClick={handleQuoteVisit}>
       <div className="card-body">

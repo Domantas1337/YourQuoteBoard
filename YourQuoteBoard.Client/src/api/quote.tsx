@@ -25,7 +25,7 @@ export async function getAllPersonalQuotes(): Promise<QuoteDisplayDTO[]>{
 }
 
 export async function getQuotesByBookId(bookId: string) : Promise<QuoteDisplayDTO[] | null>{
-    const response = await apiClient.get(`api/Quote/${bookId}`)
+    const response = await apiClient.get(`api/Quote/quotes-by-book/${bookId}`)
     const quotes = response.data;
 
     return quotes;

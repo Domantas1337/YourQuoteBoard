@@ -7,13 +7,13 @@ import Register from "./components/account/Register";
 import Login from "./components/account/Login";
 import AuthorizeView from "./components/account/AuthorizeView";
 import Book from "./pages/bookPages/Book";
-import QuotesByBookPage from "./pages/quotePages/QuotesByBookPage";
 import FolderDisplayPage from "./pages/folderPages/FoldersDisplayPage";
 import UserProvider from "./components/account/UserProvider";
 import Quote from "./pages/quotePages/Quote";
 import BrowseQuotes from "./components/manageQuotes/mainQuotes/BrowseQuotes";
 import AddedQuotesPage from "./pages/quotePages/AddedQuotesPage";
 import FolderContentPage from "./pages/folderPages/FolderContentPage";
+import QuotesByBookPage from "./pages/quotePages/quotesByBook/QuotesByBookPage";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
             <Route path="add-book" element={<AddBookForm />} />
             <Route path="book/:id" element={<Book />} />
             <Route path="quote/:id" element={<Quote />} />
-            <Route path="bookQuotes/:id" element={<QuotesByBookPage />} />
+            <Route path="book-quotes/:id" element={<QuotesByBookPage />} />
             <Route path="quote-folder/:id" element={<FolderContentPage />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
