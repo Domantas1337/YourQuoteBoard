@@ -14,7 +14,7 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes} :
             <div className='card-container'>
                 {quotes && 
                     quotes.map( (quote, index) => (
-                        <QuoteCard key={index} quoteId={quote.quoteId} title={quote.title} shortDescription="desc" />
+                        <QuoteCard key={index} quoteId={quote.quoteId} title={quote.title} shortDescription="description" />
                     ))
                 }
                 { allowToAddQuotes === true ? 

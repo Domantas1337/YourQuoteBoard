@@ -17,7 +17,12 @@ export default function MapAndAddQuotesProps({quotes, allowToAddQuotes} : MapAnd
                         <QuoteCard key={index} quoteId={quote.quoteId} title={quote.title} shortDescription="desc" />
                     ))
                 }
-
+                {
+                    allowToAddQuotes === true ? 
+                        <AddQuoteCard />
+                        :
+                        <></>
+                }
             </div>
             </>
 }

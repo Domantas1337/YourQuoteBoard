@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Data;
 using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.DTO.Rating.Book;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 
@@ -41,12 +42,12 @@ namespace YourQuoteBoard.Repositories
             return books;
         }
 
-        public async Task<Book> UpdateBookRatingWhenARatingHasBeenAdded(Guid bookId, double rating)
+        public async Task<Book> UpdateBookRatingWhenARatingHasBeenAdded(Guid bookId, BookRatingDTO rating)
         {
             Book book = await FetchAndInitializeBook(bookId);
 
             double sumOfRatings = (double)(book.AverageRating != null ? book.AverageRating * book.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + rating;
+            double newSumOfRatings = sumOfRatings + rating.OverallRating;
             int newNumberOfRatings = (int) book.NumberOfRatings + 1;
 
             UpdateBookRating(book, newSumOfRatings, newNumberOfRatings);
@@ -55,12 +56,12 @@ namespace YourQuoteBoard.Repositories
             return book;
         }
 
-        public async Task<Book> UpdateBookRatingWhenARatingHasBeenUpdated(Guid bookId, double previousRating, double newRating)
+        public async Task<Book> UpdateBookRatingWhenARatingHasBeenUpdated(Guid bookId, BookRatingDTO previousRating, BookRatingDTO newRating)
         {
             Book book = await FetchAndInitializeBook(bookId);
 
             double sumOfRatings = (double)(book.AverageRating != null ? book.AverageRating * book.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + newRating - previousRating;
+            double newSumOfRatings = sumOfRatings + newRating.OverallRating - previousRating.OverallRating;
 
 
             UpdateBookRating(book, newSumOfRatings, (int) book.NumberOfRatings);

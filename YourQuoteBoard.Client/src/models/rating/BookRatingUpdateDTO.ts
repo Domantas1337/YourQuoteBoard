@@ -1,6 +1,8 @@
+import { BookRating } from "./BookRating";
+
 export default interface BookRatingUpdateDTO{
     bookRatingId: string;
     bookId: string;
-    previousRating: number;
-    newRating: number;
+    currentRating: BookRating;
+    newRating: BookRating;
 }

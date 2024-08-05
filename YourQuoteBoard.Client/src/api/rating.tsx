@@ -16,6 +16,7 @@ export async function getUserBookRating(bookId: string) : Promise<BookRatingForD
 }
 
 export async function updateBookRating(bookRating: BookRatingUpdateDTO){
+    console.log(bookRating);
     const response = await apiClient.put("api/BookRating/update-book-rating", bookRating);
     return response;
 }

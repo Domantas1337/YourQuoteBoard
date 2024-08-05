@@ -19,7 +19,10 @@ namespace YourQuoteBoard.Repositories
             }
 
             bookRatingToUpdate.OverallRating = bookRating.OverallRating;
-
+            bookRatingToUpdate.CharacterDevelopmentRating = bookRating.CharacterDevelopmentRating; 
+            bookRatingToUpdate.WorldBuildingRating = bookRating.WorldBuildingRating;
+            bookRatingToUpdate.PlotRating = bookRating.PlotRating;
+            bookRatingToUpdate.AccuracyRating = bookRating.AccuracyRating;
             try
             {
                 await _applicationDbContext.SaveChangesAsync(); 

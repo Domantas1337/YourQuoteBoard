@@ -3,10 +3,7 @@ import { FolderContentDisplayDTO } from "../../models/folders/FolderContentDispl
 import { useParams } from "react-router-dom";
 import { getFolderContentById } from "../../api/folder";
 import { FolderType } from "../../enums/FolderType";
-import QuoteCard from "../../components/manageQuotes/quotesCard/QuoteCard";
 import "./folderStyle.css"
-import Title from "../../components/basic/Title";
-import NumberOfItems from "../../components/basic/NumberOfItems";
 import FolderContent from "../../components/manageQuotes/quoteFolders/FolderContent";
 
 export default function FolderContentPage(){
@@ -15,7 +12,6 @@ export default function FolderContentPage(){
 
     useEffect( () => {
         const fetchFolder = async () => {
-
             try { 
                 if (id) {
                     const folder = await getFolderContentById(id, FolderType.QUOTE);
@@ -29,7 +25,6 @@ export default function FolderContentPage(){
         }
         fetchFolder();
     }, [id]);
-
 
     return (
         <div className="folder-content-container">

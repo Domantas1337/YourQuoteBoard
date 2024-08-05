@@ -13,7 +13,7 @@ export default function useTagManagement(tagType: TagType, maxTags: number = 5) 
     const fetchTags = async () => {
       try {
         const fetchedTags = await getDefaultTags(tagType);
-        console.log(fetchedTags);
+
         setTags(fetchedTags);
       } catch (error) {
         console.log("Failed to fetch tags: ", error);

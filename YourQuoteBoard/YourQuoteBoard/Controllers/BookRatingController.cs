@@ -13,7 +13,15 @@ namespace YourQuoteBoard.Controllers
         [HttpPut("update-book-rating")]
         public async Task<IActionResult> UpdateBookRatingAsync(BookRatingForUpdateDTO bookRatingDTO)
         {
-            BookRatingForUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO);
+
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return BadRequest("User does not exist");
+            }
+
+            BookRatingForUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO, userId);
                         
             return Ok(updatedBookRating);
         }

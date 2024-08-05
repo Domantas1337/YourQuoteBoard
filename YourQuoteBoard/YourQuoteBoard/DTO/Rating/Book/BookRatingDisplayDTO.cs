@@ -2,7 +2,7 @@
 {
     public class BookRatingDisplayDTO
     {
-        public double OverallRating { get; set; }
+        public required BookRatingDTO BookRating { get; set; }
         public Guid BookId { get; set; }
     }
 }

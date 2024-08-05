@@ -1,5 +1,7 @@
+import { BookRating } from "./BookRating";
+
 export default interface BookRatingForDirectUserInteractionDTO{
-    bookId: string;
-    bookRatingId: string;
-    overallRating: number;
+    bookId?: string;
+    bookRatingId?: string;
+    bookRating: BookRating;
 }
