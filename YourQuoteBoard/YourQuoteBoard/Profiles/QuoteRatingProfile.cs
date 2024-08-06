@@ -21,10 +21,7 @@ namespace YourQuoteBoard.Profiles
             CreateMap<QuoteRating, QuoteRatingCreateDTO>();
 
             CreateMap<QuoteRating, QuoteRatingDisplayDTO>().ReverseMap();
-            CreateMap<QuoteRatingUpdateDTO, QuoteRating>().AfterMap((src, dest, context) =>
-            {
-                dest.OverallRating = (double)context.Items["newRating"];
-            });
+            CreateMap<QuoteRatingUpdateDTO, QuoteRating>().ReverseMap();
         }
     }
 }

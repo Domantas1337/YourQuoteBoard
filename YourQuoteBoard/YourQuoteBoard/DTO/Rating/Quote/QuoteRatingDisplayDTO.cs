@@ -1,8 +1,11 @@
-﻿namespace YourQuoteBoard.DTO.Rating.Quote
+﻿using YourQuoteBoard.Entity;
+
+namespace YourQuoteBoard.DTO.Rating.Quote
 {
     public class QuoteRatingDisplayDTO
     {
-        public double OverallRating { get; set; }
+        public double OverallRsting { get; set; }
+        public required QuoteRatingInDetail QuoteRatingInDetail { get; set; }
         public Guid QuoteId { get; set; }
     }
 }

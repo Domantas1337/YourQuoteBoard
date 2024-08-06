@@ -3,7 +3,7 @@ import BookDisplayDTO from "../models/books/BookDisplayDTO";
 import { getBookById } from "../api/book";
 import { getUserBookRating } from "../api/rating";
 import { RatingCategory } from "../models/rating/RatingCategory";
-import { BookRating } from "../models/rating/BookRating";
+import { BookRating } from "../models/rating/book/BookRating";
 import { getLabelOfProperty } from "../helpers/propertyToString";
 
 export default function useBookInfo(id: string){

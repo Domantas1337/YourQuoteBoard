@@ -1,7 +1,7 @@
 import { apiClient } from "../apiClient";
-import BookRatingCreateDTO from "../models/rating/BookRatingCreateDTO";
-import BookRatingForDirectUserInteractionDTO from "../models/rating/BookRatingForDirectUserInteractionDTO";
-import BookRatingUpdateDTO from "../models/rating/BookRatingUpdateDTO";
+import BookRatingCreateDTO from "../models/rating/book/BookRatingCreateDTO";
+import BookRatingForDirectUserInteractionDTO from "../models/rating/book/BookRatingForDirectUserInteractionDTO";
+import BookRatingUpdateDTO from "../models/rating/book/BookRatingUpdateDTO";
 
 export async function addBookRating(rating: BookRatingCreateDTO){
     const response = await apiClient.post("api/BookRating/book-rating", rating); 

@@ -20,6 +20,13 @@ namespace YourQuoteBoard.Repositories
 
             quoteRatingToUpdate.OverallRating = quoteRating.OverallRating;
 
+            if (quoteRating.QuoteRatingInDetail != null)
+            {
+                quoteRatingToUpdate.QuoteRatingInDetail.InspirationalValueRating = quoteRating.QuoteRatingInDetail.InspirationalValueRating;
+                quoteRatingToUpdate.QuoteRatingInDetail.OriginalityRating = quoteRating.QuoteRatingInDetail.OriginalityRating;
+                quoteRatingToUpdate.QuoteRatingInDetail.RelevanceToTheTopicRating = quoteRating.QuoteRatingInDetail.RelevanceToTheTopicRating;
+            }
+
             try
             {
                 await _applicationDbContext.SaveChangesAsync();
@@ -58,6 +65,10 @@ namespace YourQuoteBoard.Repositories
             return quoteRatings;
         }
 
-
+        public async Task<QuoteRating> GetQuoteRatingByIdAsync(Guid quoteRatingId)
+        {
+            QuoteRating quoteRating = await _applicationDbContext.QuoteRatings.FirstOrDefaultAsync(qr => qr.QuoteRatingId == quoteRatingId);
+            return quoteRating;
+        }
     }
 }

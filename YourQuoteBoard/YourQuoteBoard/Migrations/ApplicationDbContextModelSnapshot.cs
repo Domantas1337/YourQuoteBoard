@@ -318,7 +318,7 @@ namespace YourQuoteBoard.Migrations
                     b.Property<double?>("CharacterDevelopmentRating")
                         .HasColumnType("REAL");
 
-                    b.Property<double?>("OverallRating")
+                    b.Property<double>("OverallRating")
                         .HasColumnType("REAL");
 
                     b.Property<double?>("PlotRating")
@@ -419,6 +419,9 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("Genre")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("NumberOfRatings")
                         .HasColumnType("INTEGER");
 
@@ -445,20 +448,11 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("InspirationalValueRating")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("OriginalityRating")
-                        .HasColumnType("REAL");
-
                     b.Property<double>("OverallRating")
                         .HasColumnType("REAL");
 
                     b.Property<Guid>("QuoteId")
                         .HasColumnType("TEXT");
-
-                    b.Property<double>("RelevanceToTheTopicRating")
-                        .HasColumnType("REAL");
 
                     b.HasKey("QuoteRatingId");
 
@@ -492,98 +486,98 @@ namespace YourQuoteBoard.Migrations
                     b.HasData(
                         new
                         {
-                            TagId = new Guid("0d674a4b-49a7-4c0b-96e7-e7bf5413d2b0"),
+                            TagId = new Guid("ec42e8b7-fc2c-4242-a905-cbf3d49631c3"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Inspirational"
                         },
                         new
                         {
-                            TagId = new Guid("bdb73fad-f09b-4ccf-96df-d0c5e189f406"),
+                            TagId = new Guid("acddf115-450c-4227-98b3-49110ee8c207"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Funny"
                         },
                         new
                         {
-                            TagId = new Guid("a880914c-4f7b-44ff-a5fe-3a4119c16968"),
+                            TagId = new Guid("743ef06f-9f8c-4ffb-bf7e-37a4d844ffcb"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Philosophical"
                         },
                         new
                         {
-                            TagId = new Guid("678d270d-2c89-46cd-86d6-6b9d7ffac6f2"),
+                            TagId = new Guid("617de854-f7e2-4829-b886-ab914effac17"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Literary"
                         },
                         new
                         {
-                            TagId = new Guid("403935a2-5de1-4746-8069-0299b879626d"),
+                            TagId = new Guid("6e82ea27-911e-44e9-858a-7f6eed909a95"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Sad"
                         },
                         new
                         {
-                            TagId = new Guid("f05d5d2d-8e38-4114-85ab-f5f548e38009"),
+                            TagId = new Guid("260e120a-e859-4340-b5b8-c9b332bf3bcb"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Emotional"
                         },
                         new
                         {
-                            TagId = new Guid("d0a1cf93-3714-47b1-a56a-a5a15857fc3e"),
+                            TagId = new Guid("351b1422-72cc-4b9f-946d-38c038c650c5"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Informative"
                         },
                         new
                         {
-                            TagId = new Guid("8433df0c-42a4-42af-9636-af2fd8befa7f"),
+                            TagId = new Guid("daf61beb-b791-4b55-9415-c8941e78a754"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Biography"
                         },
                         new
                         {
-                            TagId = new Guid("87b776b6-1898-4fd4-a189-8dea3fb2e556"),
+                            TagId = new Guid("674cbc23-601a-4472-b72b-0b24f38b22c5"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("1f73aea4-c285-4bc1-a6b9-5598ed711eed"),
+                            TagId = new Guid("2c837ffb-5d90-4bc5-a6d4-7ac188dfec75"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Autobiography"
                         },
                         new
                         {
-                            TagId = new Guid("aa1067dc-5728-4bf2-97d2-ed5cc3eec9e9"),
+                            TagId = new Guid("a67f610d-6dcf-454c-b913-796b9f220ec9"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Novel"
                         },
                         new
                         {
-                            TagId = new Guid("0b3141db-f2d0-4b00-b503-778d657ebff9"),
+                            TagId = new Guid("bb5eb928-6ad5-41f5-9f6f-d5e7f88b2ae0"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Romantic"
                         },
                         new
                         {
-                            TagId = new Guid("866a5a7b-2c4b-4288-b4c5-28bf1e549e85"),
+                            TagId = new Guid("b0ab7b41-9c8f-42a4-9509-b68c62d6840d"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Non_Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("a2a62cbe-642c-4925-9547-57d3d1ae1a36"),
+                            TagId = new Guid("75b2cab3-86a9-492a-a22a-931f65fcfe02"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Comedy"
@@ -767,7 +761,32 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("YourQuoteBoard.Entity.QuoteRatingInDetail", "QuoteRatingInDetail", b1 =>
+                        {
+                            b1.Property<Guid>("QuoteRatingId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<double?>("InspirationalValueRating")
+                                .HasColumnType("REAL");
+
+                            b1.Property<double?>("OriginalityRating")
+                                .HasColumnType("REAL");
+
+                            b1.Property<double?>("RelevanceToTheTopicRating")
+                                .HasColumnType("REAL");
+
+                            b1.HasKey("QuoteRatingId");
+
+                            b1.ToTable("QuoteRatings");
+
+                            b1.WithOwner()
+                                .HasForeignKey("QuoteRatingId");
+                        });
+
                     b.Navigation("Quote");
+
+                    b.Navigation("QuoteRatingInDetail")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>

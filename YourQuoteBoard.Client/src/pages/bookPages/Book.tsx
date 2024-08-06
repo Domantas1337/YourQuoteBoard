@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./BookStyle.css";
 import { Rate } from 'antd';
 import { addBookRating, updateBookRating } from "../../api/rating";
-import { BookRating } from "../../models/rating/BookRating";
+import { BookRating } from "../../models/rating/book/BookRating";
 import RatingModal from "../../components/rating/RatingModal";
 import useBookInfo from "../../hooks/useBookInfo";
 
@@ -54,11 +54,7 @@ export default function Book() {
             category.key === whatIsRated ? { ...category, value: value } : category
         );
 
-        console.log("first");
-        console.log(bookRatingCategories);
         setBookRatingCategores(updatedCategories);
-        console.log("second");
-        console.log(bookRatingCategories);
     }
 
     const handleClose = () => setIsModalOpen(false);

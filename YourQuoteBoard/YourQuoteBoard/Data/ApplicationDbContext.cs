@@ -101,6 +101,8 @@ namespace YourQuoteBoard.Data
                       .WithMany(u => u.QuoteRatings)
                       .HasForeignKey(qr => qr.ApplicationUserId)
                       .IsRequired();
+
+                entity.OwnsOne(e => e.QuoteRatingInDetail);
             });
 
             modelBuilder.Entity<Folder>(entity =>

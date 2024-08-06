@@ -4,7 +4,7 @@ namespace YourQuoteBoard.Interfaces.Repository
 {
     public interface IQuoteRepository
     {
-        public Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, double previousRating, double newRating);
+        public Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, QuoteRating currentRating, QuoteRating newRating);
         public Task<Quote> UpdateQuoteRatingWhenARatingHasBeenAdded(Guid quoteId, double rating);
         public Task<List<Quote>> GetQuotesByBookIdAsync(Guid bookId);
         public Task<Quote> AddQuoteAsync(Quote quote);

@@ -62,16 +62,16 @@ namespace YourQuoteBoard.Repositories
             return quote;
         }
 
-        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, double previousRating, double newRating)
+        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, QuoteRating currentRating, QuoteRating newRating)
         {
             Quote quote = await FetchAndInitializeQuote(quoteId);
 
             double sumOfRatings = (double)(quote.AverageRating != null ? quote.AverageRating * quote.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + newRating;
+            double newSumOfRatings = sumOfRatings + newRating.OverallRating;
 
-            if (previousRating != 0)
+            if (currentRating.OverallRating != 0)
             {
-                newSumOfRatings -= previousRating;
+                newSumOfRatings -= currentRating.OverallRating;
             }
 
             UpdateQuoteRating(quote, newSumOfRatings, (int)quote.NumberOfRatings);

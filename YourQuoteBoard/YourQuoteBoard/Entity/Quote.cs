@@ -19,7 +19,7 @@ namespace YourQuoteBoard.Entity
         public double? AverageRating { get; set; }
         public int? NumberOfRatings { get; set; }
         public ICollection<Tag> Tags { get; } = new List<Tag>();
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
         [Required]
         public required string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

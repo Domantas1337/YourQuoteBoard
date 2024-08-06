@@ -55,13 +55,12 @@ namespace YourQuoteBoard.Services
 
         public async Task<QuoteRatingUpdateDTO> UpdateQuoteRatingAsync(QuoteRatingUpdateDTO quoteRatingDTO)
         {
-            QuoteRating quoteRatingToUpdate = _mapper.Map<QuoteRating>(quoteRatingDTO, opts =>
-            {
-                opts.Items["newRating"] = quoteRatingDTO.NewRating;
-            });
-            QuoteRating? quoteRating = await _quoteRatingRepository.UpdateQuoteRatingAsync(quoteRatingToUpdate);
+            QuoteRating newQuoteRating = _mapper.Map<QuoteRating>(quoteRatingDTO);
+            QuoteRating currentQuoteRating = await _quoteRatingRepository.GetQuoteRatingByIdAsync(quoteRatingDTO.QuoteRatingId);
+            QuoteRating? quoteRating = await _quoteRatingRepository.UpdateQuoteRatingAsync(newQuoteRating);
+            
 
-            Quote quote = await _quoteRepository.UpdateQuoteRatingWhenARatingHasBeenUpdated(quoteRatingDTO.QuoteId, quoteRatingDTO.PreviousRating, quoteRatingDTO.NewRating);
+            Quote quote = await _quoteRepository.UpdateQuoteRatingWhenARatingHasBeenUpdated(quoteRatingDTO.QuoteId, currentQuoteRating, newQuoteRating);
 
             return quoteRatingDTO;
         }

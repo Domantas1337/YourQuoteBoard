@@ -12,7 +12,6 @@ interface RatingModalProps{
 }
 
 export default function RatingModal({isOpen, title, handleClose,  handleSetRating, handleRatingChange, categories} : RatingModalProps){
-    console.log('categories:', categories);
     return <Modal title={title} open={isOpen} onOk={handleSetRating} onCancel={handleClose}>
                 {
                     categories.map( (category, key)  => 
