@@ -1,7 +1,7 @@
 import NumberOfItems from "../../components/basic/NumberOfItems";
 import Title from "../../components/basic/Title";
 import useQuotesGetter from "../../components/manageQuotes/hooks/useQuotesGetter";
-import QuoteDisplayComponent from "../../components/manageQuotes/mainQuotes/QuoteDisplayAndAddComponent";
+import QuoteDisplayAndAddComponent from "../../components/manageQuotes/mainQuotes/QuoteDisplayAndAddComponent";
 
 export default function AddedQuotesPage(){
     const {quotes} = useQuotesGetter("personal");
@@ -10,7 +10,7 @@ export default function AddedQuotesPage(){
         <>
             <Title title="Your added quotes" />
             <NumberOfItems itemName="quote" listLength={quotes.length}/>
-            <QuoteDisplayComponent quotes={quotes} allowToAddQuotes={true} allowToDeleteQuotes={true}/>
+            <QuoteDisplayAndAddComponent quotes={quotes} allowToAddQuotes={true} allowToDeleteQuotes={true}/>
         </>
     );
 }

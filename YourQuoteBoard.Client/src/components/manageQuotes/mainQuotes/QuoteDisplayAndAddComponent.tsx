@@ -29,11 +29,18 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes, a
 
     const buttons : ButtonConfig<string>[] = [
         
-        ...(allowToDeleteQuotes ? )
+        ...(allowToDeleteQuotes ? 
+            [
+                {
+                    label: "Delete",
+                    onClick: deleteQuote,
+                    data: selectedQuoteId
+                }
+            ] : []
+        )
     ]
 
-    return (
-        <div> 
+    return <div> 
             <div className='card-container'>
                 <ItemManagementModal buttons={buttons} title="Quote information" isOpen={isModalOpen} handleClose={closeModal}/>
 
@@ -52,5 +59,5 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes, a
                 
             </div>
         </div>
-    );
+    
 }

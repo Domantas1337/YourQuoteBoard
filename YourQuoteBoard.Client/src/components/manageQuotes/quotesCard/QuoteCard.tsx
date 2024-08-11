@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useQuoteTools from "../hooks/useQuoteTools";
 import { EllipsisOutlined } from '@ant-design/icons';
-import { useState } from "react";
 
 
 interface QuoteCardProps {
@@ -23,7 +21,10 @@ export default function QuoteCard ({ title, shortDescription, quoteId, openManag
   return (
     <div className="card" onClick={handleQuoteVisit}>
       <div className="card-body">
-        <EllipsisOutlined onClick={() => openManagementModal(quoteId)} />
+        <EllipsisOutlined onClick={(event) => {
+          event.stopPropagation();
+          openManagementModal(quoteId);
+          }} />
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{shortDescription}</p>
       </div>

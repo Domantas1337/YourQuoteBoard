@@ -17,14 +17,14 @@ interface ItemManagementModalProps{
 export default function ItemManagementModal({buttons, title, isOpen, handleClose} : ItemManagementModalProps){
 
     return <div>
-        <Modal title={title} open={isOpen} onOk={handleClose} onCancel={handleClose}></Modal>
-            {
-                buttons.map( (button, index) =>
-                    <button key={index} onClick={() => button.onClick(button?.data)}>
-                        {button.label}
-                    </button>
-                )
-            }
-        </Modal>
-    </div>
+                <Modal title={title} open={isOpen} onOk={handleClose} onCancel={handleClose}>
+                    {
+                        buttons.map( (button, index) =>
+                            <button key={index} onClick={() => button.onClick(button?.data)}>
+                                {button.label}
+                            </button>
+                        )
+                    }
+                </Modal>
+            </div>
 }
