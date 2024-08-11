@@ -38,7 +38,7 @@ export async function createQuote(newQuote: QuoteCreateDTO){
 }
 
 export async function deleteSingleQuote(id: string){
-    const response = await apiClient.post(`api/Quote/delete-quote/${id}`)
+    const response = await apiClient.delete(`api/Quote/delete-quote/${id}`)
 
     return response
 }

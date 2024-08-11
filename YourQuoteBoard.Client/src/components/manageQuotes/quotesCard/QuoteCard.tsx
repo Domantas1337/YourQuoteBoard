@@ -21,10 +21,12 @@ export default function QuoteCard ({ title, shortDescription, quoteId, openManag
   return (
     <div className="card" onClick={handleQuoteVisit}>
       <div className="card-body">
-        <EllipsisOutlined onClick={(event) => {
-          event.stopPropagation();
-          openManagementModal(quoteId);
-          }} />
+        <div className="card-details">
+          <EllipsisOutlined onClick={(event) => {
+              event.stopPropagation();
+              openManagementModal(quoteId);
+            }} />
+        </div>
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{shortDescription}</p>
       </div>

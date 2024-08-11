@@ -16,3 +16,71 @@
     font-size: 1.1rem;
     color: #6c757d;
   }
+
+  .delete-button{
+    background-color: #df3e3e !important; 
+    color: white !important;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  /* Styles for the modal */
+.button-modal .ant-modal-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button-modal .ant-modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.button-modal .ant-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 10px 16px;
+}
+
+/* Center the buttons */
+.button-modal .ant-modal-body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Style for the buttons */
+.button-modal button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  width: 200px;
+  max-width: 100%;
+}
+
+.button-modal button:hover {
+  opacity: 0.8;
+}
+
+/* You can add more specific button styles here if needed */
+.button-modal button.primary {
+  background-color: #1890ff;
+  color: white;
+}
+
+.button-modal button.secondary {
+  background-color: #f0f0f0;
+  color: #000;
+}

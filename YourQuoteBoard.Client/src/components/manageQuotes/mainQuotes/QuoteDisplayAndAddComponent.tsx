@@ -32,9 +32,10 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes, a
         ...(allowToDeleteQuotes ? 
             [
                 {
-                    label: "Delete",
+                    label: "Delete quote",
                     onClick: deleteQuote,
-                    data: selectedQuoteId
+                    data: selectedQuoteId,
+                    className: "btn btn-default delete-button"
                 }
             ] : []
         )
