@@ -27,7 +27,7 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpGet("all-quote-folders-display")]
         public async Task<IActionResult> GetQuoteFoldersForDisplay()
         {
@@ -38,9 +38,9 @@ namespace YourQuoteBoard.Controllers
                 var folders = await _folderService.GetQuoteFoldersForDisplayAsync(userId);
                 return Ok(folders);
             }
-            else 
-            { 
-                return BadRequest(); 
+            else
+            {
+                return BadRequest();
             }
         }
 
@@ -51,7 +51,7 @@ namespace YourQuoteBoard.Controllers
             try
             {
                 await _folderService.AddQuoteToFolderAsync(folderId, quoteId);
-            }catch(Exception e){
+            } catch (Exception e) {
                 Console.WriteLine(e.ToString());
                 return BadRequest();
             }
@@ -65,6 +65,20 @@ namespace YourQuoteBoard.Controllers
         {
             var folderContent = await _folderService.GetQuoteFolderContentAsync(id);
             return Ok(folderContent);
+        }
+
+        [HttpDelete("{folderId}")]
+        public async Task<IActionResult> DeleteForderAsync(Guid folderId)
+        {
+            try
+            {
+                await _folderService.DeleteQuoteFolderAsync(folderId);
+            }catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
     }

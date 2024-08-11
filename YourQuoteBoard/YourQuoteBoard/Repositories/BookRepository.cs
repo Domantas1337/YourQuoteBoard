@@ -90,6 +90,12 @@ namespace YourQuoteBoard.Repositories
             book.AverageRating = newSumOfRatings / newNumberOfRatings;
             book.NumberOfRatings = newNumberOfRatings;
         }
+
+        public async Task DeleteBookAsync(Book book)
+        {
+            _applicationDbContext.Books.Remove(book);
+            await _applicationDbContext.SaveChangesAsync();
+        }
     }
 
 

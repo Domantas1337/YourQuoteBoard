@@ -15,6 +15,12 @@ namespace YourQuoteBoard.Repositories
             return folder;
         }
 
+        public async Task DeleteQuoteFolderAsync(Folder folder)
+        {
+            _applicationDbContext.Folders.Remove(folder);
+            await _applicationDbContext.SaveChangesAsync();
+        }
+
         public async Task<Folder> GetQuoteFolderByIdAsync(Guid folderId)
         {
             var folder = await _applicationDbContext.Folders

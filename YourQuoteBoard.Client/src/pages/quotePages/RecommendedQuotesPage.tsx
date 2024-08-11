@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { QuoteDisplayDTO } from "../../models/quotes/QuoteDisplayDTO";
-import QuoteDisplayComponent from "../../components/manageQuotes/mainQuotes/QuoteDisplayComponent";
+import QuoteDisplayComponent from "../../components/manageQuotes/mainQuotes/QuoteDisplayAndAddComponent";
 import { getAllQuotes } from "../../api/quote";
 
 export default function RecommendedQuotesPage(){

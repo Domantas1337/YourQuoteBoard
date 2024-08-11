@@ -20,10 +20,6 @@ namespace YourQuoteBoard.Controllers
                 return NotFound("User not found");
             }
 
-            Console.WriteLine("Inserting");
-            Console.WriteLine("Inserting");
-            Console.WriteLine("Inserting");
-            Console.WriteLine("Inserting");
             await _favoriteService.Insert(userId, quoteId); ;
 
             return Ok();

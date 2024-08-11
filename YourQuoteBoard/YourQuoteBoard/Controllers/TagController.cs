@@ -20,7 +20,7 @@ namespace YourQuoteBoard.Controllers
         }
 
         [HttpGet("all-tags")]
-        public async Task<IActionResult> GetAllTags(TagType tagType)
+        public async Task<IActionResult> GetAllTags(ItemType tagType)
         {
             var tags = await _tagService.GetAllTagsAsync(tagType);
             
@@ -28,7 +28,7 @@ namespace YourQuoteBoard.Controllers
         }
 
         [HttpGet("default-tags")]
-        public async Task<IActionResult> GetAllDefaultTags(TagType tagType)
+        public async Task<IActionResult> GetAllDefaultTags(ItemType tagType)
         {
             var tags = await _tagService.GetAllDefaultTagsAsync(tagType);
 

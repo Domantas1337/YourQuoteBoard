@@ -17,34 +17,34 @@ namespace YourQuoteBoard.Services
             return tagCreateDTO;
         }
 
-        public async Task<TagDisplayDTO[]> GetAllTagsAsync(TagType tagType)
+        public async Task<TagDisplayDTO[]> GetAllTagsAsync(ItemType tagType)
         {
             var tags = await GetTagsByTypeAsync(tagType);
             return _mapper.Map<TagDisplayDTO[]>(tags);
         }
 
-        private async Task<Tag[]> GetTagsByTypeAsync(TagType tagType)
+        private async Task<Tag[]> GetTagsByTypeAsync(ItemType tagType)
         {
             return tagType switch
             {
-                TagType.Book => await _tagRepository.GetAllBookTagsAsync(),
-                TagType.Quote => await _tagRepository.GetAllQuoteTagsAsync(),
+                ItemType.Book => await _tagRepository.GetAllBookTagsAsync(),
+                ItemType.Quote => await _tagRepository.GetAllQuoteTagsAsync(),
                 _ => throw new ArgumentException($"Unsupported tag type: {tagType}", nameof(tagType))
             };
         }
 
-        public async Task<TagDisplayDTO[]> GetAllDefaultTagsAsync(TagType tagType)
+        public async Task<TagDisplayDTO[]> GetAllDefaultTagsAsync(ItemType tagType)
         {
             var tags = await GetAllDefaultTagsByTypeAsync(tagType);
             return _mapper.Map<TagDisplayDTO[]>(tags);
         }
 
-        private async Task<Tag[]> GetAllDefaultTagsByTypeAsync(TagType tagType)
+        private async Task<Tag[]> GetAllDefaultTagsByTypeAsync(ItemType tagType)
         {
             return tagType switch
             {
-                TagType.Book => await _tagRepository.GetAllDefaultBookTagsAsync(),
-                TagType.Quote => await _tagRepository.GetAllDefaultQuoteTagsAsync(),
+                ItemType.Book => await _tagRepository.GetAllDefaultBookTagsAsync(),
+                ItemType.Quote => await _tagRepository.GetAllDefaultQuoteTagsAsync(),
                 _ => throw new ArgumentException($"Unsupported tag type: {tagType}", nameof(tagType))
             };
         }

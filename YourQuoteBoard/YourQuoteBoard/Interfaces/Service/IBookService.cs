@@ -7,5 +7,6 @@ namespace YourQuoteBoard.Interfaces.Service
         public Task<BookDisplayDTO> GetBookForDisplayByIdAsync(Guid id);
         public Task<BookAddDTO> AddBookAsync(BookAddDTO book);
         public Task<List<BookDisplayDTO>> GetAllBooksAsync();
+        public Task DeleteBookAsync(Guid id);
     }
 }

@@ -79,5 +79,37 @@ namespace YourQuoteBoard.Controllers
             
             return Ok(quote);
         }
+
+        [HttpDelete("delete-quotes")]
+        public async Task<IActionResult> DeleteQuoteCollectionAsync(ICollection<Guid> quoteIds)
+        {
+            try
+            {
+                await _quoteService.DeleteQuoteCollectionAsync(quoteIds);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete("delete-quote/{quoteId}")]
+        public async Task<IActionResult> DeleteQuoteAsync(Guid quoteId)
+        {
+            try
+            {
+                await _quoteService.DeleteQuoteAsync(quoteId);
+            }catch (NullReferenceException ex) 
+            {
+                return NotFound(ex.Message);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
     }
 }

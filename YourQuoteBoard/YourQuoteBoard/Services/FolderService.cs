@@ -55,5 +55,17 @@ namespace YourQuoteBoard.Services
 
             await _folderRepository.Save();
         }
+
+        public async Task DeleteQuoteFolderAsync(Guid folderId)
+        {
+            Folder folder = await _folderRepository.GetQuoteFolderByIdAsync(folderId);
+           
+            if (folder == null)
+            {
+                throw new NullReferenceException("Folder does not exist");
+            }
+
+            await _folderRepository.DeleteQuoteFolderAsync(folder);
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<Book?> GetBookByIdAsync(Guid id);
         public Task<Book> AddBookAsync(Book book);
         public Task<List<Book>> GetAllBooksAsync();
+        public Task DeleteBookAsync(Book book);
     }
 }

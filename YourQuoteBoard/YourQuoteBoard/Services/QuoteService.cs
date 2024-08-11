@@ -75,5 +75,25 @@ namespace YourQuoteBoard.Services
                 Tags = _mapper.Map<ICollection<TagDisplayDTO>>(quote.Tags)       
             };
         }
+
+        public async Task DeleteQuoteAsync(Guid quoteId)
+        {
+            Quote? quote = await _quoteRepository.GetQuoteByIdAsync(quoteId);
+
+            if (quote == null)
+            {
+                throw new NullReferenceException("Quote not found");
+            }
+            else
+            {
+                await _quoteRepository.DeleteQuoteAsync(quote);
+            }
+        }
+
+        public async Task DeleteQuoteCollectionAsync(ICollection<Guid> quoteIds)
+        {
+            List<Quote> quotes = await _quoteRepository.GetQuotesByIds(quoteIds);
+            await _quoteRepository.DeleteQuoteCollectionAsync(quotes);
+        }
     }
 }

@@ -49,5 +49,19 @@ namespace YourQuoteBoard.Services
 
             return booksForDisplay; 
         }
+
+        public async Task DeleteBookAsync(Guid id)
+        {
+            Book? book = await _bookRepository.GetBookByIdAsync(id);
+
+            if (book == null)
+            {
+                throw new NullReferenceException("Item is null");
+            }
+            else
+            {
+                _bookRepository.DeleteBookAsync(book);
+            }
+        }
     }
 }

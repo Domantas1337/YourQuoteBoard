@@ -45,6 +45,7 @@ export default function Quote(){
         }else{
             await addQuoteRating({quoteId: id, quoteRatingInDetail: detailedRating, overallRating: overallRating});
         }
+        setIsModalOpen(false);
     }
 
     function handleSpecificRating(value: number, whatIsBeingRated: string){
@@ -112,13 +113,13 @@ export default function Quote(){
                     quote.averageRating ? (
                     <div className="disabled-rating-container">
                     
-                        <Rate disabled value={quote.averageRating}/>
+                        <Rate className="rating-options" disabled value={quote.averageRating}/>
                         <h5>{quote.averageRating}</h5>
                     </div> 
                     ) : (
                         <div className="disabled-rating-container">
                     
-                        <Rate disabled value={0}/>
+                        <Rate className="rating-options" disabled value={0}/>
                         <h5>No rating</h5>
                     </div> 
                     )
@@ -132,13 +133,13 @@ export default function Quote(){
                     <div className="rating-container">       
                         <span className="rating-span">Your rating: {overallRating}</span>       
                         <br />
-                        <Rate allowHalf value={overallRating} onChange={handleOverallRating} />
+                        <Rate className="rating-options" allowHalf value={overallRating} onChange={handleOverallRating} />
                     </div>  
                 ) : (
                     <div className="rating-container">       
                         <span className="rating-span">Rate this book:</span>       
                         <br />
-                        <Rate allowHalf value={2} onChange={handleOverallRating} />
+                        <Rate className="rating-options" allowHalf value={2} onChange={handleOverallRating} />
                     </div> 
                 )
             }

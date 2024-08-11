@@ -1,4 +1,4 @@
-import QuoteDisplayComponent from "./QuoteDisplayComponent";
+import QupteDisplayAndAddCpmponent from "./QuoteDisplayAndAddComponent";
 import useQuotesGetter from "../hooks/useQuotesGetter";
 
 function BrowseQuotes(){
@@ -6,7 +6,7 @@ function BrowseQuotes(){
     const {quotes} = useQuotesGetter();
 
     return (
-        <QuoteDisplayComponent quotes={quotes} allowToAddQuotes={false}/>
+        <QupteDisplayAndAddCpmponent quotes={quotes} allowToAddQuotes={false}/>
     );
 }
 

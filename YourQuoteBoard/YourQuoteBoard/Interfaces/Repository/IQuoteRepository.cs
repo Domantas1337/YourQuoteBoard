@@ -10,6 +10,9 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<Quote> AddQuoteAsync(Quote quote);
         public Task<List<Quote>> GetAllPersonalQuotesAsync(string userId);
         public Task<List<Quote>> GetAllQuotesAsync();
+        public Task<List<Quote>> GetQuotesByIds(ICollection<Guid> quoteIds);
         public Task<Quote?> GetQuoteByIdAsync(Guid quoteId);
+        public Task DeleteQuoteAsync(Quote quote);
+        public Task DeleteQuoteCollectionAsync(ICollection<Quote> quotes);
     }
 }

@@ -32,7 +32,13 @@ export async function getQuotesByBookId(bookId: string) : Promise<QuoteDisplayDT
 }
 
 export async function createQuote(newQuote: QuoteCreateDTO){
-    const response = await apiClient.post('api/Quote/add-quote', newQuote)
+    const response = await apiClient.post('api/Quote/add-quote/', newQuote)
+
+    return response
+}
+
+export async function deleteQuote(id: string){
+    const response = await apiClient.post(`api/Quote/delete-quote/${id}`)
 
     return response
 }

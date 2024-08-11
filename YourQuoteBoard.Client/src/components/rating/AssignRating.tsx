@@ -14,13 +14,13 @@ export default function AssignRating({rating, label, ratingKey, handleGivenRatin
             <div className="rating-container">       
                 <span className="rating-span">Your {label} rating: {rating}</span>       
                 <br />
-                <Rate allowHalf value={rating} onChange={(value) => handleGivenRating(value, ratingKey)} />
+                <Rate className="rating-options" allowHalf value={rating} onChange={(value) => handleGivenRating(value, ratingKey)} />
             </div>  
         ) : (
             <div className="rating-container">       
                 <span className="rating-span">{label}:</span>       
                 <br />
-                <Rate allowHalf value={2} onChange={(value) => handleGivenRating(value, ratingKey)} />
+                <Rate className="rating-options" allowHalf value={2} onChange={(value) => handleGivenRating(value, ratingKey)} />
             </div> 
         )
     }

@@ -99,5 +99,26 @@ namespace YourQuoteBoard.Repositories
             quote.AverageRating = newSumOfRatings / newNumberOfRatings;
             quote.NumberOfRatings = newNumberOfRatings;
         }
+
+        public async Task DeleteQuoteAsync(Quote quote)
+        {
+            _applicationDbContext.Quotes.Remove(quote);
+            await _applicationDbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteQuoteCollectionAsync(ICollection<Quote> quotes)
+        {
+            _applicationDbContext.RemoveRange(quotes);
+            await _applicationDbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Quote>> GetQuotesByIds(ICollection<Guid> quoteIds)
+        {
+            List<Quote> quotes = await _applicationDbContext.Quotes
+                .Where(q => quoteIds.Contains(q.QuoteId))
+                .ToListAsync();
+
+            return quotes;
+        }
     }
 }

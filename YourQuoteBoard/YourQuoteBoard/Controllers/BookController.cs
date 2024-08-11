@@ -10,7 +10,7 @@ namespace YourQuoteBoard.Controllers
     public class BookController(IBookService _bookService) : Controller
     {
         [HttpPost("add-book")]
-        public async Task<IActionResult> AddBook([FromForm]BookAddDTO bookAddDTO)
+        public async Task<IActionResult> AddBook([FromForm] BookAddDTO bookAddDTO)
         {
             try
             {
@@ -30,15 +30,15 @@ namespace YourQuoteBoard.Controllers
             {
                 BookDisplayDTO book = await _bookService.GetBookForDisplayByIdAsync(id);
 
-                foreach (var tag in book.Tags) 
+                foreach (var tag in book.Tags)
                 {
                     Console.WriteLine(tag.Name);
                 }
-                
+
                 return Ok(book);
-            }catch (EntityNotFoundException ex)
+            } catch (EntityNotFoundException ex)
             {
-                return NotFound(new {message = ex.Message});
+                return NotFound(new { message = ex.Message });
             }
         }
 
@@ -54,6 +54,20 @@ namespace YourQuoteBoard.Controllers
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
+        }
+
+        [HttpDelete("{bookId}")]
+        public async Task<IActionResult> DeleteBookAsync(Guid bookId)
+        {
+            try
+            {
+                await _bookService.DeleteBookAsync(bookId);
+            }catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+
+            return Ok();
         }
 
 

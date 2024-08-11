@@ -19,7 +19,7 @@ namespace YourQuoteBoard.Repositories
         {
             var tags = await _context.Tags
                                      .Where(t => t.IsDefault == true)
-                                     .Where(t => t.Discriminator == Enums.TagType.Book)
+                                     .Where(t => t.Discriminator == Enums.ItemType.Book)
                                      .ToArrayAsync();
             return tags;
         }
@@ -44,7 +44,7 @@ namespace YourQuoteBoard.Repositories
         {
             var tags = await _context.Tags
                                      .Where(t => t.IsDefault == true)
-                                     .Where(t => t.Discriminator == Enums.TagType.Book)
+                                     .Where(t => t.Discriminator == Enums.ItemType.Book)
                                      .ToArrayAsync();
             return tags;
         }
@@ -57,7 +57,7 @@ namespace YourQuoteBoard.Repositories
         public async Task<Tag[]> GetAllQuoteTagsAsync()
         {
             var tags = await _context.Tags
-                                     .Where(t => t.Discriminator == Enums.TagType.Quote)
+                                     .Where(t => t.Discriminator == Enums.ItemType.Quote)
                                      .ToArrayAsync();
 
             return tags;

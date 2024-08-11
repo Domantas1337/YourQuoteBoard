@@ -44,7 +44,7 @@ namespace YourQuoteBoard.Data
                     TagId = Guid.NewGuid(),
                     Name = t.ToString(),
                     IsDefault = true,
-                    Discriminator = TagType.Quote
+                    Discriminator = ItemType.Quote
                 });
 
             modelBuilder.Entity<Tag>().HasData(defaultQuoteTags);
@@ -68,7 +68,7 @@ namespace YourQuoteBoard.Data
                     TagId = Guid.NewGuid(),
                     Name = t.ToString(),
                     IsDefault = true,
-                    Discriminator = TagType.Book
+                    Discriminator = ItemType.Book
                 });
 
             modelBuilder.Entity<Tag>().HasData(defaultBookTags);

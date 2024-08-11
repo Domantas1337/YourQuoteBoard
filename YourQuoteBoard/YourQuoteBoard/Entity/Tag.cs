@@ -7,7 +7,7 @@ namespace YourQuoteBoard.Entity
         public Guid TagId { get; set; }
         public required string Name { get; set; }
         public required bool IsDefault { get; set; }
-        public required TagType Discriminator { get; set; }
+        public required ItemType Discriminator { get; set; }
 
     }
 }

@@ -12,5 +12,7 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<List<QuoteDisplayDTO>> GetAllPersonalQuotesAsync(string userId);
         public Task<List<QuoteDisplayDTO>> GetAllQuotesAsync();
         public Task<QuoteFullDisplayDTO?> GetQuoteForQuoteDedicatedPageAsync(Guid quoteId);
+        public Task DeleteQuoteAsync(Guid quoteId);
+        public Task DeleteQuoteCollectionAsync(ICollection<Guid> quoteIds);
     }
 }

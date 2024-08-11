@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom"
 import { getQuotesByBookId } from "../../../api/quote";
 import { QuoteDisplayDTO } from "../../../models/quotes/QuoteDisplayDTO";
-import QuoteDisplayComponent from "../../../components/manageQuotes/mainQuotes/QuoteDisplayComponent";
+import QuoteDisplayComponent from "../../../components/manageQuotes/mainQuotes/QuoteDisplayAndAddComponent";
 import "./quotes_by_book.css"
 
 export default function QuotesByBookPage(){
