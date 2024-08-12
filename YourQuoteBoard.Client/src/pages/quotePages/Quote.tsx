@@ -10,7 +10,7 @@ import useQuoteInfo from "../../hooks/useQuoteInfo";
 import RatingModal from "../../components/rating/RatingModal";
 import ItemManagementModal from "../../components/basic/ItemManagementModal";
 import { ButtonConfig } from "../../types/ButtonConfig";
-import { createButtonConfigs, getQuoteManagementButtons } from "../../helpers/modalButtonConfig";
+import { getQuoteManagementButtons } from "../../helpers/button/modalButtonConfig";
 
 
 export default function Quote(){
@@ -55,7 +55,8 @@ export default function Quote(){
     }
 
     async function openModal(){
-        setButtonConfigs(await getQuoteManagementButtons(id || ""));
+        console.log("la");
+        setButtonConfigs(await getQuoteManagementButtons(['delete'], id));
         setIsDetailModalOpen(true);
     }
 

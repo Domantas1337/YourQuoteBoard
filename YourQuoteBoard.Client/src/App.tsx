@@ -14,6 +14,7 @@ import BrowseQuotes from "./components/manageQuotes/mainQuotes/BrowseQuotes";
 import AddedQuotesPage from "./pages/quotePages/AddedQuotesPage";
 import FolderContentPage from "./pages/folderPages/FolderContentPage";
 import QuotesByBookPage from "./pages/quotePages/quotesByBook/QuotesByBookPage";
+import "./helpers/button/buttonRegistrations";
 
 function App() {
   return (

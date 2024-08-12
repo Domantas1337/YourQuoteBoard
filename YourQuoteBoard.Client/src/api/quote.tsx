@@ -44,8 +44,7 @@ export async function deleteSingleQuote(id: string){
 }
 
 export async function pingQuoteOwner(quoteId: string) {
-    console.log("What id");
-    console.log(quoteId);
+
     const response = await apiClient.get(`api/Quote/is-quote-users/${quoteId}`)
     const data = response.data;
 

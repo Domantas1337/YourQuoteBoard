@@ -10,7 +10,7 @@ export default function AddedQuotesPage(){
         <>
             <Title title="Your added quotes" />
             <NumberOfItems itemName="quote" listLength={quotes.length}/>
-            <QuoteDisplayAndAddComponent quotes={quotes} allowToAddQuotes={true} allowToDeleteQuotes={true}/>
+            <QuoteDisplayAndAddComponent quotes={quotes} allowToAddQuotes={true}/>
         </>
     );
 }

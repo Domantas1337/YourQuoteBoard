@@ -1,49 +1,35 @@
 import { useState } from "react";
 import { QuoteDisplayDTO } from "../../../models/quotes/QuoteDisplayDTO"
-import useQuoteTools from "../hooks/useQuoteTools";
 import AddQuoteCard from "../quotesCard/AddQuoteCard";
 import QuoteCard from "../quotesCard/QuoteCard";
-import ItemManagementModal, { ButtonConfig } from "../../basic/ItemManagementModal";
+import ItemManagementModal from "../../basic/ItemManagementModal";
+import { getQuoteManagementButtons } from "../../../helpers/button/modalButtonConfig";
+import { ButtonConfig } from "../../../types/ButtonConfig";
 
 interface QuoteDisplayComponentProps{
     quotes: QuoteDisplayDTO[] | null;
     allowToAddQuotes: boolean;
-    allowToDeleteQuotes: boolean;
 }
 
-export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes, allowToDeleteQuotes} : QuoteDisplayComponentProps){
+export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes} : QuoteDisplayComponentProps){
     
-    const {deleteQuote} = useQuoteTools();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [selectedQuoteId, setSelectedQuoteId] = useState<string>("");
+    const [managementButtons, setManagementButtons] = useState<ButtonConfig[]>([]);
 
-    function openModal(id: string){
-        setSelectedQuoteId(id);
+    async function openModal(id: string){
+        setManagementButtons( await getQuoteManagementButtons(['delete'], id) );
         setIsModalOpen(true);
     }
 
     function closeModal(){
-        setSelectedQuoteId("");
         setIsModalOpen(false);
     }
 
-    const buttons : ButtonConfig<string>[] = [
-        
-        ...(allowToDeleteQuotes ? 
-            [
-                {
-                    label: "Delete quote",
-                    onClick: deleteQuote,
-                    data: selectedQuoteId,
-                    className: "btn btn-default delete-button"
-                }
-            ] : []
-        )
-    ]
+    
 
     return <div> 
             <div className='card-container'>
-                <ItemManagementModal buttons={buttons} title="Quote information" isOpen={isModalOpen} handleClose={closeModal}/>
+                <ItemManagementModal buttons={managementButtons} title="Quote information" isOpen={isModalOpen} handleClose={closeModal}/>
 
                 {quotes &&
                     quotes.map( (quote, index) => (
