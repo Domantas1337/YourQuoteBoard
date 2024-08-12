@@ -40,9 +40,7 @@ export default function useQuoteInfo(id: string){
                     setQuoteRatingId(rating.quoteRatingId);
                     setOverallRating(rating.overallRating);
                     setDetailedRating(rating.quoteRatingInDetail);
-                    console.log("In detail ", quoteRatingCategories);
                     setQuoteRatingCategories(getQuoteCategories(rating.quoteRatingInDetail));
-                    console.log("detail ", quoteRatingCategories);
                 }
             }catch(error){
                 console.log("Failed to fetch quote details: ", error);

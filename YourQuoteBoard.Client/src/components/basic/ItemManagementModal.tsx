@@ -1,13 +1,6 @@
 import { Modal } from "antd";
 import "./styleForBasicComponents.css";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ButtonConfig<T = any>{
-    label: string;
-    onClick: (data: T) => void;
-    data?: T;
-    className: string;
-}
+import { ButtonConfig } from "../../types/ButtonConfig";
 
 interface ItemManagementModalProps{
     buttons: ButtonConfig[];
@@ -18,8 +11,6 @@ interface ItemManagementModalProps{
 
 export default function ItemManagementModal({buttons, title, isOpen, handleClose} : ItemManagementModalProps){
 
-    console.log("Buttons");
-    console.log(buttons);
     return <div>
                 <Modal className="button-modal" title={title} open={isOpen} onOk={handleClose} onCancel={handleClose}>
                     {

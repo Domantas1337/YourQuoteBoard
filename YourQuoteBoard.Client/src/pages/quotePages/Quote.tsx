@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { EllipsisOutlined } from '@ant-design/icons';
 import { useState } from "react";
 import './quoteStyle.css';
 import { Rate } from "antd";
@@ -7,7 +8,9 @@ import { ItemType } from "../../enums/ItemType";
 import Favorite from "../../components/favorites/Favorite";
 import useQuoteInfo from "../../hooks/useQuoteInfo";
 import RatingModal from "../../components/rating/RatingModal";
-
+import ItemManagementModal from "../../components/basic/ItemManagementModal";
+import { ButtonConfig } from "../../types/ButtonConfig";
+import { createButtonConfigs, getQuoteManagementButtons } from "../../helpers/modalButtonConfig";
 
 
 export default function Quote(){
@@ -18,7 +21,10 @@ export default function Quote(){
            overallRating, setOverallRating,
            detailedRating, setDetailedRating,
            quoteRatingCategories, setQuoteRatingCategories} = useQuoteInfo(id || "");
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    
+    const [isRatingModalOpen, setIsRatingModalOpen] = useState<boolean>(false);
+    const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
+    const [buttonConfigs, setButtonConfigs] = useState<ButtonConfig[]>([]);
 
     const navigate = useNavigate();
 
@@ -32,7 +38,7 @@ export default function Quote(){
 
     function handleOverallRating(value: number){
         setOverallRating(value);
-        setIsModalOpen(true);
+        setIsRatingModalOpen(true);
     }
 
     async function hanldeUploadedRating(){
@@ -45,7 +51,16 @@ export default function Quote(){
         }else{
             await addQuoteRating({quoteId: id, quoteRatingInDetail: detailedRating, overallRating: overallRating});
         }
-        setIsModalOpen(false);
+        setIsRatingModalOpen(false);
+    }
+
+    async function openModal(){
+        setButtonConfigs(await getQuoteManagementButtons(id || ""));
+        setIsDetailModalOpen(true);
+    }
+
+    function closeDetailModal(){
+        setIsDetailModalOpen(false);
     }
 
     function handleSpecificRating(value: number, whatIsBeingRated: string){
@@ -58,11 +73,10 @@ export default function Quote(){
             category.key === whatIsBeingRated ? { ...category, value: value } : category
         );
         setQuoteRatingCategories(updatedCategories);
-
     }
 
     function handleClose(){
-        setIsModalOpen(false);
+        setIsRatingModalOpen(false);
     }
 
     return (
@@ -75,7 +89,11 @@ export default function Quote(){
                        : 
                         <></>
                 }
+
+                <EllipsisOutlined className="options-button" onClick={openModal} />
             </div> 
+
+            <ItemManagementModal buttons={buttonConfigs} title="Quote information" isOpen={isDetailModalOpen} handleClose={closeDetailModal}/>
 
             <div className="main-quote-container">      
                 <div className="single-quote-symbol-container">
@@ -104,7 +122,7 @@ export default function Quote(){
                 handleRatingChange={handleSpecificRating}
                 handleClose={handleClose}
                 title="Rate the quote content"
-                isOpen={isModalOpen}
+                isOpen={isRatingModalOpen}
                 categories={quoteRatingCategories}
                 />
             <div className="quote-rating-container">

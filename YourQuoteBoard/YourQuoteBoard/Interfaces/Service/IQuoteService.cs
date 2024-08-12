@@ -14,5 +14,6 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<QuoteFullDisplayDTO?> GetQuoteForQuoteDedicatedPageAsync(Guid quoteId);
         public Task DeleteQuoteAsync(Guid quoteId);
         public Task DeleteQuoteCollectionAsync(ICollection<Guid> quoteIds);
+        public Task<bool> CheckIfUserOwnsQuoteAsync(Guid quoteId, string userId);
     }
 }

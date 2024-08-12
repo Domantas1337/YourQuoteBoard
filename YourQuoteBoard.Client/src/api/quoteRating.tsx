@@ -12,7 +12,6 @@ export async function getUserQuoteRating(quoteId: string) : Promise<QuoteRatingF
     const response = await apiClient.get(`api/QuoteRating/quote-rating-by-user/${quoteId}`); 
     const rating = response.data;
 
-    console.log(rating);
     return rating;
 }
 

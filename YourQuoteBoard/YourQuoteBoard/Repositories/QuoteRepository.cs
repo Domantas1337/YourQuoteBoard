@@ -120,5 +120,12 @@ namespace YourQuoteBoard.Repositories
 
             return quotes;
         }
+
+        public async Task<Quote?> CheckIfUserOwnsQuoteAsync(Guid quoteId, string userId)
+        {
+            Quote? quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId.Equals(quoteId) && q.ApplicationUserId.Equals(userId));
+
+            return quote;
+        }
     }
 }

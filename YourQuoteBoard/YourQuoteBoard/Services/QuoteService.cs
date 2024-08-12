@@ -9,6 +9,18 @@ namespace YourQuoteBoard.Services
 {
     public class QuoteService(IQuoteRepository _quoteRepository, ITagRepository _tagRepository, IMapper _mapper) : IQuoteService
     {
+        public async Task<bool> CheckIfUserOwnsQuoteAsync(Guid quoteId, string userId)
+        {
+            Quote? isUsers = await _quoteRepository.CheckIfUserOwnsQuoteAsync(quoteId, userId);
+            
+            if (isUsers == null)
+            {
+                return false;
+            }
+            
+            return true;
+        }
+
         public async Task<List<QuoteDisplayDTO>> GetQuotesByBookIdAsync(Guid bookId)
         {
             List<Quote> quotes = await _quoteRepository.GetQuotesByBookIdAsync(bookId);

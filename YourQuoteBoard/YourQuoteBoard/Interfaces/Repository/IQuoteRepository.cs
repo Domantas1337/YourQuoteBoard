@@ -14,5 +14,7 @@ namespace YourQuoteBoard.Interfaces.Repository
         public Task<Quote?> GetQuoteByIdAsync(Guid quoteId);
         public Task DeleteQuoteAsync(Quote quote);
         public Task DeleteQuoteCollectionAsync(ICollection<Quote> quotes);
+        public Task<Quote?> CheckIfUserOwnsQuoteAsync(Guid quoteId, string userId);
+
     }
 }

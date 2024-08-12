@@ -13,13 +13,21 @@ namespace YourQuoteBoard.Controllers
     public class QuoteController(IQuoteService _quoteService) : Controller
     {
 
+        [HttpGet("is-quote-users/{quoteId}")]
+        public async Task<IActionResult> GetQuoteOwnershipValidation(Guid quoteId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            bool isQuoteUsers = await _quoteService.CheckIfUserOwnsQuoteAsync(quoteId, userId);
+
+            return Ok(isQuoteUsers);
+        }
+
         [Authorize]
         [HttpGet("favorite-quotes")]
         public async Task<IActionResult> GetFavoriteQuotesAsync()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var favoriteQuotes = await _quoteService.GetAllPersonalQuotesAsync(userId);
-
 
             return Ok(favoriteQuotes);
         }
