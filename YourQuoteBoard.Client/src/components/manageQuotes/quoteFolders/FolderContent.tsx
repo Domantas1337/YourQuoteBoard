@@ -17,7 +17,7 @@ export default function FolderContent({title, numberOfItems, quotes}  : FolderCo
             <div className="cards-container">
                 {
                     quotes.map((quote, index) => (
-                        <QuoteCard key={index} title={quote.title} shortDescription={"shortDescription"} quoteId={quote.quoteId} />
+                        <QuoteCard key={index} title={quote.title} averageRating={quote.averageRating} shortDescription={quote.shortDescription} quoteId={quote.quoteId} />
                     ))
                 }
             </div>

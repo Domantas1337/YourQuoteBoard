@@ -7,7 +7,7 @@ namespace YourQuoteBoard.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BookController(IBookService _bookService) : Controller
+    public class BookController(IBookService _bookService, IBookRatingService bookRatingService) : Controller
     {
         [HttpPost("add-book")]
         public async Task<IActionResult> AddBook([FromForm] BookAddDTO bookAddDTO)
@@ -69,7 +69,7 @@ namespace YourQuoteBoard.Controllers
 
             return Ok();
         }
-
+        
 
     }
 }

@@ -34,8 +34,8 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes} :
                 {quotes &&
                     quotes.map( (quote, index) => (
                         <QuoteCard key={index} quoteId={quote.quoteId} 
-                            title={quote.title} shortDescription="description" 
-                            openManagementModal={openModal}/>
+                            title={quote.title} shortDescription={quote.shortDescription} 
+                            averageRating={quote.averageRating} openManagementModal={openModal}/>
                     ))
                 } 
                   

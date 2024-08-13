@@ -19,7 +19,7 @@ function AddQuoteForm(){
         removeTag
       } = useTagManagement(TagType.Quote);
 
-    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', author: '', bookId: null, tagIds: selectedTagIds});
+    const [quote, setQuote] = useState<QuoteCreateDTO>({title: '', description: '', shortDescription: '', author: '', bookId: null, tagIds: selectedTagIds});
     const [books, setBooks] = useState<BookDisplayDTO[]>([]);
     const navigate = useNavigate()
 
@@ -77,7 +77,7 @@ function AddQuoteForm(){
                 const response = createQuote(quote);
                 console.log('Quote submitted:', response);
                 
-                setQuote({ title: '', description: '', author: '', bookId: null, tagIds: []});
+                setQuote({ title: '', description: '', shortDescription: '', author: '', bookId: null, tagIds: []});
                 navigate('/browse-quotes')
             } 
         } catch (error) {
@@ -114,6 +114,20 @@ function AddQuoteForm(){
                         id="authorInput" 
                         name="author"
                         value={quote.author}
+                        onChange={handleNewInput}
+                        />
+                </div>
+                <div className="form-group">
+                    <label 
+                        htmlFor="shortDescriptionInput"
+                        className="default-label"
+                        >Short description</label>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="shprtDescriptionInput" 
+                        name="shortDescription"
+                        value={quote.shortDescription}
                         onChange={handleNewInput}
                         />
                 </div>

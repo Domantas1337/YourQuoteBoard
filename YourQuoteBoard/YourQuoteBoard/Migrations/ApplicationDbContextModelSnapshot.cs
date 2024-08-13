@@ -425,6 +425,10 @@ namespace YourQuoteBoard.Migrations
                     b.Property<int?>("NumberOfRatings")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -486,98 +490,98 @@ namespace YourQuoteBoard.Migrations
                     b.HasData(
                         new
                         {
-                            TagId = new Guid("ec42e8b7-fc2c-4242-a905-cbf3d49631c3"),
+                            TagId = new Guid("dbfb1cd7-c56f-44df-827c-0ce52ce95b60"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Inspirational"
                         },
                         new
                         {
-                            TagId = new Guid("acddf115-450c-4227-98b3-49110ee8c207"),
+                            TagId = new Guid("22569750-34fd-42ad-9fcd-36d0f5d13fba"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Funny"
                         },
                         new
                         {
-                            TagId = new Guid("743ef06f-9f8c-4ffb-bf7e-37a4d844ffcb"),
+                            TagId = new Guid("2ca28332-9b30-4b0f-a70d-f7725e451968"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Philosophical"
                         },
                         new
                         {
-                            TagId = new Guid("617de854-f7e2-4829-b886-ab914effac17"),
+                            TagId = new Guid("6a28c1ec-f6f5-4e0b-a7da-25656961e659"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Literary"
                         },
                         new
                         {
-                            TagId = new Guid("6e82ea27-911e-44e9-858a-7f6eed909a95"),
+                            TagId = new Guid("43994156-bc20-48d5-8084-41db763fa9c3"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Sad"
                         },
                         new
                         {
-                            TagId = new Guid("260e120a-e859-4340-b5b8-c9b332bf3bcb"),
+                            TagId = new Guid("0e99aefa-d036-4acc-ad31-d08117188988"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Emotional"
                         },
                         new
                         {
-                            TagId = new Guid("351b1422-72cc-4b9f-946d-38c038c650c5"),
+                            TagId = new Guid("217c72de-194c-4cfd-9dac-eb38fdd4e77b"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Informative"
                         },
                         new
                         {
-                            TagId = new Guid("daf61beb-b791-4b55-9415-c8941e78a754"),
+                            TagId = new Guid("e6c73460-f8a2-4ec1-af16-ecc67ee8045c"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Biography"
                         },
                         new
                         {
-                            TagId = new Guid("674cbc23-601a-4472-b72b-0b24f38b22c5"),
+                            TagId = new Guid("84395c68-462a-42f6-9eac-0762ccd2c346"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("2c837ffb-5d90-4bc5-a6d4-7ac188dfec75"),
+                            TagId = new Guid("b897e25d-c38f-4ff1-b05b-a8e7e6055e36"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Autobiography"
                         },
                         new
                         {
-                            TagId = new Guid("a67f610d-6dcf-454c-b913-796b9f220ec9"),
+                            TagId = new Guid("ea96b502-5231-45b2-9d57-a161d2bea9ef"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Novel"
                         },
                         new
                         {
-                            TagId = new Guid("bb5eb928-6ad5-41f5-9f6f-d5e7f88b2ae0"),
+                            TagId = new Guid("714c8528-18d6-4087-8786-b623413742b3"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Romantic"
                         },
                         new
                         {
-                            TagId = new Guid("b0ab7b41-9c8f-42a4-9509-b68c62d6840d"),
+                            TagId = new Guid("5bd92020-901f-4109-9ab0-aced9f85117a"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Non_Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("75b2cab3-86a9-492a-a22a-931f65fcfe02"),
+                            TagId = new Guid("a500b82b-3159-46e6-a3cd-4db4723cb0c7"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Comedy"

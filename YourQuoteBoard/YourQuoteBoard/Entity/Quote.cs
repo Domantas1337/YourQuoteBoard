@@ -10,6 +10,7 @@ namespace YourQuoteBoard.Entity
         public Guid QuoteId { get; set; }
         public string Title { get; set; } = "No title";
         public string Description { get; set; } = "No descroption";
+        public string ShortDescription { get; set; } = String.Empty;
         public required string Author { get; set; }
         public DateTime Created { get; set; }
         public required Guid BookId {get; set;}
