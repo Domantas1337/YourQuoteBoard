@@ -8,34 +8,9 @@ namespace YourQuoteBoard.Repositories
 {
     public class QuoteRatingRepository(ApplicationDbContext _applicationDbContext) : IQuoteRatingRepository
     {
-        public async Task<QuoteRating?> UpdateQuoteRatingAsync(QuoteRating quoteRating)
+        public async Task SaveAsync()
         {
-            var quoteRatingToUpdate = await _applicationDbContext.QuoteRatings
-                                       .FirstOrDefaultAsync(br => br.QuoteRatingId == quoteRating.QuoteRatingId);
-
-            if (quoteRatingToUpdate == null)
-            {
-                return null;
-            }
-
-            quoteRatingToUpdate.OverallRating = quoteRating.OverallRating;
-
-            if (quoteRating.QuoteRatingInDetail != null)
-            {
-                quoteRatingToUpdate.QuoteRatingInDetail.InspirationalValueRating = quoteRating.QuoteRatingInDetail.InspirationalValueRating;
-                quoteRatingToUpdate.QuoteRatingInDetail.OriginalityRating = quoteRating.QuoteRatingInDetail.OriginalityRating;
-                quoteRatingToUpdate.QuoteRatingInDetail.RelevanceToTheTopicRating = quoteRating.QuoteRatingInDetail.RelevanceToTheTopicRating;
-            }
-
-            try
-            {
-                await _applicationDbContext.SaveChangesAsync();
-                return quoteRatingToUpdate;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            await _applicationDbContext.SaveChangesAsync();
         }
 
         public async Task<QuoteRating> AddQuoteRatingAsync(QuoteRating rating, string userId)

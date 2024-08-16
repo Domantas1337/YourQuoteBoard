@@ -28,8 +28,8 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            QuoteRatingCreateDTO addedRating = await _ratingService.AddQuoteRatingAsync(quoteRating, userId);
-            return Ok(addedRating);
+            await _ratingService.AddQuoteRatingAsync(quoteRating, userId);
+            return Ok();
         }
 
         [HttpGet("quote-rating-by-user/{quoteId}")]

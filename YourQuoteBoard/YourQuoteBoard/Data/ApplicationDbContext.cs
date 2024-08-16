@@ -19,6 +19,8 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<Folder> Folders { get; set; }
         public virtual DbSet<Tag> Tags { get ; set; }
         public virtual DbSet<Favorite> Favorites { get; set; }
+        public virtual DbSet<SpecificRating> SpecificRatings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -97,12 +99,16 @@ namespace YourQuoteBoard.Data
                       .HasForeignKey(q => q.QuoteId)
                       .IsRequired();
 
+                entity.HasMany(qr => qr.SpecificRatings)
+                      .WithOne(sr => sr.QuoteRating)
+                      .HasForeignKey(sr => sr.QuoteRatingId)
+                      .IsRequired();
+
                 entity.HasOne<ApplicationUser>()
                       .WithMany(u => u.QuoteRatings)
                       .HasForeignKey(qr => qr.ApplicationUserId)
                       .IsRequired();
 
-                entity.OwnsOne(e => e.QuoteRatingInDetail);
             });
 
             modelBuilder.Entity<Folder>(entity =>

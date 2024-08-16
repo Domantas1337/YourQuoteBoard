@@ -82,8 +82,8 @@ namespace YourQuoteBoard.Services
                 Created = quote.Created,
                 BookId = quote.BookId,
                 BookTitle = quote.Book.Title,
-                AverageRating = quote.AverageRating,
-                NumberOfRatings = quote.NumberOfRatings,
+                AverageRating = quote.AverageOverallRating,
+                NumberOfRatings = quote.NumberOfOverallRatings,
                 Tags = _mapper.Map<ICollection<TagDisplayDTO>>(quote.Tags)       
             };
         }

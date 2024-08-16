@@ -16,11 +16,13 @@ namespace YourQuoteBoard.Entity
         public required Guid BookId {get; set;}
         public required Book Book { get; set; }
         public List<Folder> Folders { get; set; } = new List<Folder> { };
+        public double AverageOverallRating { get; set; }
+        public int NumberOfOverallRatings { get; set; }
         public ICollection<QuoteRating> QuoteRatings { get; } = new List<QuoteRating>();
-        public double? AverageRating { get; set; }
-        public int? NumberOfRatings { get; set; }
+        public ICollection<RatingSummary> RatingSummaries { get; } = new List<RatingSummary>();
         public ICollection<Tag> Tags { get; } = new List<Tag>();
         public Genre? Genre { get; set; }
+        
         [Required]
         public required string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
@@ -31,6 +33,18 @@ namespace YourQuoteBoard.Entity
             {
                 Tags.Add(tag);
             }
+        }
+
+        public void AddRatingSummary(SpecificRating specificRating)
+        {
+            RatingSummary ratingSummary = new RatingSummary()
+            {
+                RatingCategory = specificRating.RatingCategory,
+                AverageRating = specificRating.Rating,
+                NumberOfRatings = 1
+            };
+
+            RatingSummaries.Add(ratingSummary);
         }
     }
 }

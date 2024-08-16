@@ -2,6 +2,7 @@
 using YourQuoteBoard.Data;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
+using YourQuoteBoard.Services;
 
 namespace YourQuoteBoard.Repositories
 {
@@ -48,56 +49,14 @@ namespace YourQuoteBoard.Repositories
             return quote;
         }
 
-        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenAdded(Guid quoteId, double rating)
+        public async Task<Quote?> GetQuoteByIdForRatingAsync(Guid quoteId)
         {
-            Quote quote = await FetchAndInitializeQuote(quoteId);
-
-            double sumOfRatings = (double)(quote.AverageRating != null ? quote.AverageRating * quote.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + rating;
-            int newNumberOfRatings = (int)quote.NumberOfRatings + 1;
-
-            UpdateQuoteRating(quote, newSumOfRatings, newNumberOfRatings);
-
-            await _applicationDbContext.SaveChangesAsync();
-            return quote;
-        }
-
-        public async Task<Quote> UpdateQuoteRatingWhenARatingHasBeenUpdated(Guid quoteId, QuoteRating currentRating, QuoteRating newRating)
-        {
-            Quote quote = await FetchAndInitializeQuote(quoteId);
-
-            double sumOfRatings = (double)(quote.AverageRating != null ? quote.AverageRating * quote.NumberOfRatings : 0);
-            double newSumOfRatings = sumOfRatings + newRating.OverallRating;
-
-            if (currentRating.OverallRating != 0)
-            {
-                newSumOfRatings -= currentRating.OverallRating;
-            }
-
-            UpdateQuoteRating(quote, newSumOfRatings, (int)quote.NumberOfRatings);
-
-            await _applicationDbContext.SaveChangesAsync();
+            Quote? quote = await _applicationDbContext.Quotes
+                .Include(q => q.QuoteRatings)
+                .Include(q => q.RatingSummaries)
+                .FirstOrDefaultAsync(q => q.QuoteId == quoteId);
 
             return quote;
-        }
-
-        private async Task<Quote> FetchAndInitializeQuote(Guid quoteId)
-        {
-            Quote quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId.Equals(quoteId));
-
-            if (quote.AverageRating == null)
-            {
-                quote.AverageRating = 0;
-                quote.NumberOfRatings = 0;
-            }
-
-            return quote;
-        }
-
-        private void UpdateQuoteRating(Quote quote, double newSumOfRatings, int newNumberOfRatings)
-        {
-            quote.AverageRating = newSumOfRatings / newNumberOfRatings;
-            quote.NumberOfRatings = newNumberOfRatings;
         }
 
         public async Task DeleteQuoteAsync(Quote quote)
@@ -126,6 +85,11 @@ namespace YourQuoteBoard.Repositories
             Quote? quote = await _applicationDbContext.Quotes.FirstOrDefaultAsync(q => q.QuoteId.Equals(quoteId) && q.ApplicationUserId.Equals(userId));
 
             return quote;
+        }
+
+        public async Task SaveAsync()
+        {
+            await _applicationDbContext.SaveChangesAsync();
         }
     }
 }
