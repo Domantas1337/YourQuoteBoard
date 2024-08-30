@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.DTO.Rating.Quote;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Enums;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
 
@@ -76,26 +78,32 @@ namespace YourQuoteBoard.Services
 
         public void UpdateSpecificRatings(Quote quote,
                                           ICollection<SpecificRating> currentRatings, 
-                                          ICollection<SpecificRating> newRatings
+                                          ICollection<SpecificRatingDTO> newRatings
                                           )
         {
             var currentRatingDictionary = currentRatings.ToDictionary(sr => sr.RatingCategory);
             var currentSummaryDictionary = quote.RatingSummaries.ToDictionary(sr => sr.RatingCategory);
 
-            foreach (SpecificRating newRating in newRatings)
+            foreach (SpecificRatingDTO newRating in newRatings)
             {
                 if(currentRatingDictionary.TryGetValue(newRating.RatingCategory, out var currentRating))
                 {
                     RatingSummary ratingSummary = currentSummaryDictionary.GetValueOrDefault(newRating.RatingCategory);
                     double currentTotal = ratingSummary.AverageRating * ratingSummary.NumberOfRatings;
-                    ratingSummary.AverageRating = (currentTotal - currentRating.Rating) + newRating.Rating;
+                    ratingSummary.AverageRating = (currentTotal - (double)currentRating.Rating) + (double)newRating.Rating;
 
                     currentRating.Rating = newRating.Rating;
                 }
-                else
+                else if(newRating.Rating != null)
                 {
                     quote.AddRatingSummary(newRating);
-                    currentRatings.Add(newRating);
+                    currentRatings.Add( 
+                        new SpecificRating
+                        {
+                            Rating = newRating.Rating,
+                            RatingCategory = newRating.RatingCategory
+                        }
+                     );
                 }
             }
         }
@@ -115,17 +123,17 @@ namespace YourQuoteBoard.Services
             quote.AverageOverallRating = (currentTotalRating +  overallRating) / (double)quote.NumberOfOverallRatings;
         }
 
-        private void UpdateSpecificRatingWhenAdded(Quote quote, ICollection<SpecificRating> specificRatings)
+        private void UpdateSpecificRatingWhenAdded(Quote quote, ICollection<SpecificRatingDTO> specificRatings)
         {
             var ratingSummaryDict = quote.RatingSummaries
                                     .ToDictionary(summary => summary.RatingCategory);
 
-            foreach (SpecificRating rating in specificRatings)
+            foreach (SpecificRatingDTO rating in specificRatings)
             {
                 if (ratingSummaryDict.TryGetValue(rating.RatingCategory, out var summary)) 
                 {
                     double currentTotal = summary.AverageRating * summary.NumberOfRatings;
-                    currentTotal += rating.Rating;
+                    currentTotal += (double) rating.Rating;
                     summary.NumberOfRatings += 1;
                     summary.AverageRating = currentTotal / summary.NumberOfRatings;
                 }
@@ -137,6 +145,27 @@ namespace YourQuoteBoard.Services
 
         }
 
+        public async Task<ICollection<SpecificRating>> GetSpecificRatingsByRatingId(Guid quoteRatingId)
+        {
+            var quoteRating = await _quoteRatingRepository.GetRatingWithSepcificRatingsByIdAsync(quoteRatingId);
+            var specificRatings = quoteRating.SpecificRatings;
 
+            RatingCategory[] ratingCategories = (RatingCategory[]) Enum.GetValues(typeof(RatingCategory));
+            Dictionary<RatingCategory, SpecificRating> specificRatingDictionary = specificRatings.ToDictionary(c => c.RatingCategory);
+            
+            foreach(var ratingCategory in ratingCategories)
+            {
+                if (!specificRatingDictionary.ContainsKey(ratingCategory))
+                {
+                    specificRatings.Add(new SpecificRating
+                    {
+                        RatingCategory = ratingCategory,
+                        Rating = null
+                    });
+                }
+            }
+
+            return specificRatings;
+        }
     }
 }

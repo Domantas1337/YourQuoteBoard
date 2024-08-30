@@ -2,12 +2,16 @@ import { Rate } from "antd";
 
 interface AssignRatingProps{
     rating: number | undefined;
-    label: string;
-    ratingKey: string;
-    handleGivenRating: (value: number, whatIsRated: string) => void;
+    ratingKey: QuoteRatingCategory | BookRatingCategory;
+    handleGivenRating: (value: number, whatIsRated: QuoteRatingCategory | BookRatingCategory) => void;
 }
 
-export default function AssignRating({rating, label, ratingKey, handleGivenRating} : AssignRatingProps){
+export default function AssignRating({rating, ratingKey, handleGivenRating} : AssignRatingProps){
+    
+    const label: string = ratingKey.replace(/([A-Z])/g, ' $1') 
+                          .replace(/^./, (str: string)  => str.toUpperCase()) 
+                          .trim();
+    
     return <>
     {
         rating ? (

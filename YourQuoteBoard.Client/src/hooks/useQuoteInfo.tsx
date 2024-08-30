@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { RatingCategory } from "../models/rating/RatingCategory";
-import { getLabelOfProperty } from "../helpers/propertyToString";
 import { QuoteFullDisplayDTO } from "../models/quotes/QuoteFullDisplayDTO";
 import { getQuoteForDesignatedPage } from "../api/quote";
 import { getUserQuoteRating } from "../api/quoteRating";
-import { QuoteRatingInDetail } from "../models/rating/quote/QuoteRatingInDetail";
+import { SpecificRating } from "../models/rating/SpecificRating";
 
 export default function useQuoteInfo(id: string){
 
@@ -20,13 +18,8 @@ export default function useQuoteInfo(id: string){
         tags: []
     });
     const [overallRating, setOverallRating] = useState<number>(0);
-    const [detailedRating, setDetailedRating] = useState<QuoteRatingInDetail>({
-        relevanceToTheTopicRating: undefined,
-        originalityRating: undefined,
-        inspirationalValueRating: undefined
-    })
-    const [quoteRatingCategories, setQuoteRatingCategories] = useState<RatingCategory[]>([]);
-    const [quoteRatingId, setQuoteRatingId] = useState<string>("");
+    const [specificRatings, setSpecificRatings] = useState<SpecificRating[]>([])
+    const [quoteRatingId, setQuoteRatingId] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         const fetchQuoteInfo = async () => {
@@ -39,8 +32,7 @@ export default function useQuoteInfo(id: string){
                 if (rating){
                     setQuoteRatingId(rating.quoteRatingId);
                     setOverallRating(rating.overallRating);
-                    setDetailedRating(rating.quoteRatingInDetail);
-                    setQuoteRatingCategories(getQuoteCategories(rating.quoteRatingInDetail));
+                    setSpecificRatings(rating.specificRatings);
                 }
             }catch(error){
                 console.log("Failed to fetch quote details: ", error);
@@ -53,23 +45,7 @@ export default function useQuoteInfo(id: string){
 
     return {overallRating, setOverallRating, 
             quote, setQuote, 
-            detailedRating, setDetailedRating,
-            quoteRatingCategories, setQuoteRatingCategories,
+            specificRatings, setSpecificRatings,
             quoteRatingId};
 }
 
-function getQuoteCategories(rating: QuoteRatingInDetail){
-    if (rating){
-        const categoryEntries = Object.keys(rating) as Array<keyof QuoteRatingInDetail>;
-                            
-        const ratingCategories: RatingCategory[] = categoryEntries.map( (categoryKey) => ({
-            key: categoryKey,
-            value: rating[categoryKey],
-            label: getLabelOfProperty(categoryKey)
-        }));
-
-        return ratingCategories;
-    }else{
-        return [];
-    }
-}

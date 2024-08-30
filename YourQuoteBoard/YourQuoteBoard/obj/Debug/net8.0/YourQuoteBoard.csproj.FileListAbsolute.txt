@@ -530,10 +530,9 @@ C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\ne
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.YourQuoteBoard.props
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\scopedcss\bundle\YourQuoteBoard.styles.css
-C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.csproj.CopyComplete
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.dll
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\refint\YourQuoteBoard.dll
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.pdb
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuoteBoard.genruntimeconfig.cache
 C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\ref\YourQuoteBoard.dll
-C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\doman\Desktop\YourQuoteBoard\YourQuoteBoard\YourQuoteBoard\obj\Debug\net8.0\YourQuot.20675A34.Up2Date

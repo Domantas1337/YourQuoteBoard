@@ -11,6 +11,8 @@ import RatingModal from "../../components/rating/RatingModal";
 import ItemManagementModal from "../../components/basic/ItemManagementModal";
 import { ButtonConfig } from "../../types/ButtonConfig";
 import { getQuoteManagementButtons } from "../../helpers/button/modalButtonConfig";
+import { QuoteRatingCategory } from "../../enums/QuoteRatingCategory";
+import { BookRatingCategory } from "../../enums/BookRatingCategory";
 
 
 export default function Quote(){
@@ -19,8 +21,8 @@ export default function Quote(){
     const {quote, 
            quoteRatingId,
            overallRating, setOverallRating,
-           detailedRating, setDetailedRating,
-           quoteRatingCategories, setQuoteRatingCategories} = useQuoteInfo(id || "");
+           specificRatings, setSpecificRatings,
+           } = useQuoteInfo(id || "");
     
     const [isRatingModalOpen, setIsRatingModalOpen] = useState<boolean>(false);
     const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
@@ -41,21 +43,8 @@ export default function Quote(){
         setIsRatingModalOpen(true);
     }
 
-    async function hanldeUploadedRating(){
-        if (!id){
-            return null;
-        }
-
-        if (quoteRatingId){
-            await updateQuoteRating({overallRating: overallRating, quoteRatingInDetail: detailedRating, quoteId: id, quoteRatingId: quoteRatingId})
-        }else{
-            await addQuoteRating({quoteId: id, quoteRatingInDetail: detailedRating, overallRating: overallRating});
-        }
-        setIsRatingModalOpen(false);
-    }
 
     async function openModal(){
-        console.log("la");
         setButtonConfigs(await getQuoteManagementButtons(['delete'], id));
         setIsDetailModalOpen(true);
     }
@@ -64,21 +53,56 @@ export default function Quote(){
         setIsDetailModalOpen(false);
     }
 
-    function handleSpecificRating(value: number, whatIsBeingRated: string){
-        setDetailedRating(prevRating => ({
-            ...prevRating,
-            [whatIsBeingRated]: value
-        }));
-        
-        const updatedCategories = quoteRatingCategories.map(category =>
-            category.key === whatIsBeingRated ? { ...category, value: value } : category
-        );
-        setQuoteRatingCategories(updatedCategories);
-    }
-
     function handleClose(){
         setIsRatingModalOpen(false);
     }
+    
+    async function handleSpecificRating(value: number, whatIsBeingRated: QuoteRatingCategory | BookRatingCategory) {
+        if (whatIsBeingRated == QuoteRatingCategory.OverallRating){
+            setOverallRating(value)
+        }
+        else{
+            setSpecificRatings((prevRatings) => {
+                const ratingExists = prevRatings.some(
+                    (rating) => rating.ratingCategory === whatIsBeingRated
+                );
+        
+                if (ratingExists) {
+                    return prevRatings.map((rating) =>
+                        rating.ratingCategory === whatIsBeingRated
+                            ? { ...rating, rating: value }
+                            : rating
+                    );
+                } else {
+                    return [
+                        ...prevRatings,
+                        { rating: value, ratingCategory: whatIsBeingRated },
+                    ];
+                }
+            });
+        }
+    }
+
+    async function hanldeUploadedRating(){
+        if (!quoteRatingId && id){
+            console.log("not");
+            addQuoteRating({overallRating: overallRating, specificRatings: specificRatings, quoteId: id});
+        }
+        else if (quoteRatingId && id){
+            console.log("is");
+            updateQuoteRating(
+                {
+                    overallRating: overallRating, 
+                    specificRatings: specificRatings, 
+                    quoteId: id, 
+                    quoteRatingId: quoteRatingId
+                }
+            )
+        }
+
+        setIsRatingModalOpen(false);
+    }
+    
 
     return (
     <div className="quote-page-container">
@@ -119,12 +143,13 @@ export default function Quote(){
             </div>
 
             <RatingModal 
-                handleSetRating={hanldeUploadedRating}
+                ratings={specificRatings}
+                handleRatingCompletedClick={hanldeUploadedRating}
+                itemType={ItemType.Quote}
                 handleRatingChange={handleSpecificRating}
                 handleClose={handleClose}
                 title="Rate the quote content"
                 isOpen={isRatingModalOpen}
-                categories={quoteRatingCategories}
                 />
             <div className="quote-rating-container">
                 <h6> Average quote rating:</h6>

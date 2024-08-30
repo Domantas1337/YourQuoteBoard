@@ -93,7 +93,7 @@ export default function Book() {
                         
                         <RatingModal isOpen={isModalOpen} 
                                      title="Rate the book"
-                                     handleSetRating={handleSetRating} 
+                                     handleRatingCompletedClick={handleSetRating} 
                                      handleRatingChange={handleSpecificRating}
                                      categories={bookRatingCategories}
                                      handleClose={handleClose}/>

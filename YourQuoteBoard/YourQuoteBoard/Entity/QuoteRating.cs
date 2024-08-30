@@ -1,4 +1,5 @@
-﻿using YourQuoteBoard.Enums;
+﻿using YourQuoteBoard.DTO.Rating;
+using YourQuoteBoard.Enums;
 
 namespace YourQuoteBoard.Entity
 {
@@ -11,13 +12,19 @@ namespace YourQuoteBoard.Entity
         public required Quote Quote { get; set; }
         public required string ApplicationUserId { get; set; }
     
-        public void AddSpecificRatings(ICollection<SpecificRating>? specRatings)
+        public void AddSpecificRatings(ICollection<SpecificRatingDTO>? specRatings)
         {
             if (specRatings == null) return;
 
-            for (int i = 0; i < specRatings.Count; ++i)
+            foreach (var specRating in specRatings) 
             {
-                this.SpecificRatings.Add(specRatings.ElementAt(i));
+                this.SpecificRatings.Add(
+                    new SpecificRating 
+                    { 
+                        Rating = specRating.Rating, 
+                        RatingCategory = specRating.RatingCategory
+                    }
+                    );
             }
         }
     }

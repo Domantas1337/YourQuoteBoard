@@ -1,22 +1,38 @@
 import { Modal } from "antd";
 import AssignRating from "./AssignRating";
-import { RatingCategory } from "../../models/rating/RatingCategory";
+import { SpecificRating } from "../../models/rating/SpecificRating";
+import { ItemType } from "../../enums/ItemType";
+import { QuoteRatingCategory } from "../../enums/QuoteRatingCategory";
+import { BookRatingCategory } from "../../enums/BookRatingCategory";
 
 interface RatingModalProps{
+    ratings: SpecificRating[];
+    itemType: ItemType;
     isOpen: boolean;
     title: string;
     handleClose: () => void;
-    handleSetRating: () => void; 
-    handleRatingChange: (value: number, whatIsBeingRated: string) => void;
-    categories: RatingCategory[];
+    handleRatingCompletedClick: () => void; 
+    handleRatingChange: (value: number, whatIsBeingRated: QuoteRatingCategory | BookRatingCategory) => void;
 }
 
-export default function RatingModal({isOpen, title, handleClose,  handleSetRating, handleRatingChange, categories} : RatingModalProps){
-    return <Modal title={title} open={isOpen} onOk={handleSetRating} onCancel={handleClose}>
+
+export default function RatingModal({ratings, itemType, isOpen, title, handleClose,  handleRatingCompletedClick, handleRatingChange} : RatingModalProps){
+
+    const ratingCategoeies = itemType == ItemType.Quote ? Object.values(QuoteRatingCategory) : Object.values(BookRatingCategory);
+
+    return  <Modal title={title} open={isOpen} onOk={handleRatingCompletedClick} onCancel={handleClose}>                            
                 {
-                    categories.map( (category, key)  => 
-                        <AssignRating key={key} handleGivenRating={handleRatingChange} rating={category.value} label={category.label} ratingKey={category.key} />
+                    ratingCategoeies.map( (ratingCategory, key)  => 
+                        <AssignRating 
+                        key={key} 
+                        handleGivenRating={handleRatingChange} 
+                        rating={
+                            ratings?.find(
+                                (rating) => rating.ratingCategory === ratingCategory  
+                            )?.rating || undefined   
+                        } 
+                        ratingKey={ratingCategory} />
                     )
                 }
-           </Modal>
+            </Modal>
 }

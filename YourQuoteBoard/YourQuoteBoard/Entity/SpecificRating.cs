@@ -6,7 +6,7 @@ namespace YourQuoteBoard.Entity
     {
         public Guid SpecificRatingId { get; set; }
         public RatingCategory RatingCategory { get; set; }
-        public double Rating { get; set; }
+        public double? Rating { get; set; }
         public Guid QuoteRatingId { get; set; }
         public QuoteRating QuoteRating { get; set; }
     }

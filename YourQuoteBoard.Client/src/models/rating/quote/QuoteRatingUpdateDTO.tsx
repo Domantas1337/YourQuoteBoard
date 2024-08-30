@@ -1,8 +1,8 @@
-import { QuoteRatingInDetail } from "./QuoteRatingInDetail";
+import { SpecificRating } from "../SpecificRating";
 
 export interface QuoteRatingUpdateDTO{
     quoteRatingId: string;
-    quoteRatingInDetail: QuoteRatingInDetail;
+    specificRatings: SpecificRating[];
     overallRating: number;
     quoteId: string;
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourQuoteBoard.DTO.Rating.Quote;
+using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Controllers
@@ -59,6 +60,17 @@ namespace YourQuoteBoard.Controllers
         {
             List<QuoteRatingDisplayDTO> quoteRatings = await _ratingService.GetAllQuoteRatingsAsync();
             return Ok(quoteRatings);
+        }
+
+        [HttpGet("specific-ratings/{quoteRatingId}")]
+        public async Task<IActionResult> GetSpecificRatingsByUserAsync(Guid quoteRatingId)
+        {
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            ICollection<SpecificRating> specificRatings = await _ratingService.GetSpecificRatingsByRatingId(quoteRatingId);
+            
+            
+            return Ok(specificRatings);
         }
     }
 }

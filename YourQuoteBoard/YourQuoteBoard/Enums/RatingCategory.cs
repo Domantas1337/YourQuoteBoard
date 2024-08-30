@@ -3,7 +3,7 @@
     public enum RatingCategory
     {
         OverallRating,
-        OriginalityRating,
+        OriginalityRating, 
         InspirationalValueRating,
         RelevanceToTheTopicRating
     }

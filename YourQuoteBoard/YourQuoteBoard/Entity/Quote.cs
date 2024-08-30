@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using YourQuoteBoard.Data;
+using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.Enums;
 
 namespace YourQuoteBoard.Entity
@@ -35,16 +36,20 @@ namespace YourQuoteBoard.Entity
             }
         }
 
-        public void AddRatingSummary(SpecificRating specificRating)
+        public void AddRatingSummary(SpecificRatingDTO specificRating)
         {
-            RatingSummary ratingSummary = new RatingSummary()
-            {
-                RatingCategory = specificRating.RatingCategory,
-                AverageRating = specificRating.Rating,
-                NumberOfRatings = 1
-            };
 
-            RatingSummaries.Add(ratingSummary);
+            if (specificRating.Rating != null)
+            {
+                RatingSummary ratingSummary = new RatingSummary()
+                {
+                    RatingCategory = specificRating.RatingCategory,
+                    AverageRating = (double) specificRating.Rating,
+                    NumberOfRatings = 1
+                };
+
+                RatingSummaries.Add(ratingSummary);
+            }
         }
     }
 }

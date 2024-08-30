@@ -28,7 +28,9 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<QuoteRating?> GetQuoteRatingByUserAsync(string userId, Guid quoteId)
         {
-            QuoteRating? quoteRating = await _applicationDbContext.QuoteRatings.FirstOrDefaultAsync(br => br.QuoteId.Equals(quoteId) && br.ApplicationUserId.Equals(userId));
+            QuoteRating? quoteRating = await _applicationDbContext.QuoteRatings
+                                            .Include(r => r.SpecificRatings)
+                                            .FirstOrDefaultAsync(br => br.QuoteId.Equals(quoteId) && br.ApplicationUserId.Equals(userId));
             return quoteRating;
         }
 
@@ -42,8 +44,22 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<QuoteRating> GetQuoteRatingByIdAsync(Guid quoteRatingId)
         {
-            QuoteRating quoteRating = await _applicationDbContext.QuoteRatings.FirstOrDefaultAsync(qr => qr.QuoteRatingId == quoteRatingId);
+            QuoteRating quoteRating = await _applicationDbContext
+                                        .QuoteRatings
+                                        .Include(qr => qr.SpecificRatings)
+                                        .FirstOrDefaultAsync(qr => qr.QuoteRatingId == quoteRatingId);
             return quoteRating;
+        }
+
+        public async Task<QuoteRating> GetRatingWithSepcificRatingsByIdAsync(Guid quoteRatingId)
+        {
+            var quoteRaintg = await _applicationDbContext.QuoteRatings
+                                        .Include(sr => sr.SpecificRatings)
+                                        .FirstOrDefaultAsync(sr => sr.QuoteRatingId.Equals(quoteRatingId));
+                                        
+
+               
+            return quoteRaintg;
         }
     }
 }

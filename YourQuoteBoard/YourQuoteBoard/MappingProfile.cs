@@ -46,6 +46,7 @@ namespace YourQuoteBoard
             CreateMap<Folder, FolderContentDTO>().ReverseMap();
             CreateMap<Folder, FolderDisplayDTO>().ReverseMap();
             CreateMap<Folder, FolderUpdateDTO>().ReverseMap();
+            CreateMap<SpecificRating, SpecificRatingDTO>().ReverseMap();
         }
     }
 }
