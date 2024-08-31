@@ -8,12 +8,12 @@ namespace YourQuoteBoard.Repositories
 {
     public class BookRatingRepository(ApplicationDbContext _applicationDbContext) : IBookRatingRepository
     {
-        public async Task<BookRating> AddBookRatingAsync(BookRating rating, string userId)
+        public async Task<Guid> AddBookRatingAsync(BookRating rating, string userId)
         {
             await _applicationDbContext.BookRatings.AddAsync(rating);
             await _applicationDbContext.SaveChangesAsync();
 
-            return rating;
+            return rating.BookRatingId;
         }
         public async Task<List<BookRating>> GetAllBookRatingsAsync()
         {
@@ -23,7 +23,9 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<BookRating?> GetBookRatingByUserAsync(string userId, Guid bookId)
         {
-            BookRating? bookRating = await _applicationDbContext.BookRatings.FirstOrDefaultAsync(br => br.BookId.Equals(bookId) && br.ApplicationUserId.Equals(userId));
+            BookRating? bookRating = await _applicationDbContext.BookRatings
+                                                                .Include(br => br.SpecificRatings)
+                                                                .FirstOrDefaultAsync(br => br.BookId.Equals(bookId) && br.ApplicationUserId.Equals(userId));
             return bookRating;
         }
 
@@ -38,6 +40,7 @@ namespace YourQuoteBoard.Repositories
         public async Task<BookRating?> GetBookRatingByIdAsync(Guid bookRatingId)
         {
             return await _applicationDbContext.BookRatings
+                                              .Include(br => br.SpecificRatings)
                                               .FirstOrDefaultAsync(br => br.BookRatingId == bookRatingId);
         }
     }

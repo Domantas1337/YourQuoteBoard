@@ -2,6 +2,7 @@
 {
     public enum BookRatingCategory
     {
+        OverallRating,
         WritingStyleRating,
         PlotRating,
         CharacterDevelopmentRating,

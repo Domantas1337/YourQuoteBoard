@@ -1,4 +1,6 @@
 import { Rate } from "antd";
+import { QuoteRatingCategory } from "../../enums/QuoteRatingCategory";
+import { BookRatingCategory } from "../../enums/BookRatingCategory";
 
 interface AssignRatingProps{
     rating: number | undefined;

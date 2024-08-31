@@ -3,24 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\interfaces\\repository\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\interfaces\\repository\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\services\\bookratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\services\\bookratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\interfaces\\service\\ibookratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\interfaces\\service\\ibookratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\controllers\\bookratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\controllers\\bookratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\interfaces\\repository\\ibookratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\interfaces\\repository\\ibookratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\repositories\\bookratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\repositories\\bookratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\enums\\quoteratingcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\enums\\quoteratingcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\enums\\bookratingcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\enums\\bookratingcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\dto\\rating\\book\\bookratingfordirectuserinteractiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\dto\\rating\\book\\bookratingfordirectuserinteractiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\dto\\rating\\quote\\quoteratingfordirectuserinteractiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\dto\\rating\\quote\\quoteratingfordirectuserinteractiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\services\\quoteratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\services\\quoteratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|c:\\users\\doman\\desktop\\yourquoteboard\\yourquoteboard\\yourquoteboard\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB32DB7-1095-4B25-960E-C142A9673047}|YourQuoteBoard\\YourQuoteBoard.csproj|solutionrelative:yourquoteboard\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +62,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Program.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Program.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Program.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Program.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAuwHAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T18:35:50.742Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -43,67 +88,153 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IBookRepository.cs",
-              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Repository\\IBookRepository.cs",
-              "RelativeDocumentMoniker": "YourQuoteBoard\\Interfaces\\Repository\\IBookRepository.cs",
-              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Repository\\IBookRepository.cs",
-              "RelativeToolTip": "YourQuoteBoard\\Interfaces\\Repository\\IBookRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAoAAAAAAAAAAAAAAA==",
+              "Title": "IBookRatingService.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Service\\IBookRatingService.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Interfaces\\Service\\IBookRatingService.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Service\\IBookRatingService.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Interfaces\\Service\\IBookRatingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T05:42:44.347Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuoteService.cs",
-              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\QuoteService.cs",
-              "RelativeDocumentMoniker": "YourQuoteBoard\\Services\\QuoteService.cs",
-              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\QuoteService.cs",
-              "RelativeToolTip": "YourQuoteBoard\\Services\\QuoteService.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T05:42:21.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BookService.cs",
-              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\BookService.cs",
-              "RelativeDocumentMoniker": "YourQuoteBoard\\Services\\BookService.cs",
-              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\BookService.cs",
-              "RelativeToolTip": "YourQuoteBoard\\Services\\BookService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA/wBIAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T05:42:01.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BookRepository.cs",
-              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRepository.cs",
-              "RelativeDocumentMoniker": "YourQuoteBoard\\Repositories\\BookRepository.cs",
-              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRepository.cs",
-              "RelativeToolTip": "YourQuoteBoard\\Repositories\\BookRepository.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAwCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T05:41:40.047Z",
+              "WhenOpened": "2024-08-31T18:14:32.92Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "IBookRatingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Repository\\IBookRatingRepository.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Interfaces\\Repository\\IBookRatingRepository.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Interfaces\\Repository\\IBookRatingRepository.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Interfaces\\Repository\\IBookRatingRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T18:12:32.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "BookRatingService.cs",
               "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\BookRatingService.cs",
               "RelativeDocumentMoniker": "YourQuoteBoard\\Services\\BookRatingService.cs",
               "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\BookRatingService.cs",
               "RelativeToolTip": "YourQuoteBoard\\Services\\BookRatingService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABsAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAawEYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T22:24:06.586Z",
+              "WhenOpened": "2024-08-31T18:12:01.519Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookRatingController.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Controllers\\BookRatingController.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Controllers\\BookRatingController.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Controllers\\BookRatingController.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Controllers\\BookRatingController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAawDAAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:00:16.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookRatingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRatingRepository.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Repositories\\BookRatingRepository.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRatingRepository.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Repositories\\BookRatingRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAmwAgAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T18:12:39.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "QuoteRatingCategory.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Enums\\QuoteRatingCategory.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Enums\\QuoteRatingCategory.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Enums\\QuoteRatingCategory.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Enums\\QuoteRatingCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T17:54:23.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookRatingCategory.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Enums\\BookRatingCategory.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Enums\\BookRatingCategory.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Enums\\BookRatingCategory.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Enums\\BookRatingCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T17:54:11.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookRatingForDirectUserInteractionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\DTO\\Rating\\Book\\BookRatingForDirectUserInteractionDTO.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\DTO\\Rating\\Book\\BookRatingForDirectUserInteractionDTO.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\DTO\\Rating\\Book\\BookRatingForDirectUserInteractionDTO.cs",
+              "RelativeToolTip": "YourQuoteBoard\\DTO\\Rating\\Book\\BookRatingForDirectUserInteractionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:34:19.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QuoteRatingForDirectUserInteractionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\DTO\\Rating\\Quote\\QuoteRatingForDirectUserInteractionDTO.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\DTO\\Rating\\Quote\\QuoteRatingForDirectUserInteractionDTO.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\DTO\\Rating\\Quote\\QuoteRatingForDirectUserInteractionDTO.cs",
+              "RelativeToolTip": "YourQuoteBoard\\DTO\\Rating\\Quote\\QuoteRatingForDirectUserInteractionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:34:07.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\MappingProfile.cs",
+              "RelativeToolTip": "YourQuoteBoard\\MappingProfile.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADMAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:28:23.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRepository.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Repositories\\BookRepository.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Repositories\\BookRepository.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Repositories\\BookRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:15:34.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "QuoteRatingService.cs",
+              "DocumentMoniker": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\QuoteRatingService.cs",
+              "RelativeDocumentMoniker": "YourQuoteBoard\\Services\\QuoteRatingService.cs",
+              "ToolTip": "C:\\Users\\doman\\Desktop\\YourQuoteBoard\\YourQuoteBoard\\YourQuoteBoard\\Services\\QuoteRatingService.cs",
+              "RelativeToolTip": "YourQuoteBoard\\Services\\QuoteRatingService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAASwBMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T07:14:31.755Z"
             }
           ]
         }

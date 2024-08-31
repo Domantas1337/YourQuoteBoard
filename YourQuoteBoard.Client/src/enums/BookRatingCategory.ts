@@ -1,5 +1,8 @@
 export enum BookRatingCategory{
     OverallRating = "OverallRating",
-    OriginalityRating = "OriginalityRating",
-    InspirationalValueRating = "InspirationalValueRating",
+    WritingStyleRating = "WritingStyleRating",
+    PlotRating = "PlotRating",
+    CharacterDevelopmentRating = "CharacterDevelopmentRating",
+    WorldBuildingRating = "WorldBuildingRating",
+    AccuracyRating = "AccuracyRating"
 }

@@ -44,7 +44,10 @@ namespace YourQuoteBoard.Repositories
 
         public async Task<Quote?> GetQuoteByIdAsync(Guid quoteId)
         {
-            Quote? quote = await _applicationDbContext.Quotes.Include(q => q.Book).Include(q => q.Tags).FirstOrDefaultAsync(q => q.QuoteId == quoteId);
+            Quote? quote = await _applicationDbContext.Quotes
+                                                      .Include(q => q.Book)
+                                                      .Include(q => q.Tags)
+                                                      .FirstOrDefaultAsync(q => q.QuoteId == quoteId);
 
             return quote;
         }
@@ -52,9 +55,9 @@ namespace YourQuoteBoard.Repositories
         public async Task<Quote?> GetByIdForRatingAsync(Guid quoteId)
         {
             Quote? quote = await _applicationDbContext.Quotes
-                .Include(q => q.QuoteRatings)
-                .Include(q => q.RatingSummaries)
-                .FirstOrDefaultAsync(q => q.QuoteId == quoteId);
+                            .Include(q => q.QuoteRatings)
+                            .Include(q => q.RatingSummaries)
+                            .FirstOrDefaultAsync(q => q.QuoteId == quoteId);
 
             return quote;
         }

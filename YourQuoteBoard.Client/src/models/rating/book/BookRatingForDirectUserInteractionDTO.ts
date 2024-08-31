@@ -1,7 +1,8 @@
-import { BookRating } from "./BookRating";
+import { SpecificRating } from "../SpecificRating";
 
 export default interface BookRatingForDirectUserInteractionDTO{
-    bookId?: string;
-    bookRatingId?: string;
-    bookRating: BookRating;
+    bookRatingId: string;
+    overallRating: number;
+    specificRatings: SpecificRating[];
+    bookId: string;
 }

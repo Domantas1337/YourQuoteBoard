@@ -4,7 +4,6 @@ import { QuoteRatingForDirectUserInteractionDTO } from "../models/rating/quote/Q
 import { QuoteRatingUpdateDTO } from "../models/rating/quote/QuoteRatingUpdateDTO";
 
 export async function addQuoteRating(rating: QuoteRatingCreateDTO){
-    console.log(rating);
     const response = await apiClient.post("api/QuoteRating/quote-rating", rating); 
     return response;
 }

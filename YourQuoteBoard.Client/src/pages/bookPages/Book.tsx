@@ -3,27 +3,25 @@ import { useState } from "react";
 import "./BookStyle.css";
 import { Rate } from 'antd';
 import { addBookRating, updateBookRating } from "../../api/rating";
-import { BookRating } from "../../models/rating/book/BookRating";
 import RatingModal from "../../components/rating/RatingModal";
 import useBookInfo from "../../hooks/useBookInfo";
-
-
+import { QuoteRatingCategory } from "../../enums/QuoteRatingCategory";
+import { BookRatingCategory } from "../../enums/BookRatingCategory";
+import { ItemType } from "../../enums/ItemType";
 
 export default function Book() {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
 
-    const {book, bookRatingId, bookRatingCategories, bookRating, setBookRating, setBookRatingCategores} = useBookInfo(id || ""); 
-    const [bookRatingForManaging, setBookRatingForManaging] = useState<BookRating>(bookRating || {
-        overallRating: undefined,
-        plotRating: undefined,
-        accuracyRating: undefined,
-        writingStyleRating: undefined,
-        worldBuildingRating: undefined,
-        characterDevelopmentRating: undefined
-    });
+    const { book, 
+            bookRatingId, setBookRatingId, 
+            overallRating, setOverallRating,
+            specificRatings, setSpecificRatings    
+        } = useBookInfo(id || ""); 
 
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    console.log("overallRating");
+    console.log(overallRating);
+    const [isRatingModalOpen, setIsRatingModalOpen] = useState<boolean>(false);
 
     const handleQuoteViewing = () => {
         navigate(`/book-quotes/${id}`, { 
@@ -31,49 +29,45 @@ export default function Book() {
         });
     };
 
-    const handleRatingChange = (value: number) => {     
-        setBookRatingForManaging(prevRating => ({
-            ...prevRating,
-            overallRating: value
-        }));
-
-        const updatedCategories = bookRatingCategories.map(category =>
-            category.key === "overallRating" ? { ...category, value: value } : category
-        );
-        setBookRatingCategores(updatedCategories);
-
-        setIsModalOpen(true);
-    }
-    function handleSpecificRating(value: number, whatIsRated: string){
-        setBookRatingForManaging(prev => ({
-            ...prev,
-            [whatIsRated]: value
-        }));
-
-        const updatedCategories = bookRatingCategories.map(category =>
-            category.key === whatIsRated ? { ...category, value: value } : category
-        );
-
-        setBookRatingCategores(updatedCategories);
+    const handleOverallRating = (value: number) => {
+        setOverallRating(value);
+        setIsRatingModalOpen(true);
     }
 
-    const handleClose = () => setIsModalOpen(false);
-
-    const handleSetRating = async () => {
-        if (bookRatingId && bookRating ){  
-            if (id){
-                await updateBookRating({bookRatingId: bookRatingId, bookId: id, newRating: bookRatingForManaging, currentRating: bookRating});
-                setBookRating(bookRating);
-            }
-        }else{
-            if (id){
-                const response = await addBookRating({bookId: id, bookRating: bookRatingForManaging});
-                const bookRatingdto = response.data;
-
-                console.log("Book rating added: ", bookRatingdto)
-            }
+    const handleSpecificRating = (value: number, whatIsBeingRated: QuoteRatingCategory | BookRatingCategory) => {
+        if (whatIsBeingRated === BookRatingCategory.OverallRating) {
+            setOverallRating(value);
+        } else {
+            setSpecificRatings(prevRatings => {
+                const existingRatingIndex = prevRatings.findIndex(rating => rating.ratingCategory === whatIsBeingRated);
+                if (existingRatingIndex !== -1) {
+                    return prevRatings.map((rating, index) =>
+                        index === existingRatingIndex ? { ...rating, rating: value } : rating
+                    );
+                }
+                return [...prevRatings, { rating: value, ratingCategory: whatIsBeingRated }];
+            });
         }
-        setIsModalOpen(false);
+    };
+
+    const handleClose = () => setIsRatingModalOpen(false);
+
+    async function handleUploadedRating(){
+        if (!bookRatingId && id ){
+            const newBookRatingId = await addBookRating({overallRating: overallRating, specificRatings: specificRatings, bookId: id});
+            setBookRatingId(newBookRatingId);
+        }
+        else if (bookRatingId && id){
+            await updateBookRating(
+                {
+                    overallRating: overallRating, 
+                    specificRatings: specificRatings, 
+                    bookId: id, 
+                    bookRatingId: bookRatingId
+                }
+            )
+        }
+        setIsRatingModalOpen(false);
     }
 
     return (
@@ -91,12 +85,15 @@ export default function Book() {
                         <p className="book-author">By {book?.author}</p>
                         <h6>Readers of the book have given it this rating:</h6>
                         
-                        <RatingModal isOpen={isModalOpen} 
-                                     title="Rate the book"
-                                     handleRatingCompletedClick={handleSetRating} 
-                                     handleRatingChange={handleSpecificRating}
-                                     categories={bookRatingCategories}
-                                     handleClose={handleClose}/>
+                        <RatingModal 
+                            ratings={specificRatings}
+                            handleRatingCompletedClick={handleUploadedRating}
+                            itemType={ItemType.Book}
+                            handleRatingChange={handleSpecificRating}
+                            handleClose={handleClose}
+                            title="Rate the quote content"
+                            isOpen={isRatingModalOpen}
+                            />
 
                         {
                             book?.averageRating ? (
@@ -128,17 +125,17 @@ export default function Book() {
                 <button className="action-button quote">I found a quote in this book!</button>
                 
                 {
-                bookRating ? (
+                overallRating ? (
                     <div className="book-rating-container">       
-                        <span className="book-rating-span">Your rating: {bookRating.overallRating}</span>       
+                        <span className="book-rating-span">Your rating: {overallRating}</span>       
                         <br />
-                        <Rate allowHalf value={bookRating.overallRating} onChange={handleRatingChange} />
+                        <Rate allowHalf value={overallRating} onChange={handleOverallRating} />
                     </div>  
                 ) : (
                     <div className="book-rating-container">       
                         <span className="book-rating-span">Rate this book:</span>       
                         <br />
-                        <Rate allowHalf value={2} onChange={handleRatingChange} />
+                        <Rate allowHalf value={2} onChange={handleOverallRating} />
                     </div> 
                 )
                 }

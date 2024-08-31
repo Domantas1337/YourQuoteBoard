@@ -112,7 +112,6 @@ app.MapGet("/pingauth", (ClaimsPrincipal user) =>
 
 app.UseHttpsRedirection();
 
-
 app.UseAuthentication();
 app.UseAuthorization();
 

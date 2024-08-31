@@ -33,8 +33,8 @@ namespace YourQuoteBoard.Controllers
                 return BadRequest("User does not exist");
             }
 
-            await _ratingService.AddBookRatingAsync(bookRating, userId);
-            return Ok();
+            Guid addedRatingId = await _ratingService.AddBookRatingAsync(bookRating, userId);
+            return Ok(addedRatingId);
         }
 
         [HttpGet("book-rating-by-user/{bookId}")]

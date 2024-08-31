@@ -22,7 +22,8 @@ namespace YourQuoteBoard.Repositories
         }
         public async Task<List<QuoteRating>> GetAllQuoteRatingsAsync()
         {
-            List<QuoteRating> quoteRatings = await _applicationDbContext.QuoteRatings.ToListAsync();
+            List<QuoteRating> quoteRatings = await _applicationDbContext.QuoteRatings
+                                                                        .ToListAsync();
             return quoteRatings;
         }
 

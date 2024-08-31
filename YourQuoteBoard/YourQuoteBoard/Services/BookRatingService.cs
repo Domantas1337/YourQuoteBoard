@@ -15,13 +15,12 @@ namespace YourQuoteBoard.Services
 {
     public class BookRatingService(IBookRatingRepository _ratingRepository, IBookRepository _bookRepository, IMapper _mapper) : IBookRatingService
     {
-        public async Task AddBookRatingAsync(BookRatingCreateDTO rating, string userId)
+        public async Task<Guid> AddBookRatingAsync(BookRatingCreateDTO rating, string userId)
         {
             Book book = await _bookRepository.GetBookByIdAsync(rating.BookId);
 
             RatingUtils.UpdateOverallRatingWhenAdded<Book>(book, rating.OverallRating);
             UpdateSpecificRatingWhenAdded(book, rating.SpecificRatings);
-
 
             await _bookRepository.SaveAsync();
 
@@ -34,7 +33,7 @@ namespace YourQuoteBoard.Services
 
             bookRating.AddSpecificRatings((ICollection<BookSpecificRatingDTO>?) rating.SpecificRatings);
 
-            await _ratingRepository.AddBookRatingAsync(bookRating, userId);
+            return await _ratingRepository.AddBookRatingAsync(bookRating, userId);
         }
 
         public async Task<List<BookRatingDisplayDTO>> GetAllBookRatingsAsync()
@@ -66,6 +65,7 @@ namespace YourQuoteBoard.Services
                 {
                     BookRatingId = bookRating.BookRatingId,
                     SpecificRatings = _mapper.Map<List<BookSpecificRatingDTO>>(bookRating.SpecificRatings),
+                    OverallRating = bookRating.OverallRating,
                     BookId = bookRating.BookId
                 };
                 return rating;

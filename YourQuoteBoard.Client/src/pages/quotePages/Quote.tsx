@@ -18,11 +18,12 @@ import { BookRatingCategory } from "../../enums/BookRatingCategory";
 export default function Quote(){
     
     const {id} = useParams();
-    const {quote, 
-           quoteRatingId,
-           overallRating, setOverallRating,
-           specificRatings, setSpecificRatings,
-           } = useQuoteInfo(id || "");
+    const {
+            quote, 
+            quoteRatingId,
+            overallRating, setOverallRating,
+            specificRatings, setSpecificRatings,
+            } = useQuoteInfo(id || "");
     
     const [isRatingModalOpen, setIsRatingModalOpen] = useState<boolean>(false);
     const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);

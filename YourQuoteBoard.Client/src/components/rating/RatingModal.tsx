@@ -28,7 +28,8 @@ export default function RatingModal({ratings, itemType, isOpen, title, handleClo
                         handleGivenRating={handleRatingChange} 
                         rating={
                             ratings?.find(
-                                (rating) => rating.ratingCategory === ratingCategory  
+                                (rating) => rating.ratingCategory === ratingCategory &&
+                                ratingCategory != "OverallRating"
                             )?.rating || undefined   
                         } 
                         ratingKey={ratingCategory} />

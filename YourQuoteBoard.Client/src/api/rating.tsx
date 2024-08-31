@@ -3,9 +3,9 @@ import BookRatingCreateDTO from "../models/rating/book/BookRatingCreateDTO";
 import BookRatingForDirectUserInteractionDTO from "../models/rating/book/BookRatingForDirectUserInteractionDTO";
 import BookRatingUpdateDTO from "../models/rating/book/BookRatingUpdateDTO";
 
-export async function addBookRating(rating: BookRatingCreateDTO){
+export async function addBookRating(rating: BookRatingCreateDTO) : Promise<string>{
     const response = await apiClient.post("api/BookRating/book-rating", rating); 
-    return response;
+    return response.data;
 }
 
 export async function getUserBookRating(bookId: string) : Promise<BookRatingForDirectUserInteractionDTO | null>{
