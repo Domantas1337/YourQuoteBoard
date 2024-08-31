@@ -1,11 +1,11 @@
 ﻿using YourQuoteBoard.Enums;
 
-namespace YourQuoteBoard.Entity
+namespace YourQuoteBoard.Entity.Quotes
 {
-    public class RatingSummary
+    public class QuoteRatingSummary
     {
-        public Guid RatingSummaryId { get; set; }
-        public RatingCategory RatingCategory { get; set; }
+        public Guid QuoteRatingSummaryId { get; set; }
+        public QuoteRatingCategory RatingCategory { get; set; }
         public double AverageRating { get; set; }
         public int NumberOfRatings { get; set; }
         public Guid QuoteId { get; set; }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Books;
+using YourQuoteBoard.Entity.Quotes;
 
 namespace YourQuoteBoard.Data
 {

@@ -1,27 +1,27 @@
-﻿using YourQuoteBoard.DTO.Rating;
+﻿using YourQuoteBoard.DTO.Rating.Quote;
 using YourQuoteBoard.Enums;
 
-namespace YourQuoteBoard.Entity
+namespace YourQuoteBoard.Entity.Quotes
 {
     public class QuoteRating
     {
         public Guid QuoteRatingId { get; set; }
         public double OverallRating { get; set; }
-        public ICollection<SpecificRating> SpecificRatings { get; } = new List<SpecificRating>();
+        public ICollection<QuoteSpecificRating> SpecificRatings { get; } = new List<QuoteSpecificRating>();
         public Guid QuoteId { get; set; }
         public required Quote Quote { get; set; }
         public required string ApplicationUserId { get; set; }
-    
-        public void AddSpecificRatings(ICollection<SpecificRatingDTO>? specRatings)
+
+        public void AddSpecificRatings(ICollection<QuoteSpecificRatingDTO>? specRatings)
         {
             if (specRatings == null) return;
 
-            foreach (var specRating in specRatings) 
+            foreach (var specRating in specRatings)
             {
-                this.SpecificRatings.Add(
-                    new SpecificRating 
-                    { 
-                        Rating = specRating.Rating, 
+                SpecificRatings.Add(
+                    new QuoteSpecificRating
+                    {
+                        Rating = specRating.Rating,
                         RatingCategory = specRating.RatingCategory
                     }
                     );

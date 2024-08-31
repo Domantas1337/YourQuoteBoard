@@ -150,7 +150,7 @@
     "Parameters": [
       {
         "Name": "bookRatingDTO",
-        "Type": "YourQuoteBoard.DTO.Rating.Book.BookRatingForUpdateDTO",
+        "Type": "YourQuoteBoard.DTO.Rating.Book.BookRatingUpdateDTO",
         "IsRequired": true
       }
     ],

@@ -1,11 +1,11 @@
 ﻿using YourQuoteBoard.DTO.Rating;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Books;
 
 namespace YourQuoteBoard.Interfaces.Repository
 {
     public interface IBookRatingRepository
     {
-        public Task<BookRating?> UpdateBookRatingAsync(BookRating bookRating);
+        public Task<BookRating?> GetBookRatingByIdAsync(Guid bookRatingId);
         public Task<BookRating?> GetBookRatingByUserAsync(string userId, Guid bookId);
         public Task<BookRating> AddBookRatingAsync(BookRating rating, string userId);
         public Task<List<BookRating>> GetAllBookRatingsAsync();

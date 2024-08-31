@@ -2,7 +2,7 @@
 using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Quote;
 using YourQuoteBoard.DTO.Tag;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Interfaces.Repository;
 
 namespace YourQuoteBoard.Services

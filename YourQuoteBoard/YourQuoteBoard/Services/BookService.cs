@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using SixLabors.ImageSharp;
 using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Books;
 using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
@@ -16,8 +16,8 @@ namespace YourQuoteBoard.Services
             var pngPath = FileFormToPNGConverter.ConvertFileFormToPNG(book.CoverImage.FileName, book.CoverImage);
 
             Book bookToAdd = _mapper.Map<Book>(book);
-            bookToAdd.NumberOfRatings = 0;
-            bookToAdd.AverageRating = 0;
+            bookToAdd.NumberOfOverallRatings = 0;
+            bookToAdd.AverageOverallRating = 0;
             bookToAdd.CoverImagePath = pngPath.Result;
 
             ICollection<Tag> tags = await _tagRepository.GetTagsByTagIdAsync(book.TagIds);

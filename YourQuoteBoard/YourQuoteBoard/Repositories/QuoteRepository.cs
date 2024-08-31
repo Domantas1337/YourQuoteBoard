@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Data;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Services;
 
@@ -49,7 +49,7 @@ namespace YourQuoteBoard.Repositories
             return quote;
         }
 
-        public async Task<Quote?> GetQuoteByIdForRatingAsync(Guid quoteId)
+        public async Task<Quote?> GetByIdForRatingAsync(Guid quoteId)
         {
             Quote? quote = await _applicationDbContext.Quotes
                 .Include(q => q.QuoteRatings)

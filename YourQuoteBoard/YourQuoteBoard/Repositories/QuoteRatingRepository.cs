@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Data;
 using YourQuoteBoard.DTO.Rating;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Interfaces.Repository;
 
 namespace YourQuoteBoard.Repositories

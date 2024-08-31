@@ -11,17 +11,15 @@ namespace YourQuoteBoard.Controllers
     public class BookRatingController(IBookRatingService _ratingService, IBookService _bookService) : Controller
     {
         [HttpPut("update-book-rating")]
-        public async Task<IActionResult> UpdateBookRatingAsync(BookRatingForUpdateDTO bookRatingDTO)
+        public async Task<IActionResult> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO)
         {
-
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (userId == null)
             {
                 return BadRequest("User does not exist");
             }
 
-            BookRatingForUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO, userId);
+            BookRatingUpdateDTO updatedBookRating = await _ratingService.UpdateBookRatingAsync(bookRatingDTO, userId);
                         
             return Ok(updatedBookRating);
         }
@@ -30,21 +28,19 @@ namespace YourQuoteBoard.Controllers
         public async Task<IActionResult> AddBookRating(BookRatingCreateDTO bookRating)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (userId == null)
             {
                 return BadRequest("User does not exist");
             }
 
-            BookRatingCreateDTO addedRating = await _ratingService.AddBookRatingAsync(bookRating, userId);
-            return Ok(addedRating);
+            await _ratingService.AddBookRatingAsync(bookRating, userId);
+            return Ok();
         }
 
         [HttpGet("book-rating-by-user/{bookId}")]
         public async Task<IActionResult> GetBookRatingByUser(Guid bookId)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (userId == null)
             {
                 return BadRequest("User does not exist");

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using YourQuoteBoard.Entity;
 using YourQuoteBoard.Enums;
+using YourQuoteBoard.Entity.Books;
+using YourQuoteBoard.Entity.Quotes;
 
 namespace YourQuoteBoard.Data
 {
@@ -19,8 +21,10 @@ namespace YourQuoteBoard.Data
         public virtual DbSet<Folder> Folders { get; set; }
         public virtual DbSet<Tag> Tags { get ; set; }
         public virtual DbSet<Favorite> Favorites { get; set; }
-        public virtual DbSet<SpecificRating> SpecificRatings { get; set; }
-
+        public virtual DbSet<QuoteSpecificRating> QuoteSpecificRatings { get; set; }
+        public virtual DbSet<QuoteRatingSummary> QuoteRatingSummaries { get; set; }
+        public virtual DbSet<BookSpecificRating> BookSpecificRatings { get; set; }
+        public virtual DbSet<BookRatingSummary> BookRatingSummaries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -36,6 +40,11 @@ namespace YourQuoteBoard.Data
 
                 entity.HasMany(b => b.Tags)
                       .WithMany();
+
+                entity.HasMany(q => q.RatingSummaries)
+                      .WithOne(rs => rs.Quote)
+                      .HasForeignKey(q => q.QuoteId)
+                      .IsRequired();
             }
             );
 
@@ -61,6 +70,11 @@ namespace YourQuoteBoard.Data
 
                 entity.HasMany(b => b.Tags)
                       .WithMany();
+
+                entity.HasMany(b => b.RatingSummaries)
+                   .WithOne(rs => rs.Book)
+                   .HasForeignKey(q => q.BookId)
+                   .IsRequired();
             });
 
             var defaultBookTags = Enum.GetValues(typeof(DefaultBookTags))
@@ -88,7 +102,13 @@ namespace YourQuoteBoard.Data
                       .WithMany(u => u.BookRatings)
                       .HasForeignKey(br => br.ApplicationUserId)
                       .IsRequired();
-            });
+                
+                entity.HasMany(qr => qr.SpecificRatings)
+                      .WithOne(sr => sr.BookRating)
+                      .HasForeignKey(sr => sr.BookRatingId)
+                      .IsRequired();
+
+                });
 
             modelBuilder.Entity<QuoteRating>(entity =>
             {

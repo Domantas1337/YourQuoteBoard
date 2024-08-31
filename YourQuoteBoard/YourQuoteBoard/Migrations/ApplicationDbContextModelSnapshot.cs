@@ -263,7 +263,32 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("QuoteTag");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.BookRatingSummary", b =>
+                {
+                    b.Property<Guid>("BookRatingSummaryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("AverageRating")
+                        .HasColumnType("REAL");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NumberOfRatings")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RatingCategory")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("BookRatingSummaryId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookRatingSummaries");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.Book", b =>
                 {
                     b.Property<Guid>("BookId")
                         .ValueGeneratedOnAdd()
@@ -273,7 +298,7 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("AverageRating")
+                    b.Property<double>("AverageOverallRating")
                         .HasColumnType("REAL");
 
                     b.Property<string>("CoverImagePath")
@@ -284,7 +309,7 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("NumberOfRatings")
+                    b.Property<int>("NumberOfOverallRatings")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Pages")
@@ -299,14 +324,11 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.BookRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.BookRating", b =>
                 {
                     b.Property<Guid>("BookRatingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
-
-                    b.Property<double?>("AccuracyRating")
-                        .HasColumnType("REAL");
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
@@ -315,19 +337,7 @@ namespace YourQuoteBoard.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("CharacterDevelopmentRating")
-                        .HasColumnType("REAL");
-
                     b.Property<double>("OverallRating")
-                        .HasColumnType("REAL");
-
-                    b.Property<double?>("PlotRating")
-                        .HasColumnType("REAL");
-
-                    b.Property<double?>("WorldBuildingRating")
-                        .HasColumnType("REAL");
-
-                    b.Property<double?>("WritingStyleRating")
                         .HasColumnType("REAL");
 
                     b.HasKey("BookRatingId");
@@ -337,6 +347,28 @@ namespace YourQuoteBoard.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("BookRatings");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.BookSpecificRating", b =>
+                {
+                    b.Property<Guid>("BookSpecificRatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("BookRatingId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double?>("Rating")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("RatingCategory")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("BookSpecificRatingId");
+
+                    b.HasIndex("BookRatingId");
+
+                    b.ToTable("BookSpecificRatings");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Entity.Favorite", b =>
@@ -392,7 +424,7 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("Folders");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.Quote", b =>
                 {
                     b.Property<Guid>("QuoteId")
                         .ValueGeneratedOnAdd()
@@ -442,7 +474,7 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteRating", b =>
                 {
                     b.Property<Guid>("QuoteRatingId")
                         .ValueGeneratedOnAdd()
@@ -467,9 +499,9 @@ namespace YourQuoteBoard.Migrations
                     b.ToTable("QuoteRatings");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.RatingSummary", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteRatingSummary", b =>
                 {
-                    b.Property<Guid>("RatingSummaryId")
+                    b.Property<Guid>("QuoteRatingSummaryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -485,33 +517,33 @@ namespace YourQuoteBoard.Migrations
                     b.Property<int>("RatingCategory")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("RatingSummaryId");
+                    b.HasKey("QuoteRatingSummaryId");
 
                     b.HasIndex("QuoteId");
 
-                    b.ToTable("RatingSummary");
+                    b.ToTable("QuoteRatingSummaries");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.SpecificRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteSpecificRating", b =>
                 {
-                    b.Property<Guid>("SpecificRatingId")
+                    b.Property<Guid>("QuoteSpecificRatingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("QuoteRatingId")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Rating")
+                    b.Property<double?>("Rating")
                         .HasColumnType("REAL");
 
                     b.Property<int>("RatingCategory")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("SpecificRatingId");
+                    b.HasKey("QuoteSpecificRatingId");
 
                     b.HasIndex("QuoteRatingId");
 
-                    b.ToTable("SpecificRatings");
+                    b.ToTable("QuoteSpecificRatings");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Entity.Tag", b =>
@@ -537,98 +569,98 @@ namespace YourQuoteBoard.Migrations
                     b.HasData(
                         new
                         {
-                            TagId = new Guid("a753d54c-3a0a-444a-9951-4c0bdbd504b2"),
+                            TagId = new Guid("cf6c5337-10e9-48d9-9022-864ca0ff959c"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Inspirational"
                         },
                         new
                         {
-                            TagId = new Guid("f02562b5-730b-4052-b19d-69d4f1924113"),
+                            TagId = new Guid("04e0a766-8b37-4eec-8bf6-3fcd24ae67b4"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Funny"
                         },
                         new
                         {
-                            TagId = new Guid("0260c837-6e5d-4891-ac02-ce92319d90c2"),
+                            TagId = new Guid("209f7d62-2b2a-4e73-a476-291d793fd44d"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Philosophical"
                         },
                         new
                         {
-                            TagId = new Guid("aed35497-76f1-4abb-9827-ec3901b6bb2d"),
+                            TagId = new Guid("0b1b930e-3812-4e78-882e-3223db35622d"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Literary"
                         },
                         new
                         {
-                            TagId = new Guid("eea9f259-c971-479c-856a-38734c5e4a4d"),
+                            TagId = new Guid("5993e16c-f75a-414c-852c-73de49ba5ef4"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Sad"
                         },
                         new
                         {
-                            TagId = new Guid("4c715ab4-9aed-42e1-be38-17996f0edfa3"),
+                            TagId = new Guid("8f801b50-959d-4030-94fa-b16aa1f0f235"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Emotional"
                         },
                         new
                         {
-                            TagId = new Guid("bea8adc8-3e57-44a5-aba7-7e6f1ce88f83"),
+                            TagId = new Guid("d838e817-7fec-4280-812b-153015b8f088"),
                             Discriminator = 0,
                             IsDefault = true,
                             Name = "Informative"
                         },
                         new
                         {
-                            TagId = new Guid("c31b96aa-63c0-4a8e-8adb-30f92ed62096"),
+                            TagId = new Guid("a0ba04a2-8b51-40ca-81e6-f04e8f19babe"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Biography"
                         },
                         new
                         {
-                            TagId = new Guid("f4187471-f87f-4545-b6f1-8a378993d706"),
+                            TagId = new Guid("93436277-e29b-485b-bf68-3dbc1e6dca19"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("dd5ff169-27fe-4d97-b045-532f9fca64d0"),
+                            TagId = new Guid("317dbb97-322c-4558-b3df-9fa645d491d7"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Autobiography"
                         },
                         new
                         {
-                            TagId = new Guid("2ba83977-f4df-4a00-9a34-280703e73592"),
+                            TagId = new Guid("513e39f8-2785-4efb-92bd-5e8ad0268d01"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Novel"
                         },
                         new
                         {
-                            TagId = new Guid("0a8abcc5-000b-4d5e-b3cb-af367821eaab"),
+                            TagId = new Guid("51f8c642-92f1-428a-bba9-2a3e9822e3c9"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Romantic"
                         },
                         new
                         {
-                            TagId = new Guid("1a73e52a-9cd1-42d3-b96f-12f3aa378408"),
+                            TagId = new Guid("d4fd5a66-5aaa-4033-82e8-162e7ba64283"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Non_Fiction"
                         },
                         new
                         {
-                            TagId = new Guid("44546ec7-cc78-4af4-ac44-61b12d133d99"),
+                            TagId = new Guid("0711ef55-bfde-4f6e-8f55-afc14e306806"),
                             Discriminator = 1,
                             IsDefault = true,
                             Name = "Comedy"
@@ -644,7 +676,7 @@ namespace YourQuoteBoard.Migrations
 
             modelBuilder.Entity("BookTag", b =>
                 {
-                    b.HasOne("YourQuoteBoard.Entity.Book", null)
+                    b.HasOne("YourQuoteBoard.Entity.Books.Book", null)
                         .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -716,7 +748,7 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.Quote", null)
                         .WithMany()
                         .HasForeignKey("QuotesQuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -725,7 +757,7 @@ namespace YourQuoteBoard.Migrations
 
             modelBuilder.Entity("QuoteTag", b =>
                 {
-                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.Quote", null)
                         .WithMany()
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -738,7 +770,18 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.BookRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.BookRatingSummary", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Books.Book", "Book")
+                        .WithMany("RatingSummaries")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.BookRating", b =>
                 {
                     b.HasOne("YourQuoteBoard.Data.ApplicationUser", null)
                         .WithMany("BookRatings")
@@ -746,13 +789,24 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourQuoteBoard.Entity.Book", "Book")
+                    b.HasOne("YourQuoteBoard.Entity.Books.Book", "Book")
                         .WithMany("BookRatings")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.BookSpecificRating", b =>
+                {
+                    b.HasOne("YourQuoteBoard.Entity.Books.BookRating", "BookRating")
+                        .WithMany("SpecificRatings")
+                        .HasForeignKey("BookRatingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookRating");
                 });
 
             modelBuilder.Entity("YourQuoteBoard.Entity.Favorite", b =>
@@ -763,7 +817,7 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourQuoteBoard.Entity.Quote", null)
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.Quote", null)
                         .WithMany()
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -779,7 +833,7 @@ namespace YourQuoteBoard.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.Quote", b =>
                 {
                     b.HasOne("YourQuoteBoard.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("Quotes")
@@ -787,7 +841,7 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourQuoteBoard.Entity.Book", "Book")
+                    b.HasOne("YourQuoteBoard.Entity.Books.Book", "Book")
                         .WithMany("Quotes")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -798,7 +852,7 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteRating", b =>
                 {
                     b.HasOne("YourQuoteBoard.Data.ApplicationUser", null)
                         .WithMany("QuoteRatings")
@@ -806,7 +860,7 @@ namespace YourQuoteBoard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourQuoteBoard.Entity.Quote", "Quote")
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.Quote", "Quote")
                         .WithMany("QuoteRatings")
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -815,9 +869,9 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Quote");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.RatingSummary", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteRatingSummary", b =>
                 {
-                    b.HasOne("YourQuoteBoard.Entity.Quote", "Quote")
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.Quote", "Quote")
                         .WithMany("RatingSummaries")
                         .HasForeignKey("QuoteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -826,9 +880,9 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("Quote");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.SpecificRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteSpecificRating", b =>
                 {
-                    b.HasOne("YourQuoteBoard.Entity.QuoteRating", "QuoteRating")
+                    b.HasOne("YourQuoteBoard.Entity.Quotes.QuoteRating", "QuoteRating")
                         .WithMany("SpecificRatings")
                         .HasForeignKey("QuoteRatingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -837,21 +891,28 @@ namespace YourQuoteBoard.Migrations
                     b.Navigation("QuoteRating");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Book", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.Book", b =>
                 {
                     b.Navigation("BookRatings");
 
                     b.Navigation("Quotes");
+
+                    b.Navigation("RatingSummaries");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.Quote", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Books.BookRating", b =>
+                {
+                    b.Navigation("SpecificRatings");
+                });
+
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.Quote", b =>
                 {
                     b.Navigation("QuoteRatings");
 
                     b.Navigation("RatingSummaries");
                 });
 
-            modelBuilder.Entity("YourQuoteBoard.Entity.QuoteRating", b =>
+            modelBuilder.Entity("YourQuoteBoard.Entity.Quotes.QuoteRating", b =>
                 {
                     b.Navigation("SpecificRatings");
                 });

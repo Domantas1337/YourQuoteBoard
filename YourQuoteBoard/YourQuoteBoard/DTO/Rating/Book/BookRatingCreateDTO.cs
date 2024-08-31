@@ -2,7 +2,8 @@
 {
     public class BookRatingCreateDTO
     {
-        public required BookRatingDTO BookRating { get; set; }
+        public double OverallRating { get; set; }
+        public ICollection<BookSpecificRatingDTO>? SpecificRatings { get; set; }
         public Guid BookId { get; set; }
     }
 }

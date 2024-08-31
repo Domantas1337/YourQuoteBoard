@@ -1,4 +1,4 @@
-﻿using YourQuoteBoard.Entity;
+﻿using YourQuoteBoard.Entity.Quotes;
 
 namespace YourQuoteBoard.Interfaces.Repository
 {

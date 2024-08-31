@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourQuoteBoard.DTO.Rating.Quote;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Controllers
@@ -67,7 +67,7 @@ namespace YourQuoteBoard.Controllers
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             
-            ICollection<SpecificRating> specificRatings = await _ratingService.GetSpecificRatingsByRatingId(quoteRatingId);
+            ICollection<QuoteSpecificRating> specificRatings = await _ratingService.GetSpecificRatingsByRatingId(quoteRatingId);
             
             
             return Ok(specificRatings);

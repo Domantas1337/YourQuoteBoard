@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.DTO.Rating.Quote;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Enums;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
+using YourQuoteBoard.Utilities;
 
 namespace YourQuoteBoard.Services
 {
@@ -12,10 +12,9 @@ namespace YourQuoteBoard.Services
     {
         public async Task AddQuoteRatingAsync(QuoteRatingCreateDTO rating, string userId)
         {
- 
-            Quote quote = await _quoteRepository.GetQuoteByIdForRatingAsync(rating.QuoteId);
+            Quote quote = await _quoteRepository.GetByIdForRatingAsync(rating.QuoteId);
             
-            UpdateOverallRatingWhenAdded(quote, rating.OverallRating);
+            RatingUtils.UpdateOverallRatingWhenAdded<Quote>(quote, rating.OverallRating);
             UpdateSpecificRatingWhenAdded(quote, rating.SpecificRatings);
 
             await _quoteRepository.SaveAsync();
@@ -64,10 +63,10 @@ namespace YourQuoteBoard.Services
         public async Task<QuoteRatingUpdateDTO> UpdateQuoteRatingAsync(QuoteRatingUpdateDTO quoteRatingDTO)
         {
             QuoteRating currentQuoteRating = await _quoteRatingRepository.GetQuoteRatingByIdAsync(quoteRatingDTO.QuoteRatingId);
-            Quote quote = await _quoteRepository.GetQuoteByIdForRatingAsync(quoteRatingDTO.QuoteId);
+            Quote quote = await _quoteRepository.GetByIdForRatingAsync(quoteRatingDTO.QuoteId);
 
-            UpdateOverallRatingWhenUpdated(quote, currentQuoteRating.OverallRating, quoteRatingDTO.OverallRating);
-            UpdateSpecificRatings(quote, currentQuoteRating.SpecificRatings, quoteRatingDTO.SpecificRatings);
+            RatingUtils.UpdateOverallRatingWhenUpdated<Quote>(quote, currentQuoteRating.OverallRating, quoteRatingDTO.OverallRating);
+            UpdateSpecificRatings(quote, currentQuoteRating.SpecificRatings, quoteRatingDTO.SpecificRatings); 
             await _quoteRepository.SaveAsync();
 
             currentQuoteRating.OverallRating = quoteRatingDTO.OverallRating;
@@ -77,18 +76,18 @@ namespace YourQuoteBoard.Services
         }
 
         public void UpdateSpecificRatings(Quote quote,
-                                          ICollection<SpecificRating> currentRatings, 
-                                          ICollection<SpecificRatingDTO> newRatings
+                                          ICollection<QuoteSpecificRating> currentRatings, 
+                                          ICollection<QuoteSpecificRatingDTO> newRatings
                                           )
         {
             var currentRatingDictionary = currentRatings.ToDictionary(sr => sr.RatingCategory);
             var currentSummaryDictionary = quote.RatingSummaries.ToDictionary(sr => sr.RatingCategory);
 
-            foreach (SpecificRatingDTO newRating in newRatings)
+            foreach (QuoteSpecificRatingDTO newRating in newRatings)
             {
                 if(currentRatingDictionary.TryGetValue(newRating.RatingCategory, out var currentRating))
                 {
-                    RatingSummary ratingSummary = currentSummaryDictionary.GetValueOrDefault(newRating.RatingCategory);
+                    QuoteRatingSummary ratingSummary = currentSummaryDictionary.GetValueOrDefault(newRating.RatingCategory);
                     double currentTotal = ratingSummary.AverageRating * ratingSummary.NumberOfRatings;
                     ratingSummary.AverageRating = (currentTotal - (double)currentRating.Rating) + (double)newRating.Rating;
 
@@ -98,7 +97,7 @@ namespace YourQuoteBoard.Services
                 {
                     quote.AddRatingSummary(newRating);
                     currentRatings.Add( 
-                        new SpecificRating
+                        new QuoteSpecificRating
                         {
                             Rating = newRating.Rating,
                             RatingCategory = newRating.RatingCategory
@@ -108,27 +107,15 @@ namespace YourQuoteBoard.Services
             }
         }
 
-        private void UpdateOverallRatingWhenUpdated(Quote quote, double currentOverallRating, double newOverallRating)
-        {
-            double currentTotalRating = quote.AverageOverallRating * quote.NumberOfOverallRatings;
-            currentTotalRating = (currentTotalRating - currentOverallRating) + newOverallRating;
-            quote.AverageOverallRating = currentTotalRating / quote.NumberOfOverallRatings;
 
-        }
 
-        private void UpdateOverallRatingWhenAdded(Quote quote, double overallRating)
-        {
-            double currentTotalRating = quote.AverageOverallRating * quote.NumberOfOverallRatings;
-            quote.NumberOfOverallRatings += 1;
-            quote.AverageOverallRating = (currentTotalRating +  overallRating) / (double)quote.NumberOfOverallRatings;
-        }
 
-        private void UpdateSpecificRatingWhenAdded(Quote quote, ICollection<SpecificRatingDTO> specificRatings)
+        private void UpdateSpecificRatingWhenAdded(Quote quote, ICollection<QuoteSpecificRatingDTO> specificRatings)
         {
             var ratingSummaryDict = quote.RatingSummaries
                                     .ToDictionary(summary => summary.RatingCategory);
 
-            foreach (SpecificRatingDTO rating in specificRatings)
+            foreach (QuoteSpecificRatingDTO rating in specificRatings)
             {
                 if (ratingSummaryDict.TryGetValue(rating.RatingCategory, out var summary)) 
                 {
@@ -145,19 +132,19 @@ namespace YourQuoteBoard.Services
 
         }
 
-        public async Task<ICollection<SpecificRating>> GetSpecificRatingsByRatingId(Guid quoteRatingId)
+        public async Task<ICollection<QuoteSpecificRating>> GetSpecificRatingsByRatingId(Guid quoteRatingId)
         {
             var quoteRating = await _quoteRatingRepository.GetRatingWithSepcificRatingsByIdAsync(quoteRatingId);
             var specificRatings = quoteRating.SpecificRatings;
 
-            RatingCategory[] ratingCategories = (RatingCategory[]) Enum.GetValues(typeof(RatingCategory));
-            Dictionary<RatingCategory, SpecificRating> specificRatingDictionary = specificRatings.ToDictionary(c => c.RatingCategory);
+            QuoteRatingCategory[] ratingCategories = (QuoteRatingCategory[]) Enum.GetValues(typeof(QuoteRatingCategory));
+            Dictionary<QuoteRatingCategory, QuoteSpecificRating> specificRatingDictionary = specificRatings.ToDictionary(c => c.RatingCategory);
             
             foreach(var ratingCategory in ratingCategories)
             {
                 if (!specificRatingDictionary.ContainsKey(ratingCategory))
                 {
-                    specificRatings.Add(new SpecificRating
+                    specificRatings.Add(new QuoteSpecificRating
                     {
                         RatingCategory = ratingCategory,
                         Rating = null

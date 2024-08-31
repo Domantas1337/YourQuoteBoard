@@ -1,4 +1,6 @@
-﻿namespace YourQuoteBoard.Entity
+﻿using YourQuoteBoard.Entity.Quotes;
+
+namespace YourQuoteBoard.Entity
 {
     public class Folder
     {

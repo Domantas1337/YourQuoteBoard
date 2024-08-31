@@ -1,8 +1,7 @@
 ﻿namespace YourQuoteBoard.Enums
 {
-    public enum RatingCategory
+    public enum QuoteRatingCategory
     {
-        OverallRating,
         OriginalityRating, 
         InspirationalValueRating,
         RelevanceToTheTopicRating

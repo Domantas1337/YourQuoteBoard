@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using YourQuoteBoard.DTO.Rating.Quote;
-using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Quotes;
 
 namespace YourQuoteBoard.Profiles
 {

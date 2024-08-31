@@ -3,10 +3,12 @@ using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Book;
 using YourQuoteBoard.DTO.Folder;
 using YourQuoteBoard.DTO.Quote;
-using YourQuoteBoard.DTO.Rating;
 using YourQuoteBoard.DTO.Rating.Book;
+using YourQuoteBoard.DTO.Rating.Quote;
 using YourQuoteBoard.DTO.Tag;
 using YourQuoteBoard.Entity;
+using YourQuoteBoard.Entity.Books;
+using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Utilities;
 
 namespace YourQuoteBoard
@@ -46,7 +48,7 @@ namespace YourQuoteBoard
             CreateMap<Folder, FolderContentDTO>().ReverseMap();
             CreateMap<Folder, FolderDisplayDTO>().ReverseMap();
             CreateMap<Folder, FolderUpdateDTO>().ReverseMap();
-            CreateMap<SpecificRating, SpecificRatingDTO>().ReverseMap();
+            CreateMap<QuoteSpecificRating, QuoteSpecificRatingDTO>().ReverseMap();
         }
     }
 }

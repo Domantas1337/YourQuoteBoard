@@ -30,66 +30,44 @@ export default function Quote(){
 
     const navigate = useNavigate();
 
-    const handleBookVisit = (bookId: string) => {
-        navigate(`/book/${bookId}`)
-    }
+    const handleBookVisit = (bookId: string) =>  navigate(`/book/${bookId}`)  
+    const handleQuoteSave = () => navigate(`/my-quotes?quoteId=${id}`);
 
-    function handleQuoteSave(){
-        navigate(`/my-quotes?quoteId=${id}`);
-    }
-
-    function handleOverallRating(value: number){
+    const handleOverallRating = (value: number) => {
         setOverallRating(value);
         setIsRatingModalOpen(true);
     }
 
-
-    async function openModal(){
+    const openModal = async () => {
         setButtonConfigs(await getQuoteManagementButtons(['delete'], id));
         setIsDetailModalOpen(true);
-    }
+    };
 
-    function closeDetailModal(){
-        setIsDetailModalOpen(false);
-    }
-
-    function handleClose(){
-        setIsRatingModalOpen(false);
-    }
+    const closeDetailModal = () => setIsDetailModalOpen(false);
     
-    async function handleSpecificRating(value: number, whatIsBeingRated: QuoteRatingCategory | BookRatingCategory) {
-        if (whatIsBeingRated == QuoteRatingCategory.OverallRating){
-            setOverallRating(value)
-        }
-        else{
-            setSpecificRatings((prevRatings) => {
-                const ratingExists = prevRatings.some(
-                    (rating) => rating.ratingCategory === whatIsBeingRated
-                );
-        
-                if (ratingExists) {
-                    return prevRatings.map((rating) =>
-                        rating.ratingCategory === whatIsBeingRated
-                            ? { ...rating, rating: value }
-                            : rating
+    const handleClose = () => setIsRatingModalOpen(false);
+    
+    const handleSpecificRating = (value: number, whatIsBeingRated: QuoteRatingCategory | BookRatingCategory) => {
+        if (whatIsBeingRated === QuoteRatingCategory.OverallRating) {
+            setOverallRating(value);
+        } else {
+            setSpecificRatings(prevRatings => {
+                const existingRatingIndex = prevRatings.findIndex(rating => rating.ratingCategory === whatIsBeingRated);
+                if (existingRatingIndex !== -1) {
+                    return prevRatings.map((rating, index) =>
+                        index === existingRatingIndex ? { ...rating, rating: value } : rating
                     );
-                } else {
-                    return [
-                        ...prevRatings,
-                        { rating: value, ratingCategory: whatIsBeingRated },
-                    ];
                 }
+                return [...prevRatings, { rating: value, ratingCategory: whatIsBeingRated }];
             });
         }
-    }
+    };
 
-    async function hanldeUploadedRating(){
+    async function handleUploadedRating(){
         if (!quoteRatingId && id){
-            console.log("not");
             addQuoteRating({overallRating: overallRating, specificRatings: specificRatings, quoteId: id});
         }
         else if (quoteRatingId && id){
-            console.log("is");
             updateQuoteRating(
                 {
                     overallRating: overallRating, 
@@ -99,22 +77,18 @@ export default function Quote(){
                 }
             )
         }
-
         setIsRatingModalOpen(false);
     }
     
-
     return (
     <div className="quote-page-container">
-        <div className="quote-wrapper">
-            
+        <div className="quote-wrapper">  
             <div className="favorite-container">
                 {   id ? 
                         <Favorite itemId={id} itemType={ItemType.Quote} /> 
                        : 
                         <></>
                 }
-
                 <EllipsisOutlined className="options-button" onClick={openModal} />
             </div> 
 
@@ -131,7 +105,6 @@ export default function Quote(){
                     <span className="quote-symbol">"</span>
                 </div>
             </div>
-
             <div className="quote-tag-container">
                 {
                     quote.tags.map((tag, index) => (
@@ -141,10 +114,9 @@ export default function Quote(){
                     ))
                 }
             </div>
-
             <RatingModal 
                 ratings={specificRatings}
-                handleRatingCompletedClick={hanldeUploadedRating}
+                handleRatingCompletedClick={handleUploadedRating}
                 itemType={ItemType.Quote}
                 handleRatingChange={handleSpecificRating}
                 handleClose={handleClose}
@@ -156,7 +128,6 @@ export default function Quote(){
                 {
                     quote.averageRating ? (
                     <div className="disabled-rating-container">
-                    
                         <Rate className="rating-options" disabled value={quote.averageRating}/>
                         <h5>{quote.averageRating}</h5>
                     </div> 
@@ -170,7 +141,6 @@ export default function Quote(){
                 }
             </div>
         </div>
-
         <div className="user-action-container">
             {
                 overallRating ? (
@@ -187,26 +157,22 @@ export default function Quote(){
                     </div> 
                 )
             }
-
             <div className="save-to-folder">
                 <button className="save-button" onClick={handleQuoteSave}>Save quote</button>
             </div>
         </div>
-
         <div className="section-icon section-author">
             <p>Quote author</p>
         </div>
         <div className="quote-author">
             <p>John</p>
         </div>
-
         <div className="section-icon section-description">
             <span>Desctiprion</span>
         </div>
         <div className="quote-description">
             <span>{quote.description}</span>
         </div>
-
         <div className="section-icon section-book">
             <span>From Book</span>
         </div>
@@ -214,7 +180,6 @@ export default function Quote(){
             <span className="book-title">{quote.bookTitle}</span>
             <button className="book-button" onClick={() => handleBookVisit(quote.bookId)}>Visit book</button>
         </div>
-
     </div>
     )
 }
