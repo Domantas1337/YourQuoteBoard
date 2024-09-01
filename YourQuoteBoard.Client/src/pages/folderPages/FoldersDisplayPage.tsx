@@ -6,6 +6,7 @@ import { addQuoteToFolder, getQuoteFoldersByUserId } from "../../api/folder";
 import { FolderType } from "../../enums/FolderType";
 import { FoldersDisplayDTO } from "../../models/folders/FolderDisplayDTO";
 import { useNavigate } from "react-router-dom";
+import FavoritesFolder from "../../components/favorites/FavoritesFolder";
 
 export default function FolderDisplayPage(){
     
@@ -27,25 +28,26 @@ export default function FolderDisplayPage(){
         fetchFolders();
     }, []);
     
+    const handleFavoritesFolderClick = () => {
+        navigate("/favorite-quotes");
+    }
+
     const handleFolderClick = async (id: string) => {
         if(quoteId){
-            console.log(quoteId);
             try{
-                const response = await addQuoteToFolder(id, quoteId);
-                
+                const response = await addQuoteToFolder(id, quoteId);         
                 console.log("Saved quote to folder ", response);
             }catch(error){
                 console.log("Failed to save ");
             }
         }else{
-            console.log(quoteId);
-
             navigate(`/quote-folder/${id}`);
         }
     }
 
     return (
         <Row className='quote-folder-row' gutter={[40, 24]}>         
+            <FavoritesFolder onClick={handleFavoritesFolderClick}/>
             {
                 folders?.map( (folder, index) => (
                         <Col className="gutter-row" key={index} xs={24} sm={12} md={8} lg={6}>
@@ -59,7 +61,6 @@ export default function FolderDisplayPage(){
                         </Col>
                 ))
             }
-
             <AddQuoteFolder />
         </Row>
     );

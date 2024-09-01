@@ -2,4 +2,43 @@
     color: rgb(0, 95, 0);
     font-size: 50px;
     cursor: pointer; 
+    
+}
+
+.folder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    height: 20vh;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.folder-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    background-color: gold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-folder-icon{
+    color: #000080;
+    cursor: pointer;
+    font-size: 8vh;
+    margin-bottom: 2vh;
+    transition: color 0.3s ease;
 }

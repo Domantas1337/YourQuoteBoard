@@ -23,9 +23,9 @@
 }
 
 .quote-folder {
-    font-size: 64px;
     color: #3498db;
-    margin-bottom: 15px;
+    font-size: 8vh;
+    margin-bottom: 2vh;
     transition: color 0.3s ease;
 }
 

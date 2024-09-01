@@ -25,8 +25,6 @@ export default function QuoteDisplayAndAddComponent({quotes, allowToAddQuotes} :
         setIsModalOpen(false);
     }
 
-    
-
     return <div> 
             <div className='card-container'>
                 <ItemManagementModal buttons={managementButtons} title="Quote information" isOpen={isModalOpen} handleClose={closeModal}/>

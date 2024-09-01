@@ -15,6 +15,7 @@ import AddedQuotesPage from "./pages/quotePages/AddedQuotesPage";
 import FolderContentPage from "./pages/folderPages/FolderContentPage";
 import QuotesByBookPage from "./pages/quotePages/quotesByBook/QuotesByBookPage";
 import "./helpers/button/buttonRegistrations";
+import FavoriteQuotePage from "./pages/quotePages/FavoriteQuotePage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="my-quotes" element={<FolderDisplayPage/>} />
             <Route path="browse-books" element={<BrowseBooks />} />
             <Route path="add-book" element={<AddBookForm />} />
+            <Route path="favorite-quotes" element={<FavoriteQuotePage />} />
             <Route path="book/:id" element={<Book />} />
             <Route path="quote/:id" element={<Quote />} />
             <Route path="book-quotes/:id" element={<QuotesByBookPage />} />

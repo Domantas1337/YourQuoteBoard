@@ -1,7 +1,8 @@
 import { apiClient } from "../apiClient";
 import { ItemType } from "../enums/ItemType";
+import { QuoteDisplayDTO } from "../models/quotes/QuoteDisplayDTO";
 
-export async function getAllFavoritesByUserId() : Promise<string[]>{
+export async function getAllFavoritesByUserId() : Promise<QuoteDisplayDTO[]>{
     const response = await apiClient.get("api/Favorite/user")
     const favorites = response.data;
 

@@ -1,11 +1,13 @@
-﻿using YourQuoteBoard.Entity;
+﻿using AutoMapper;
+using YourQuoteBoard.DTO;
+using YourQuoteBoard.Entity;
 using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Repository;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Services
 {
-    public class FavoriteService(IFavoriteRepository _favoriteRepository) : IFavoriteService
+    public class FavoriteService(IFavoriteRepository _favoriteRepository, IQuoteRepository _quoteRepository, IMapper _mapper) : IFavoriteService
     {
         public async Task<bool> CheckIfQuoteIsFavoriteAsync(Guid quoteId, string userId)
         {
@@ -21,11 +23,13 @@ namespace YourQuoteBoard.Services
             }
         }
 
-        public async Task<ICollection<Favorite>> GetFavoritesByUserId(string userId)
+        public async Task<ICollection<QuoteDisplayDTO>> GetFavoritesByUserId(string userId)
         {
             var favorites = await _favoriteRepository.GetByUserId(userId);
-        
-            return favorites;
+            var quoteIds = favorites.Select(f => f.QuoteId).ToList();
+            var quotes = await _quoteRepository.GetQuotesByIds(quoteIds);
+
+            return _mapper.Map<List<QuoteDisplayDTO>>(quotes);
         }
 
         public async Task Insert(string userId, Guid quoteId)
