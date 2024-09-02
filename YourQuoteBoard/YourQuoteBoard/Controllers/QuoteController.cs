@@ -3,20 +3,25 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourQuoteBoard.DTO;
 using YourQuoteBoard.DTO.Quote;
-using YourQuoteBoard.Entity;
 using YourQuoteBoard.Interfaces.Repository;
 
 namespace YourQuoteBoard.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class QuoteController(IQuoteService _quoteService) : Controller
+    public class QuoteController(IQuoteService _quoteService) : ControllerBase
     {
 
         [HttpGet("is-quote-users/{quoteId}")]
         public async Task<IActionResult> GetQuoteOwnershipValidation(Guid quoteId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return NotFound("User not found");
+            }
+
             bool isQuoteUsers = await _quoteService.CheckIfUserOwnsQuoteAsync(quoteId, userId);
 
             return Ok(isQuoteUsers);
@@ -27,6 +32,11 @@ namespace YourQuoteBoard.Controllers
         public async Task<IActionResult> GetFavoriteQuotesAsync()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return NotFound("User not found");
+            }
+
             var favoriteQuotes = await _quoteService.GetAllPersonalQuotesAsync(userId);
 
             return Ok(favoriteQuotes);
@@ -37,8 +47,12 @@ namespace YourQuoteBoard.Controllers
         [HttpPost("add-quote")]
         public async Task<IActionResult> AddQuoteAsync(QuoteAddDTO quoteAddDTO)
         {
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return NotFound("User not found");
+            }
 
             try
             {
@@ -56,6 +70,12 @@ namespace YourQuoteBoard.Controllers
         public async Task<IActionResult> GetAllPersonalQuotesAsync()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return NotFound("User not found");
+            }
+
             List<QuoteDisplayDTO> quotes = await _quoteService.GetAllPersonalQuotesAsync(userId);
 
             return Ok(quotes);

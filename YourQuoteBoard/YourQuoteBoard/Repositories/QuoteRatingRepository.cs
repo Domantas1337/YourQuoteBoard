@@ -43,7 +43,7 @@ namespace YourQuoteBoard.Repositories
             return quoteRatings;
         }
 
-        public async Task<QuoteRating> GetQuoteRatingByIdAsync(Guid quoteRatingId)
+        public async Task<QuoteRating?> GetQuoteRatingByIdAsync(Guid quoteRatingId)
         {
             QuoteRating quoteRating = await _applicationDbContext
                                         .QuoteRatings

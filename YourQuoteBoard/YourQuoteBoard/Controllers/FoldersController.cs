@@ -10,7 +10,7 @@ namespace YourQuoteBoard.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class FoldersController(IFolderService _folderService) : Controller
+    public class FoldersController(IFolderService _folderService) : ControllerBase
     {
         [HttpPost("add-quote-folder")]
         public async Task<IActionResult> AddQuoteFolder(FolderCreateDTO folderCreateDTO)

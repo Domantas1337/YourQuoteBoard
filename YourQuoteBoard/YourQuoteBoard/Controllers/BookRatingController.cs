@@ -8,7 +8,7 @@ namespace YourQuoteBoard.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BookRatingController(IBookRatingService _ratingService, IBookService _bookService) : Controller
+    public class BookRatingController(IBookRatingService _ratingService, IBookService _bookService) : ControllerBase
     {
         [HttpPut("update-book-rating")]
         public async Task<IActionResult> UpdateBookRatingAsync(BookRatingUpdateDTO bookRatingDTO)

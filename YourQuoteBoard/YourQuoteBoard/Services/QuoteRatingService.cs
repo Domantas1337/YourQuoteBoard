@@ -10,10 +10,48 @@ namespace YourQuoteBoard.Services
 {
     public class QuoteRatingService(IQuoteRatingRepository _quoteRatingRepository, IQuoteRepository _quoteRepository, IMapper _mapper) : IQuoteRatingService
     {
-        public async Task AddQuoteRatingAsync(QuoteRatingCreateDTO rating, string userId)
+
+        bool IsMultipleOfHalf(double rating)
         {
-            Quote quote = await _quoteRepository.GetByIdForRatingAsync(rating.QuoteId);
-            
+            return (rating * 2) % 1 == 0;
+        }
+
+
+        private bool CheckIfValidRatingValue(double overallRating, ICollection<QuoteSpecificRatingDTO> specificRatings)
+        {
+            if (!IsMultipleOfHalf(overallRating) || specificRatings.Any(r => !IsMultipleOfHalf(r.Rating)))
+            {
+                return false;
+            }
+
+            if (overallRating > 5 ||
+                overallRating < 0 ||
+                specificRatings.Any(sr => sr.Rating > 5) ||
+                specificRatings.Any(sr => sr.Rating < 0))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public async Task<bool> AddQuoteRatingAsync(QuoteRatingCreateDTO rating, string userId)
+        {
+            if (!CheckIfValidRatingValue(rating.OverallRating, rating.SpecificRatings))
+            {
+                return false;
+            }
+
+            Quote? quote = await _quoteRepository.GetByIdForRatingAsync(rating.QuoteId);
+
+            if (quote == null)
+            {
+                return false;
+            }
+
             RatingUtils.UpdateOverallRatingWhenAdded<Quote>(quote, rating.OverallRating);
             UpdateSpecificRatingWhenAdded(quote, rating.SpecificRatings);
 
@@ -28,6 +66,8 @@ namespace YourQuoteBoard.Services
             quoteRating.AddSpecificRatings(rating.SpecificRatings);
 
             await _quoteRatingRepository.AddQuoteRatingAsync(quoteRating, userId);
+
+            return true;
         }
 
         public async Task<List<QuoteRatingDisplayDTO>> GetAllQuoteRatingsAsync()
@@ -60,10 +100,26 @@ namespace YourQuoteBoard.Services
             return quoteRatingDTOs;
         }
 
-        public async Task<QuoteRatingUpdateDTO> UpdateQuoteRatingAsync(QuoteRatingUpdateDTO quoteRatingDTO)
+        public async Task<QuoteRatingUpdateDTO?> UpdateQuoteRatingAsync(QuoteRatingUpdateDTO quoteRatingDTO)
         {
-            QuoteRating currentQuoteRating = await _quoteRatingRepository.GetQuoteRatingByIdAsync(quoteRatingDTO.QuoteRatingId);
-            Quote quote = await _quoteRepository.GetByIdForRatingAsync(quoteRatingDTO.QuoteId);
+            if (!CheckIfValidRatingValue(quoteRatingDTO.OverallRating, quoteRatingDTO.SpecificRatings))
+            {
+                return null;
+            }
+
+            QuoteRating? currentQuoteRating = await _quoteRatingRepository.GetQuoteRatingByIdAsync(quoteRatingDTO.QuoteRatingId);
+
+            if (currentQuoteRating == null)
+            {
+                return null;
+            }
+
+            Quote? quote = await _quoteRepository.GetByIdForRatingAsync(quoteRatingDTO.QuoteId);
+
+            if (quote == null)
+            {
+                return null;
+            }
 
             RatingUtils.UpdateOverallRatingWhenUpdated<Quote>(quote, currentQuoteRating.OverallRating, quoteRatingDTO.OverallRating);
             UpdateSpecificRatings(quote, currentQuoteRating.SpecificRatings, quoteRatingDTO.SpecificRatings); 
@@ -93,7 +149,7 @@ namespace YourQuoteBoard.Services
 
                     currentRating.Rating = newRating.Rating;
                 }
-                else if(newRating.Rating != null)
+                else
                 {
                     quote.AddRatingSummary(newRating);
                     currentRatings.Add( 

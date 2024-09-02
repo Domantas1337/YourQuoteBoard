@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json.Serialization;
+using YourQuoteBoard.Filters;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -65,6 +66,7 @@ builder.Services.AddTransient<IFolderService, FolderService>();
 builder.Services.AddTransient<ITagService, TagService>();
 builder.Services.AddTransient<IFavoriteService, FavoriteService>();
 
+builder.Services.AddScoped<ValidateUserFilter>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

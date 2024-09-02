@@ -8,7 +8,7 @@ namespace YourQuoteBoard.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TagController(ITagService _tagService) : Controller
+    public class TagController(ITagService _tagService) : ControllerBase
     {
 
         [HttpPost("add-tag")]
