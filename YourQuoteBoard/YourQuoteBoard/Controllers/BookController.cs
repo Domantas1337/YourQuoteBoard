@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourQuoteBoard.DTO.Book;
-using YourQuoteBoard.Exceptions;
 using YourQuoteBoard.Interfaces.Service;
 
 namespace YourQuoteBoard.Controllers
@@ -9,39 +8,34 @@ namespace YourQuoteBoard.Controllers
     [Route("api/[controller]")]
     public class BookController(IBookService _bookService, IBookRatingService bookRatingService) : ControllerBase
     {
+        /// <summary>
+        /// Add a book
+        /// </summary>
+        /// <param name="bookAddDTO">New book.</param>
+        /// <response code="200">Book added.</response>
         [HttpPost("add-book")]
         public async Task<IActionResult> AddBook([FromForm] BookAddDTO bookAddDTO)
         {
-            try
-            {
-                BookAddDTO addedBook = await _bookService.AddBookAsync(bookAddDTO);
-                return Ok(addedBook);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error: " + ex.Message);
-            }
+            BookAddDTO addedBook = await _bookService.AddBookAsync(bookAddDTO);
+            return Ok(addedBook);
         }
 
-        [HttpGet("get-display/{id}")]
-        public async Task<IActionResult> GetBookForDisplayByIdAsync(Guid id)
+        /// <summary>
+        /// Get a book for displaying on a page.
+        /// </summary>
+        /// <param name="bookId">The id of the book.</param>
+        /// <response code="200">Book fetched.</response>
+        [HttpGet("get-display/{bookId}")]
+        public async Task<IActionResult> GetBookForDisplayByIdAsync(Guid bookId)
         {
-            try
-            {
-                BookDisplayDTO book = await _bookService.GetBookForDisplayByIdAsync(id);
-
-                foreach (var tag in book.Tags)
-                {
-                    Console.WriteLine(tag.Name);
-                }
-
-                return Ok(book);
-            } catch (EntityNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            BookDisplayDTO book = await _bookService.GetBookForDisplayByIdAsync(bookId);
+            return Ok(book);
         }
 
+        /// <summary>
+        /// Gets all books
+        /// </summary>
+        /// <response code="200">Books fetched.</response>
         [HttpGet("all-books")]
         public async Task<IActionResult> GetAllBooks()
         {
@@ -56,6 +50,12 @@ namespace YourQuoteBoard.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete the book.
+        /// </summary>
+        /// <param name="bookId">The id of the book.</param>
+        /// <response code="200">Book deleted.</response>
+        /// <response code="404">Book not found.</response>
         [HttpDelete("{bookId}")]
         public async Task<IActionResult> DeleteBookAsync(Guid bookId)
         {
@@ -66,10 +66,7 @@ namespace YourQuoteBoard.Controllers
             {
                 return NotFound(ex.Message);
             }
-
             return Ok();
         }
-        
-
     }
 }

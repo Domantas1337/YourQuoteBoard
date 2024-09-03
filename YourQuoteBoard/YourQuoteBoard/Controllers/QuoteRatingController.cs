@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using YourQuoteBoard.DTO.Rating.Quote;
 using YourQuoteBoard.Entity.Quotes;
 using YourQuoteBoard.Filters;
@@ -32,10 +31,8 @@ namespace YourQuoteBoard.Controllers
             {
                 return BadRequest();
             }
-
             return Ok(updatedquoteRating);
         }
-
 
         /// <summary>
         /// Adds a quote rating
@@ -55,7 +52,6 @@ namespace YourQuoteBoard.Controllers
             {
                 return BadRequest();
             }
-
             return Ok();
         }
 

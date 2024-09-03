@@ -53,13 +53,13 @@
   {
     "ContainingType": "YourQuoteBoard.Controllers.BookController",
     "Method": "GetBookForDisplayByIdAsync",
-    "RelativePath": "api/Book/get-display/{id}",
+    "RelativePath": "api/Book/get-display/{bookId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "bookId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -264,13 +264,13 @@
   {
     "ContainingType": "YourQuoteBoard.Controllers.FoldersController",
     "Method": "GetQuoteFolderContent",
-    "RelativePath": "api/Folders/quote/{id}",
+    "RelativePath": "api/Folders/quote/{folderId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "folderId",
         "Type": "System.Guid",
         "IsRequired": true
       }
