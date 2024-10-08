@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "YourQuoteBoard.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/Account/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "YourQuoteBoard.DTO.Account.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "YourQuoteBoard.Controllers.BookController",
     "Method": "AddBook",
     "RelativePath": "api/Book/add-book",

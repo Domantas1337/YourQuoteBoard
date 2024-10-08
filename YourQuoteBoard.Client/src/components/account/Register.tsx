@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Register() {
-    const [user, setUser] = useState<UserRegisterDTO>({email: '', password: ''});
+    const [user, setUser] = useState<UserRegisterDTO>({username: '', email: '', password: ''});
     const [confirmationPassword, setConfirmationPassword] = useState("");
     const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ function Register() {
         try {
             const response = await registerUser(user);
             console.log('User registered:', response);
-            setUser({email: '', password: ''}); // Reset form
+            setUser({username: '', email: '', password: ''}); 
             setConfirmationPassword('');
             navigate('/login');
         } catch (error) {
@@ -42,6 +42,17 @@ function Register() {
         <div className="auth-container">
             <h1 className="auth-header">Register Account</h1>
             <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-form-group">
+                    <label htmlFor="emailInput" className="auth-label">Username</label>
+                    <input 
+                        type="username" 
+                        className="auth-form-control" 
+                        id="usernameInput" 
+                        name="username"
+                        value={user.username}
+                        onChange={handleChange}
+                    />
+                </div>
                 <div className="auth-form-group">
                     <label htmlFor="emailInput" className="auth-label">Email</label>
                     <input 

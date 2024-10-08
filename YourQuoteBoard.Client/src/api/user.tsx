@@ -3,7 +3,7 @@ import { apiClient } from "../apiClient";
 import { UserLoginDTO } from "../models/account/UserLoginDTO";
 
 export async function registerUser(user: UserRegisterDTO) {
-    const response = await apiClient.post('/register', user)
+    const response = await apiClient.post('api/Account/register', user)
 
     return response
 }
